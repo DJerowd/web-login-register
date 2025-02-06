@@ -1,0 +1,15 @@
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100vw;
+    height: 64px;
+    
+    padding: 16px;
+    background-color: var(--background-color-2);
+}
+
+footer h3 {
+    color: var(--font-color);
+}

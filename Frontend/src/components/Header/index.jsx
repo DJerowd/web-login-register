@@ -1,0 +1,15 @@
+import { Link } from 'react-router-dom';
+import './Styles.css';
+
+function Header(){
+    return (
+        <header className='header'>
+            <div>
+                <Link to="/login">Entrar</Link>
+                <Link to="/Register">Cadastrar-se</Link>
+            </div>
+        </header>
+    )
+}
+
+export default Header;

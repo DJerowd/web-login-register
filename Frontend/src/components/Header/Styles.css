@@ -1,0 +1,23 @@
+header {
+    display: flex;
+    justify-content: baseline;
+
+    width: 100vw;
+    height: 64px;
+
+    font-family: sans-serif;
+
+    box-shadow: #000000 0 1px 4px;
+    background-color: var(--background-color-2);
+}
+
+header div a {
+    display: flex;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--font-color);
+}
+
+header div a:hover {
+    color: blue;
+}
