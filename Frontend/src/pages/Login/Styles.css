@@ -1,0 +1,32 @@
+.container-login {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--background-color-2);
+}
+.content-login {
+    display: flex;
+
+    align-items: baseline;
+    justify-content: center;
+    
+    width: 100vw;
+    padding: 96px 0 0 0;
+    min-height: calc(116vh - 96px);
+    background-size: cover;
+    background-position: center;
+}
+.content-login main {
+    display: flex;
+    flex-direction: column;
+
+    width: 30%;
+
+    padding: 20px;
+    margin: 20px 0 0 0;
+    
+    border-radius: 20px;
+
+    backdrop-filter: blur(20px);
+    background-color: var(--transparent-background-color);
+}
