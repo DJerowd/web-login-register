@@ -2,7 +2,7 @@ import { React } from 'react';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-// import Form from './Form';
+import Form from './Form';
 
 import './Styles.css';
 
@@ -15,7 +15,7 @@ function Register() {
                 <main className='signup-form'>
                     <h2>Registre-se:</h2>
 
-                    {/* <Form /> */}
+                    <Form />
                 </main>
             </div>
 
