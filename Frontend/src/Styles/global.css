@@ -5,11 +5,16 @@
 }
 
 :root {
-  --background-color: #242424;
-  --background-color-2: #101010;
+  --background-color: #0d1117;
+  --background-color-2: #151b23;
+
+  --border-color: #2b3038;
 
   --font-color: #FFFFFF;
-  --font-color-2: #000000;
+  --font-color-2: #3675c4;
+
+  --button-color: #3458a0;
+  --button-selected-color: #4e73bc;
   
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -36,4 +41,75 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+
+/* FORMULÁRIO */
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 20%;
+  padding: 20px;
+  border-radius: 8px;
+
+  border: 1px solid var(--border-color);
+  background-color: var(--background-color-2);
+}
+.signup-form h2{
+  font-weight: normal;
+  font-size: x-large;
+}
+.signup-form form{
+  width: 100%;
+  font-size: medium;
+  display: block;
+}
+.signup-form label{
+  display: block;
+  margin: 10px;
+}
+.signup-form label input{
+  font-size: small;
+  width: 100%;
+  margin: 4px 0 0 0;
+  padding: 8px 6px;
+  border-radius: 6px;
+
+  border: 1px solid var(--border-color);
+  background-color: var(--background-color);
+  color: var(--font-color-2);
+}
+.signup-form div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--font-color);
+}
+.signup-form div a {
+  transition: all 0.25s;
+  text-decoration: none;
+  color: var(--font-color-2);
+}
+.signup-form div a:hover {
+  color: var(--font-color);
+}
+
+/* BOTÃO DE FORMULÁRIO */
+.signup-button {
+  transition: all 0.25s;
+  font-size: small;
+  width: 90%;
+  padding: 8px 6px;
+  margin: 10px 0;
+  border-radius: 8px;
+
+  border: 1px solid var(--border-color);
+  background-color: var(--button-color);
+  color: var(--font-color);
+}
+.signup-button:hover {
+  background-color: var(--button-selected-color);
 }

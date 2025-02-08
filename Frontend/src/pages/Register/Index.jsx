@@ -2,6 +2,7 @@ import { React } from 'react';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+// import Form from './Form';
 
 import './Styles.css';
 
@@ -11,8 +12,10 @@ function Register() {
             <Header/>
 
             <div className='content-register'>
-                <main>
+                <main className='signup-form'>
                     <h2>Registre-se:</h2>
+
+                    {/* <Form /> */}
                 </main>
             </div>
 

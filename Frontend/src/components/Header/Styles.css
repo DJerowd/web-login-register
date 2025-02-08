@@ -1,6 +1,8 @@
 header {
     display: flex;
-    justify-content: baseline;
+    justify-content: end;
+    align-items: center;
+    padding: 0 20px 0 0;
 
     width: 100vw;
     height: 64px;
@@ -8,16 +10,19 @@ header {
     font-family: sans-serif;
 
     box-shadow: #000000 0 1px 4px;
-    background-color: var(--background-color-2);
+    background-color: #010409;
 }
 
 header div a {
-    display: flex;
-    gap: 10px;
+    display: inline;
+    padding: 8px 10px;
+
     text-decoration: none;
+    font-size: 14px;
+
     color: var(--font-color);
 }
 
 header div a:hover {
-    color: blue;
+    color: #3675c4;
 }

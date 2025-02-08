@@ -16,16 +16,3 @@
     background-size: cover;
     background-position: center;
 }
-.content-login main {
-    display: flex;
-    flex-direction: column;
-
-    width: 40%;
-
-    padding: 20px;
-    margin: 20px 0 0 0;
-    
-    border-radius: 20px;
-    
-    background-color: var(--background-color-2);
-}
