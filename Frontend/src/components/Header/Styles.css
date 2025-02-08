@@ -1,8 +1,8 @@
 header {
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
     align-items: center;
-    padding: 0 20px 0 0;
+    padding: 0 30px;
 
     width: 100vw;
     height: 64px;
@@ -14,7 +14,7 @@ header {
 }
 
 header div a {
-    display: inline;
+    transition: all 0.25s;
     padding: 8px 10px;
 
     text-decoration: none;

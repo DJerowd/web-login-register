@@ -3,7 +3,10 @@ import './Styles.css';
 
 function Header(){
     return (
-        <header className='header'>
+        <header>
+            <div>
+                <Link to="/">Home</Link>
+            </div>
             <div>
                 <Link to="/login">Entrar</Link>
                 <Link to="/signup">Cadastrar-se</Link>

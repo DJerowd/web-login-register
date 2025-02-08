@@ -1,0 +1,12 @@
+.home {
+    display: block;
+    text-align: center;
+    color: var(--font-color);
+}
+.home h1, .home h2 {
+    transition: all 0.5s;
+    padding: 8px;
+}
+.home h1:hover, .home h2:hover {
+    filter: drop-shadow(0 0 4px var(--font-color));
+}

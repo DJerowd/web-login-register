@@ -2,22 +2,18 @@ import { React } from 'react';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import Form from './Form';
 
 import './Styles.css';
 
-function Register() {
+function Home() {
     return (
         <div className='container'>
             <Header/>
 
             <div className='content'>
-                <main className='signup-form'>
-
-                    <h2>Registre-se:</h2>
-
-                    <Form />
-
+                <main className='home'>
+                    <h1>Crie uma conta gratuitamente</h1>
+                    <h2>Faça login e veja as informações registradas.</h2>
                 </main>
             </div>
 
@@ -26,4 +22,4 @@ function Register() {
     );
 }
 
-export default Register;
+export default Home;

@@ -8,14 +8,16 @@ import './Styles.css';
 
 function Login() {
     return (
-        <div className='container-login'>
+        <div className='container'>
             <Header/>
 
-            <div className='content-login'>
+            <div className='content'>
                 <main className='signup-form'>
+
                     <h2>Fazer login:</h2>
 
                     <Form />
+                    
                 </main>
             </div>
 
