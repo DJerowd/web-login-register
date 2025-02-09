@@ -1,10 +1,14 @@
 import { React } from 'react';
 
+import useUsers from '../../hooks/Users/useUsers';
+
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Form from './Form';
 
 function Login() {
+    const { users, setUpdateUserList } = useUsers();
+
     return (
         <div className='container'>
             <Header/>
@@ -14,7 +18,7 @@ function Login() {
 
                     <h2>Fazer login:</h2>
 
-                    <Form />
+                    <Form users={users} />
                     
                 </main>
             </div>
