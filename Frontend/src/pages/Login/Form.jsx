@@ -1,14 +1,10 @@
 import { React, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import './Styles.css';
 
 function Form() {
     const navigate = useNavigate();
-    const [user, setUser] = useState({
-        email: '',
-        password: ''
-    });
+    const [user, setUser] = useState({ email: '', password: '' });
 
     // FUNÇÃO PARA ALTERAR DADOS DO FORMULÁRIO.
     const handleChange = (e) => {
@@ -22,7 +18,7 @@ function Form() {
     // FUNÇÃO PARA REALIZAR O LOGIN DE USUÁRIO.
     const handleLogin = (e) => {
         e.preventDefault();
-        navigate('/home');
+        navigate('/profile');
     };
 
 
@@ -41,7 +37,10 @@ function Form() {
         
         <div>
             <button className='signup-button' type='submit'>Fazer login</button>
-            <Link to="/signup">Não possui conta? Criar conta</Link>
+            <div>
+                Não possui conta?
+                <Link to="/signup">Criar conta</Link>
+            </div>
         </div>
 
     </form>

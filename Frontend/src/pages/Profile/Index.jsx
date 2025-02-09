@@ -2,20 +2,17 @@ import { React } from 'react';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import Form from './Form';
 
-function Login() {
+import './Styles.css';
+
+function Profile() {
     return (
         <div className='container'>
             <Header/>
 
             <div className='content'>
-                <main className='signup-form'>
-
-                    <h2>Fazer login:</h2>
-
-                    <Form />
-                    
+                <main className='profile-panel'>
+                    Olá, Usuário.
                 </main>
             </div>
 
@@ -24,4 +21,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default Profile;

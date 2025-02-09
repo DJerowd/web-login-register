@@ -43,6 +43,7 @@ h1 {
   line-height: 1.1;
 }
 
+/* PÁGINA */
 .container {
   display: flex;
   flex-direction: column;
@@ -56,8 +57,9 @@ h1 {
   justify-content: center;
   
   width: 100vw;
-  padding: 64px 0 0 0;
+  padding: 128px 0 0 0;
   min-height: calc(116vh - 96px);
+  background-image: url('../assets/home-background.jpg');
   background-size: cover;
   background-position: center;
 }
@@ -91,7 +93,7 @@ h1 {
 }
 .signup-form label{
   display: block;
-  margin: 10px;
+  margin: 10px 0;
 }
 .signup-form label input{
   font-size: small;
@@ -102,6 +104,9 @@ h1 {
 
   border: 1px solid var(--border-color);
   background-color: var(--background-color);
+  color: var(--font-color-2);
+}
+.signup-form label input:empty {
   color: var(--font-color-2);
 }
 .signup-form div {
@@ -119,12 +124,17 @@ h1 {
 .signup-form div a:hover {
   color: var(--font-color);
 }
+.signup-form div div {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+}
 
 /* BOTÃO DE FORMULÁRIO */
 .signup-button {
   transition: all 0.25s;
   font-size: small;
-  width: 90%;
+  width: 100%;
   padding: 8px 6px;
   margin: 10px 0;
   border-radius: 8px;

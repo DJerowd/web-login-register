@@ -1,28 +1,30 @@
-header {
+.header {
+    position: fixed;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 30px;
+    padding: 0 12vw;
 
     width: 100vw;
     height: 64px;
 
     font-family: sans-serif;
 
+    backdrop-filter: blur(20px);
     box-shadow: #000000 0 1px 4px;
-    background-color: #010409;
+    background-color: #010409AA;
 }
 
-header div a {
+.header div a {
     transition: all 0.25s;
     padding: 8px 10px;
 
     text-decoration: none;
-    font-size: 14px;
+    font-size: medium;
 
     color: var(--font-color);
 }
 
-header div a:hover {
+.header div a:hover {
     color: #3675c4;
 }

@@ -1,4 +1,4 @@
-footer {
+.footer {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -10,6 +10,6 @@ footer {
     background-color: var(--background-color-2);
 }
 
-footer h3 {
+.footer h3 {
     color: var(--font-color);
 }

@@ -4,9 +4,7 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Form from './Form';
 
-import './Styles.css';
-
-function Register() {
+function Signup() {
     return (
         <div className='container'>
             <Header/>
@@ -26,4 +24,4 @@ function Register() {
     );
 }
 
-export default Register;
+export default Signup;

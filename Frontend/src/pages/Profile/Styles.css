@@ -1,0 +1,12 @@
+.profile-panel {
+    display: flex;
+    flex-direction: column;
+
+    width: 40%;
+    padding: 14px;
+    border-radius: 8px;
+
+    border: 1px solid var(--border-color);
+    background-color: var(--background-color-2);
+    color: var(--font-color);
+}

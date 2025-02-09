@@ -1,16 +1,10 @@
 import { React, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import './Styles.css';
 
 function Form() {
     const navigate = useNavigate();
-    const [user, setUser] = useState({
-        username: '',
-        email: '',
-        password: '',
-        confirmPassword: ''
-    });
+    const [user, setUser] = useState({ username: '', email: '', password: '', confirmPassword: '' });
 
     // FUNÇÃO PARA ALTERAR DADOS DO FORMULÁRIO.
     const handleChange = (e) => {
@@ -22,9 +16,9 @@ function Form() {
     };
 
     // FUNÇÃO PARA REALIZAR O REGISTRO DE USUÁRIO.
-    const handleSignup = (e) => {
+    const handleSignup = async (e) => {
         e.preventDefault();
-        navigate('/home');
+        navigate('/login');
     };
 
 
@@ -33,27 +27,30 @@ function Form() {
 
         <label>
             Nome de Usuário:
-            <input type="text" name="username" onChange={handleChange} value={user.username} autoComplete='off' required/>
+            <input type="text" name="username" placeholder="Insira um nome de usuário" onChange={handleChange} value={user.username} autoComplete='off' required/>
         </label>
 
         <label>
             E-mail
-            <input type="email" name="email" onChange={handleChange} value={user.email} autoComplete='off' required/>
+            <input type="email" name="email" placeholder="Insira um email válido" onChange={handleChange} value={user.email} autoComplete='off' required/>
         </label>
 
         <label>
             Senha
-            <input type="password" name="password" onChange={handleChange} value={user.password} autoComplete='off' required/>
+            <input type="password" name="password" placeholder="Crie uma senha" onChange={handleChange} value={user.password} autoComplete='off' required/>
         </label>
 
         <label>
             Confirmar Senha:
-            <input type="Password" name="confirmPassword" onChange={handleChange} value={user.confirmPassword} autoComplete='off' required/>
+            <input type="Password" name="confirmPassword" placeholder="Confirme a senha" onChange={handleChange} value={user.confirmPassword} autoComplete='off' required/>
         </label>
         
         <div>
             <button className='signup-button' type='submit'>Criar conta</button>
-            <Link to="/login">Já possui uma conta? Faça login</Link>
+            <div>
+                Já possui uma conta?
+                <Link to="/login">Entre aqui</Link>
+            </div>
         </div>
 
     </form>
