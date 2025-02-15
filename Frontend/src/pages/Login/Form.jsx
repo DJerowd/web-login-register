@@ -32,9 +32,16 @@ function Form({users}) {
             setErrors(newErrors);
             return;
         }
-        setErrors(newErrors);
+        const loggedInUser = JSON.stringify({
+            id: foundUser.id,
+            username: foundUser.username,
+            email: foundUser.email,
+            password: foundUser.password
+        });
+        localStorage.setItem('loggedInUser', loggedInUser);
 
-        navigate('/profile');
+        setErrors(newErrors);
+        navigate('/dashboard');
     };
 
 

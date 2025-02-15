@@ -38,10 +38,10 @@ body {
   min-height: 100vh;
 }
 
-h1 {
+/* h1 {
   font-size: 3.2em;
   line-height: 1.1;
-}
+} */
 
 /* PÁGINA */
 .container {
@@ -59,9 +59,6 @@ h1 {
   width: 100vw;
   padding: 128px 0 0 0;
   min-height: calc(116vh - 96px);
-  background-image: url('../assets/home-background.jpg');
-  background-size: cover;
-  background-position: center;
 }
 
 /* FORMULÁRIO */
@@ -151,4 +148,14 @@ h1 {
 .error {
   text-align: center;
   color: red;
+}
+
+/* ICONE DE PERFIL */
+.svg-profile {
+  width: 46px;
+  height: 46px;
+  border-radius: 100%;
+  
+  border: 1px solid var(--border-color);
+  background-color: var(--background-color);
 }

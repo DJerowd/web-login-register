@@ -3,10 +3,32 @@
     text-align: center;
     color: var(--font-color);
 }
+.home h1 {
+    font-size: 2.6em;
+}
+.home h2 {
+    font-size: 1.4em;
+}
 .home h1, .home h2 {
     transition: all 0.5s;
+    line-height: 1.1;
     padding: 8px;
 }
 .home h1:hover, .home h2:hover {
     filter: drop-shadow(0 0 4px var(--font-color));
+}
+
+.content-background {
+    display: flex;
+
+    align-items: baseline;
+    justify-content: center;
+    
+    width: 100vw;
+    padding: 128px 0 0 0;
+    min-height: calc(116vh - 96px);
+
+    background-image: url('../../assets/home-background.jpg');
+    background-size: cover;
+    background-position: center;
 }

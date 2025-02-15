@@ -10,7 +10,7 @@ function Home() {
         <div className='container'>
             <Header/>
 
-            <div className='content'>
+            <div className='content-background'>
                 <main className='home'>
                     <h1>Crie uma conta gratuitamente</h1>
                     <h2>Faça login e veja as informações registradas.</h2>

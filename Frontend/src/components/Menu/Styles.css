@@ -1,0 +1,88 @@
+.menu {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 80px;
+    right: 4vw;
+    
+    margin: auto auto;
+    min-width: 240px;
+    max-width: 960px;
+    padding: 18px 14px 16px 14px;
+
+    border-radius: 8px;
+
+    border: 1px solid var(--border-color);
+    box-shadow: #000000 0 1px 4px;
+    background-color: var(--background-color-2);
+}
+
+.menu main {
+    display: flex;
+    width: 100%;
+    gap: 18px;
+    margin: 0 0 10px 0;
+    padding: 10px;
+    border-bottom: 2px solid var(--border-color);
+}
+.menu main div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.menu main div h4 {
+    display: flex;
+    width: 100%;
+}
+
+.menu aside {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.menu aside div {
+    display: flex;
+    width: 100%;
+}
+.menu aside div:hover {
+    background-color: #fff1;
+    border-radius: 4px;
+}
+.menu aside div a {
+    display: flex;
+    width: 100%;
+}
+
+.logoff-button {
+    display: flex;
+    width: 100%;
+    transition: all 0.25s;
+    padding: 8px 10px;
+    
+    font-size: medium;
+
+    border: 0;
+    background-color: #0000;
+    color: var(--font-color);
+}
+.logoff-button:hover {
+    color: #3675c4;
+}
+
+/* .menu {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+
+    width: 16vw;
+    height: auto;
+    right: 0px;
+    
+    padding: 6px 0 10px 10px;
+    margin: 96px 0 0 0;
+
+    border-radius: 0 0 0 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: #000000 0 1px 4px;
+    background-color: var(--background-color);
+} */
