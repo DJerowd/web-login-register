@@ -29,16 +29,13 @@ function Menu(){
             </main>
 
             <aside>
-                <div>
-                    <Link to="/">Home</Link>
-                </div>
 
                 <div>
                     <Link to="/dashboard">Painel</Link>
                 </div>
 
                 <div>
-                    <Link to="/">Configurações</Link>
+                    <Link to="/settings">Configurações</Link>
                 </div>
 
                 <div>

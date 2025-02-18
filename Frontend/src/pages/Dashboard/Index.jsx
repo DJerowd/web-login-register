@@ -13,14 +13,13 @@ function Dashboard() {
     if (!loggedInUser) {
         return (
             <div className='container'>
-                <Header />
-                    <div className='content'>
-                        <main className='profile-panel'>
-                            Faça login para acessar essa página.
-                            <Link className='login-button' to="/login">Entrar</Link>
+                    <div className='content-background'>
+                        <main className='login-error-panel'>
+                            <h2>Página não encontrada.</h2>
+                            <h3>Faça login para acessar essa página ou volte para a página anterior.</h3>
+                            <Link className='login-error-button' to="/login">Entrar</Link>
                         </main>
                     </div>
-                <Footer/>
             </div>
         );
     }
