@@ -1,0 +1,86 @@
+.profile-content {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    width: 100vw;
+    padding: 128px 0 0 0;
+    min-height: calc(116vh - 96px);
+}
+
+.profile-panel {
+    display: flex;
+    align-items: center;
+
+    min-width: 40%;
+    padding: 14px;
+    gap: 28px;
+    font-size: larger;
+    border-radius: 8px 8px 0 0;
+
+    border: 1px solid var(--border-color);
+    background-color: var(--background-color-2);
+}
+.svg-profile-bigger {
+    width: 146px;
+    height: 146px;
+    border-radius: 100%;
+
+    border: 1px solid var(--border-color);
+    background-color: var(--background-color);
+}
+
+
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    min-width: 40%;
+    padding: 26px 14px 14px 14px;
+
+    border-radius: 0 0 8px 8px;
+
+    border: 1px solid var(--border-color);
+    border-top: 0;
+    background-color: var(--background-color-2);
+    color: var(--font-color);
+}
+.profile-form form{
+    width: 100%;
+    font-size: medium;
+    display: block;
+}
+.profile-form label{
+    display: block;
+    margin: 10px 0;
+}
+.profile-form label input{
+    font-size: medium;
+    width: 100%;
+    margin: 4px 0 0 0;
+    padding: 12px 8px;
+    border-radius: 6px;
+
+    border: 1px solid var(--border-color);
+    background-color: var(--background-color);
+    color: var(--font-color-2);
+}
+
+.edit-button {
+    transition: all 0.25s;
+    font-size: medium;
+    width: 100%;
+    padding: 8px 6px;
+    margin: 10px 0;
+    border-radius: 8px;
+  
+    border: 1px solid var(--border-color);
+    background-color: var(--button-color);
+    color: var(--font-color);
+  }
+.edit-button:hover {
+    background-color: var(--button-selected-color);
+    cursor: pointer;
+}

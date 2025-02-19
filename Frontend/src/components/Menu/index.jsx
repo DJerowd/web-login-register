@@ -35,6 +35,14 @@ function Menu(){
                 </div>
 
                 <div>
+                    <Link to="/profile">Perfil do Usuário</Link>
+                </div>
+
+                <div>
+                    <Link to="/users">Usuários Existentes</Link>
+                </div>
+
+                <div>
                     <Link to="/settings">Configurações</Link>
                 </div>
 

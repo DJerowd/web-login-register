@@ -38,11 +38,6 @@ body {
   min-height: 100vh;
 }
 
-/* h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-} */
-
 /* PÁGINA */
 .container {
   display: flex;
@@ -149,6 +144,7 @@ body {
 }
 .signup-button:hover {
   background-color: var(--button-selected-color);
+  cursor: pointer;
 }
 
 /* MENSAGEM DE ERRO */

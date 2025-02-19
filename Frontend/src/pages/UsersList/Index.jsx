@@ -1,13 +1,17 @@
-import { React, useState, useEffect } from 'react';
+import { React } from 'react';
 import { getLoggedInUser } from '../../utils/auth.js';
 import { Link } from 'react-router-dom';
 
+import useUsers from '../../hooks/Users/useUsers';
+
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import List from './List.jsx';
 
 import './Styles.css';
 
-function Dashboard() {
+function UsersList() {
+    const { users, setUpdateUserList } = useUsers();
     const loggedInUser = getLoggedInUser();
 
     if (!loggedInUser) {
@@ -28,16 +32,12 @@ function Dashboard() {
         <div className='container'>
             <Header/>
 
-            <div className='dashboard-content'>
+            <div className='content'>
 
-                <main className='dashboard-panel'>
-                    Olá, {loggedInUser.username}.
+                <main className='users-list'>
+                    <Link className='login-error-button' to="/dashboard">Voltar</Link>
+                    <List users={users} />
                 </main>
-
-                <aside className='options-panel'>
-                    <Link to="/profile">Ver Perfil</Link>
-                    <Link to="/users">Ver outros Usuários</Link>
-                </aside>
 
             </div>
 
@@ -46,4 +46,4 @@ function Dashboard() {
     );
 }
 
-export default Dashboard;
+export default UsersList;

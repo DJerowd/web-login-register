@@ -52,37 +52,3 @@
     display: flex;
     width: 100%;
 }
-
-.logoff-button {
-    display: flex;
-    width: 100%;
-    transition: all 0.25s;
-    padding: 8px 10px;
-    
-    font-size: medium;
-
-    border: 0;
-    background-color: #0000;
-    color: var(--font-color);
-}
-.logoff-button:hover {
-    color: #3675c4;
-}
-
-/* .menu {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-
-    width: 16vw;
-    height: auto;
-    right: 0px;
-    
-    padding: 6px 0 10px 10px;
-    margin: 96px 0 0 0;
-
-    border-radius: 0 0 0 20px;
-    backdrop-filter: blur(20px);
-    box-shadow: #000000 0 1px 4px;
-    background-color: var(--background-color);
-} */

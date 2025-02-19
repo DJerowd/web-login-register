@@ -1,13 +1,14 @@
-import { React, useState, useEffect } from 'react';
+import { React } from 'react';
 import { getLoggedInUser } from '../../utils/auth.js';
 import { Link } from 'react-router-dom';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import Form from './Form.jsx';
 
 import './Styles.css';
 
-function Dashboard() {
+function Profile() {
     const loggedInUser = getLoggedInUser();
 
     if (!loggedInUser) {
@@ -28,15 +29,15 @@ function Dashboard() {
         <div className='container'>
             <Header/>
 
-            <div className='dashboard-content'>
+            <div className='profile-content'>
 
-                <main className='dashboard-panel'>
-                    Olá, {loggedInUser.username}.
+                <main className='profile-panel'>
+                    <svg className='svg-profile-bigger'></svg>
+                    {loggedInUser.username} 
                 </main>
 
-                <aside className='options-panel'>
-                    <Link to="/profile">Ver Perfil</Link>
-                    <Link to="/users">Ver outros Usuários</Link>
+                <aside className='profile-form'>
+                    <Form loggedInUser={loggedInUser} />
                 </aside>
 
             </div>
@@ -46,4 +47,4 @@ function Dashboard() {
     );
 }
 
-export default Dashboard;
+export default Profile;

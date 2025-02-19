@@ -1,0 +1,17 @@
+.users-list {
+    display: flex;
+    flex-direction: column;
+
+    width: auto;
+    padding: 12px 26px 26px 26px;
+    gap: 26px;
+    border-radius: 8px;
+
+    border: 1px solid var(--border-color);
+    background-color: var(--background-color-2);
+}
+.users-list ul tr th {
+    border: 1px solid var(--border-color);
+    background-color: var(--background-color);
+    padding: 8px 12px;
+}

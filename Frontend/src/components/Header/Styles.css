@@ -30,6 +30,19 @@
     color: var(--font-color);
 }
 
-.header div a:hover {
-    color: #3675c4;
+.logoff-button {
+    display: flex;
+    width: 100%;
+    transition: all 0.25s;
+    padding: 8px 10px;
+    
+    font-size: medium;
+
+    border: 0;
+    background-color: #0000;
+    color: var(--font-color);
+}
+.logoff-button:hover, .header div a:hover {
+    color: var(--font-color-2);
+    cursor: pointer;
 }
