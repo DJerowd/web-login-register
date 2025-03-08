@@ -1,4 +1,4 @@
-import { React } from 'react';
+import { React, useState } from 'react';
 import { getLoggedInUser } from '../../utils/auth.js';
 import { Link } from 'react-router-dom';
 
@@ -35,7 +35,13 @@ function UsersList() {
             <div className='content'>
 
                 <main className='users-list'>
-                    <Link className='login-error-button' to="/dashboard">Voltar</Link>
+                    <div>
+                        <Link className='return-btn' to="/dashboard">{'<='}</Link>
+                        <label>
+                            Nome de usuário:
+                            <input type="text" required/>
+                        </label>
+                    </div>
                     <List users={users} />
                 </main>
 
