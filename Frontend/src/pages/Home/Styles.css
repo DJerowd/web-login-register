@@ -1,6 +1,35 @@
+.content-background {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: top;
+    
+    width: 100vw;
+    padding: 128px 0 0 0;
+    min-height: calc(116vh - 96px);
+
+    animation-duration: 30s;
+    animation-iteration-count: infinite;
+
+    background: 
+        linear-gradient(135deg, #0005 18.75%, #000000 0 31.25%, #0000 0),
+        linear-gradient(45deg, #0005 18.75%, #000000 0 31.25%, #0000 0),
+        linear-gradient(135deg, #0005 18.75%, #000000 0 31.25%, #0000 0),
+        linear-gradient(45deg, #0005 18.75%, #000000 0 31.25%, #0000 0);
+    background-size: 60px 60px;
+    background-position:    
+        0 0,
+        0 0,
+        30px 30px,
+        30px 30px;
+    animation: slide 4s linear infinite;
+}
+
 .home {
     display: block;
     text-align: center;
+    
+    text-shadow: #000000 0 2px 2px;
     color: var(--font-color);
 }
 .home h1 {
@@ -15,20 +44,26 @@
     padding: 8px;
 }
 .home h1:hover, .home h2:hover {
-    filter: drop-shadow(0 0 4px var(--font-color));
+    text-shadow: var(--font-color) 0 0 4px;
 }
 
-.content-background {
+.content-background .socials {
     display: flex;
+    padding: 72px;
+}
 
-    align-items: baseline;
-    justify-content: center;
-    
-    width: 100vw;
-    padding: 128px 0 0 0;
-    min-height: calc(116vh - 96px);
 
-    background-image: url('../../assets/home-background.jpg');
-    background-size: cover;
-    background-position: center;
+@keyframes slide {
+    0%   {background-color: #2b2b2b;}
+    25%  {background-color: #4e4e4e;}
+    50%  {background-color: #6c6c6c;}
+    75%  {background-color: #4e4e4e;}
+    100% {background-color: #2b2b2b;}
+    to {
+        background-position:
+        60px 0,
+        60px 0,
+        90px 30px,
+        90px 30px;
+    }
 }

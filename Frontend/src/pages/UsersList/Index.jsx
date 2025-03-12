@@ -1,17 +1,20 @@
 import { React, useState } from 'react';
 import { getLoggedInUser } from '../../utils/auth.js';
 import { Link } from 'react-router-dom';
+import { IoArrowBack, IoSearch } from "react-icons/io5";
 
 import useUsers from '../../hooks/Users/useUsers';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import Loading from '../Loading/Index.jsx';
 import List from './List.jsx';
 
 import './Styles.css';
 
 function UsersList() {
-    const { users, setUpdateUserList } = useUsers();
+    const [ search, setSearch ] = useState("");
+    const { users, setUpdateUserList, loading } = useUsers();
     const loggedInUser = getLoggedInUser();
 
     if (!loggedInUser) {
@@ -28,6 +31,11 @@ function UsersList() {
         );
     }
 
+    // TELA DE LOADING
+    if (loading) {
+        return <div className="spinner"> <Loading/> </div>;
+    }
+
     return (
         <div className='container'>
             <Header/>
@@ -36,10 +44,10 @@ function UsersList() {
 
                 <main className='users-list'>
                     <div>
-                        <Link className='return-btn' to="/dashboard">{'<='}</Link>
+                        <Link className='return-btn' to="/dashboard"> <IoArrowBack className='return-icon' /> </Link>
                         <label>
-                            Nome de usuário:
-                            <input type="text" required/>
+                            <IoSearch className='icon'/>
+                            <input type="text" placeholder="Pesquisar..." value={search} autoComplete='off' onChange={(e) => setSearch(e.target.value)} />
                         </label>
                     </div>
                     <List users={users} />

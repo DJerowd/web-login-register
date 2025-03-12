@@ -13,6 +13,7 @@ npm create vite@latest web-login-register -- --template react
 npm install
 npm install axios
 npm install react-router-dom
+npm install react-icons --save
 
 cd .\Frontend\ 
 npm run dev

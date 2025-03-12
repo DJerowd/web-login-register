@@ -1,0 +1,96 @@
+.social-medias {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+}
+.social-medias .icon-content {
+    margin: 0 16px;
+    position: relative;
+}
+
+/* LOGOS */
+.social-medias .icon-content a svg {
+    position: relative;
+    z-index: 1;
+    width: 30px;
+    height: 30px;
+}
+
+/* ICONES */
+.social-medias .icon-content a {
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+
+    color: #4d4d4d;
+    background-color: #fff;
+}
+.social-medias .icon-content a:hover {
+    box-shadow: 3px 2px 45px 0px rgb(0 0 0 / 12%);
+}
+.social-medias .icon-content a:hover {
+    color: white;
+}
+
+/* PREENCHIMENTO DOS ITENS */
+.social-medias .icon-content a .filled {
+    position: absolute;
+    transition: all 0.3s ease-in-out;
+
+    top: auto;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    
+    background-color: #000;
+}
+.social-medias .icon-content a:hover .filled {
+    height: 100%;
+}
+
+/* LINKEDIN */
+.social-medias .icon-content a[data-social="linkedin"] .filled,
+.social-medias .icon-content a[data-social="linkedin"] ~ .tooltip {
+  background-color: #0274B3;
+}
+/* GITHUB */
+.social-medias .icon-content a[data-social="github"] .filled,
+.social-medias .icon-content a[data-social="github"] ~ .tooltip {
+  background-color: #24262A;
+}
+/* YOUTUBE */
+.social-medias .icon-content a[data-social="youtube"] .filled,
+.social-medias .icon-content a[data-social="youtube"] ~ .tooltip {
+    background-color: #FF0000;
+}
+
+/* TOOLTIP */
+.social-medias .icon-content .tooltip {
+    position: absolute;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+    visibility: hidden;
+    opacity: 0;
+
+    top: -30px;
+    left: 50%;
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+
+    color: #fff;
+}
+.social-medias .icon-content:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+    top: -50px;
+}

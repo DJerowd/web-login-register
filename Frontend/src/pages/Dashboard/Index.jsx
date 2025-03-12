@@ -17,7 +17,7 @@ function Dashboard() {
                         <main className='login-error-panel'>
                             <h2>Página não encontrada.</h2>
                             <h3>Faça login para acessar essa página ou volte para a página anterior.</h3>
-                            <Link className='login-error-button' to="/login">Entrar</Link>
+                            <Link className='login-error-btn' to="/login">Entrar</Link>
                         </main>
                     </div>
             </div>

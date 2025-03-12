@@ -2,6 +2,7 @@ import { React } from 'react';
 import { getLoggedInUser } from '../../utils/auth.js';
 import { Link } from 'react-router-dom';
 
+
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Form from './Form.jsx';
@@ -18,7 +19,7 @@ function Profile() {
                         <main className='login-error-panel'>
                             <h2>Página não encontrada.</h2>
                             <h3>Faça login para acessar essa página ou volte para a página anterior.</h3>
-                            <Link className='login-error-button' to="/login">Entrar</Link>
+                            <Link className='login-error-btn' to="/login">Entrar</Link>
                         </main>
                     </div>
             </div>
@@ -31,14 +32,16 @@ function Profile() {
 
             <div className='profile-content'>
 
-                <main className='profile-panel'>
-                    <svg className='svg-profile-bigger'></svg>
-                    {loggedInUser.username} 
-                </main>
+                <div>
+                    <main className='profile-panel'>
+                        <svg className='svg-profile-bigger'></svg>
+                        {loggedInUser.username} 
+                    </main>
 
-                <aside className='profile-form'>
-                    <Form loggedInUser={loggedInUser} />
-                </aside>
+                    <aside className='profile-form'>
+                        <Form loggedInUser={loggedInUser} />
+                    </aside>
+                </div>
 
             </div>
 

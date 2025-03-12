@@ -1,0 +1,47 @@
+.error-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0 0 12vh 0;
+
+    width: 100vw;
+    height: 100vh;
+}
+
+.error-panel {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    gap: 24px;
+    max-width: 40vw;
+}
+.error-panel h2 {
+    font-size: xx-large;
+    font-weight: bold;
+}
+.error-panel h3 {
+    font-size: larger;
+    font-weight: normal;
+}
+.error-panel div {
+    margin: 12px 0 0 0;
+}
+.error-panel div a {
+    transition: all 0.25s ease;
+    text-decoration: none;
+    font-size: larger;
+
+    padding: 8px 10px;
+    border-radius: 8px;
+
+    border: 2px solid currentColor;
+    color: var(--font-color);
+}
+.error-panel div a:hover {
+    border: 2px solid var(--button-color);
+    color: var(--font-color);
+    background-color: var(--button-color);
+}

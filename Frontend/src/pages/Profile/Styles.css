@@ -8,19 +8,21 @@
     padding: 128px 0 0 0;
     min-height: calc(116vh - 96px);
 }
+.profile-content div {
+    min-width: 90%;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: var(--background-color-2);
+    color: var(--font-color);
+}
 
 .profile-panel {
     display: flex;
     align-items: center;
 
-    min-width: 40%;
-    padding: 14px;
+    padding: 26px 20% 14px 20%;
     gap: 28px;
     font-size: larger;
-    border-radius: 8px 8px 0 0;
-
-    border: 1px solid var(--border-color);
-    background-color: var(--background-color-2);
 }
 .svg-profile-bigger {
     width: 146px;
@@ -37,15 +39,7 @@
     flex-direction: column;
     align-items: center;
 
-    min-width: 40%;
-    padding: 26px 14px 14px 14px;
-
-    border-radius: 0 0 8px 8px;
-
-    border: 1px solid var(--border-color);
-    border-top: 0;
-    background-color: var(--background-color-2);
-    color: var(--font-color);
+    padding: 14px 20% 26px 20%;
 }
 .profile-form form{
     width: 100%;

@@ -1,16 +1,18 @@
 import { useState } from 'react';
 import { getLoggedInUser } from '../../utils/auth.js';
 import { Link } from 'react-router-dom';
-import Menu from '../Menu/index.jsx';
+import { IoHome } from "react-icons/io5";
+
+import Dropdown from '../Dropdown/index.jsx';
 
 import './Styles.css';
 
 function Header(){
     const loggedInUser = getLoggedInUser();
-    const [showMenu, setShowMenu] = useState(false);
+    const [showDropdown, setShowDropdown] = useState(false);
 
-    const toggleMenu = () => {
-        setShowMenu(!showMenu);
+    const toggleDropdown = () => {
+        setShowDropdown(!showDropdown);
     };
 
     if (!loggedInUser) {
@@ -18,7 +20,7 @@ function Header(){
             <header className='header'>
 
                 <div>
-                    <Link to="/">Home</Link>
+                    <Link to="/"><IoHome className='header-icon' /></Link>
                 </div>
 
                 <div>
@@ -34,14 +36,14 @@ function Header(){
         <header className='header'>
 
             <div>
-                <Link to="/">Home</Link>
+                <Link to="/"><IoHome className='header-icon' /></Link>
             </div>
 
             <div>
-                <svg className='svg-profile' onClick={toggleMenu}></svg>
+                <svg className='svg-profile' onClick={toggleDropdown}></svg>
             </div>
 
-            {showMenu && <Menu/>}
+            {showDropdown && <Dropdown/>}
 
         </header>
     )

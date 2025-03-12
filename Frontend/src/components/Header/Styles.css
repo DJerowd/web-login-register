@@ -3,7 +3,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 8vw;
+    padding: 0 4vw;
 
     width: 100vw;
     height: 64px;
@@ -12,7 +12,7 @@
 
     backdrop-filter: blur(20px);
     box-shadow: #000000 0 1px 4px;
-    background-color: var(--background-color-2);
+    background-color: var(--header-color);
 }
 
 .header div {
@@ -25,24 +25,18 @@
     padding: 8px 10px;
 
     text-decoration: none;
-    font-size: medium;
+    font-size: larger;
 
     color: var(--font-color);
 }
-
-.logoff-button {
-    display: flex;
-    width: 100%;
-    transition: all 0.25s;
-    padding: 8px 10px;
-    
-    font-size: medium;
-
-    border: 0;
-    background-color: #0000;
-    color: var(--font-color);
-}
-.logoff-button:hover, .header div a:hover {
+.header div a:hover {
     color: var(--font-color-2);
     cursor: pointer;
+}
+
+.header-icon {
+    display: flex;
+    vertical-align: middle;
+    height: 100%;
+    width: 26px;
 }

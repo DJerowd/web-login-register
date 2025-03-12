@@ -1,10 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import { getLoggedInUser } from '../../utils/auth.js';
 import { Link } from 'react-router-dom';
+import { IoList, IoSettings, IoLogOut } from "react-icons/io5";
 
 import './Styles.css';
 
-function Menu(){
+function Dropdown(){
     const navigate = useNavigate();
     const loggedInUser = getLoggedInUser();
 
@@ -14,10 +15,9 @@ function Menu(){
     };
 
     return (
-        <div className='menu'>
+        <div className='dropdown'>
 
             <main>
-                <svg className='svg-profile'></svg>
                 <div>
                     <h4>
                         {loggedInUser.username}
@@ -31,23 +31,15 @@ function Menu(){
             <aside>
 
                 <div>
-                    <Link to="/dashboard">Painel</Link>
+                    <Link to="/dashboard"> <IoList className='dropdown-icon'/> Painel</Link>
                 </div>
 
                 <div>
-                    <Link to="/profile">Perfil do Usuário</Link>
+                    <Link to="/settings"> <IoSettings className='dropdown-icon' /> Configurações</Link>
                 </div>
 
                 <div>
-                    <Link to="/users">Usuários Existentes</Link>
-                </div>
-
-                <div>
-                    <Link to="/settings">Configurações</Link>
-                </div>
-
-                <div>
-                    <button className='logoff-button' onClick={logoff}>Sair</button>
+                    <button className='logoff-btn' onClick={logoff}> <IoLogOut className='dropdown-icon' /> Sair</button>
                 </div>
             </aside>
 
@@ -55,4 +47,4 @@ function Menu(){
     )
 }
 
-export default Menu;
+export default Dropdown;

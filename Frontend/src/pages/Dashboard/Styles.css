@@ -14,6 +14,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-size: larger;
 
     width: 40%;
     padding: 14px;
@@ -27,6 +28,7 @@
 .options-panel {
     display: flex;
     justify-content: center;
+    font-size: large;
 
     gap: 24px;
     width: 40%;

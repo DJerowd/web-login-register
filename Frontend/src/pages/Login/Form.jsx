@@ -52,16 +52,16 @@ function Form({users}) {
             E-mail
             <input type="email" name="email" onChange={handleChange} value={user.email} required/>
         </label>
-        <h6 className='error' >{errors.email}</h6>
+        <h4 className='error' >{errors.email}</h4>
 
         <label>
             Senha
             <input type={"password"}  name="password" onChange={handleChange} value={user.password} required/>
         </label>
-        <h6 className='error' >{errors.password} </h6>
+        <h4 className='error' >{errors.password} </h4>
         
         <div>
-            <button className='signup-button' type='submit'>Fazer login</button>
+            <button className='login-btn' type='submit'>Fazer login</button>
             <div>
                 Não possui conta?
                 <Link to="/signup">Criar conta</Link>

@@ -60,29 +60,29 @@ function Form({ users, setUpdateUserList }) {
             Nome de Usuário:
             <input type="text" name="username" placeholder="Insira um nome de usuário" onChange={handleChange} value={user.username} autoComplete='off' required/>
         </label>
-        <h6 className='error' >{errors.username}</h6>
+        <h4 className='error' >{errors.username}</h4>
 
         <label>
             E-mail
             <input type="email" name="email" placeholder="Insira um email válido" onChange={handleChange} value={user.email} autoComplete='off' required/>
         </label>
-        <h6 className='error' >{errors.email}</h6>
+        <h4 className='error' >{errors.email}</h4>
 
         <label>
             Senha
             <input type="password" name="password" placeholder="Crie uma senha" onChange={handleChange} value={user.password} autoComplete='off' required/>
         </label>
-        <h6 className='error' >{errors.password}</h6>
+        <h4 className='error' >{errors.password}</h4>
 
         <label>
             Confirmar Senha:
             <input type="Password" name="confirmPassword" placeholder="Confirme a senha" onChange={handleChange} value={user.confirmPassword} autoComplete='off' required/>
         </label>
-        <h6 className='error' >{errors.confirmPassword}</h6>
+        <h4 className='error' >{errors.confirmPassword}</h4>
         
         <div>
-        <h6 className='error' >{errors.geral}</h6>
-            <button className='signup-button' type='submit'>Criar conta</button>
+        <h4 className='error' >{errors.geral}</h4>
+            <button className='signup-btn' type='submit'>Criar conta</button>
             <div>
                 Já possui uma conta?
                 <Link to="/login">Entre aqui</Link>

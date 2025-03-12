@@ -13,42 +13,66 @@
 
 .users-list div {
     display: flex;
-    gap: 16px;
+    height: 48px;
+    gap: 36px;
 }
 .users-list div label {
     display: flex;
     align-items: center;
     gap: 16px;
-}
-.users-list div label input {
-    display: flex;
-    font-size: medium;
-    padding: 4px 6px;
-    height: 100%;
-    width: 24vw;
-
+    padding: 0 12px;
+    
     border-radius: 6px;
     border: 1px solid var(--border-color);
     background-color: var(--background-color);
     color: var(--font-color);
 }
+.users-list div label input {
+    display: flex;
+    transition: all 0.25s;
+    font-size: medium;
+    padding: 4px 6px;
+    height: 100%;
+    width: 26vw;
+
+    border: 0;
+    background-color: #0000;
+}
+.users-list div label input:focus {
+    outline: 2px solid var(--font-color-2);
+}
 
 .users-list ul tr {
     display: grid;
-    grid-template-columns: 4% 4% 46% 46%;
+    grid-template-columns: 4% 8% 36% 52%;
+    background-color: var(--background-color);
+}
+.users-list ul tr:hover {
+    cursor: pointer;
+    background-color: var(--background-color-2);
+}
+.users-list ul tr:first-child {
+    cursor: auto;
+    background-color: var(--button-color);
 }
 .users-list ul tr th {
+    font-size: large;
+    font-weight: normal;
     border: 1px solid var(--border-color);
-    background-color: var(--background-color);
     padding: 8px 0px;
+}
+.users-list ul tr th:first-child {
+    font-weight: bolder;
+    color: var(--font-color);
 }
 
 .return-btn {
     display: flex;
     justify-content: center;
+    align-items: center;
 
     transition: all 0.25s;
-    padding: 4px 6px;
+    padding: 12px;
     border-radius: 6px;
 
     text-decoration: none;
@@ -60,5 +84,16 @@
 }
 .return-btn:hover {
     background-color: var(--button-selected-color);
-    border: 1px solid currentColor;
+    border: 2px solid currentColor;
+}
+.return-icon {
+    display: flex;
+    width: auto;
+    height: 100%;
+}
+
+.icon {
+    padding: 12px 0;
+    height: 100%;
+    width: auto;
 }

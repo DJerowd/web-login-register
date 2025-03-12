@@ -4,10 +4,16 @@ import useUsers from '../../hooks/Users/useUsers';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import Loading from '../Loading/Index.jsx';
 import Form from './Form';
 
 function Login() {
-    const { users, setUpdateUserList } = useUsers();
+    const { users, setUpdateUserList, loading } = useUsers();
+
+    // TELA DE LOADING
+    if (loading) {
+        return <div className="spinner"> <Loading/> </div>;
+    }
 
     return (
         <div className='container'>
