@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import './Styles.css';
 
-function Form({loggedInUser, userById}) {
+function Form({loggedInUser}) {
     const navigate = useNavigate();
     const [user, setUser] = useState({ id: loggedInUser.id, username: loggedInUser.username, email: loggedInUser.email, password: loggedInUser.password });
     const [errors, setErrors] = useState({ username: '', email: '', password: '', confirmPassword: '', geral: '' });
@@ -63,7 +63,7 @@ function Form({loggedInUser, userById}) {
         </label>
 
         <button className='profile-edit-button' type="submit">Editar usuário</button>
-        {JSON.stringify(userById)}
+
     </form>
   );
 }

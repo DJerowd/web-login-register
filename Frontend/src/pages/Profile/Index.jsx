@@ -1,8 +1,9 @@
 import { React, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from "react-router";
+import { Link } from 'react-router-dom';
 import { getLoggedInUser } from '../../utils/auth.js';
-import { IoArrowBack } from "react-icons/io5";
+import { IoArrowBack, IoPencil } from "react-icons/io5";
 
 import useUserById from '../../hooks/Users/useUserById.jsx';
 
@@ -36,16 +37,21 @@ function Profile() {
     return (
         <div className='container'>
             <Header/>
-
             <div className='profile-content'>
                 <div>
-                    <button className='return-btn' onClick={() => navigate('/users')}> 
+
+                    <button className='return-btn' onClick={() => navigate(loggedInUser.id === userById[0]?.id ? '/dashboard' : '/users')}> 
                         <IoArrowBack className='return-icon' /> 
                     </button>
+
+                    {loggedInUser.id === userById[0]?.id && (
+                        <button className='edit-btn' onClick={() => navigate('/profile/edit')}>
+                            <IoPencil className="edit-icon" />
+                        </button>
+                    )}
+
                     <main className='profile-panel'>
-
                         <svg className='svg-profile-bigger'></svg>
-
                         {userById.map((user, index) => (
                             <ul class='profile-list' key={user.id}>
                                 <tr>
@@ -58,11 +64,10 @@ function Profile() {
                                 </tr>
                             </ul>
                         ))}
-                        
                     </main>
+
                 </div>
             </div>
-
             <Footer/>
         </div>
     );

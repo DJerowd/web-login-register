@@ -54,3 +54,31 @@
     font-weight: bold;
     text-align: end;
 }
+
+/* BOTÃO DE EDITAR */
+.edit-btn {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+
+    transition: all 0.25s;
+    padding: 14px;
+    margin: 0 0 0 56px;
+    border-radius: 6px;
+
+    font-size: large;
+
+    border: 1px solid var(--border-color);
+    background-color: var(--button-color);
+    color: var(--font-color);
+}
+.edit-btn:hover {
+    background-color: var(--button-selected-color);
+    border: 2px solid currentColor;
+}
+.edit-icon {
+    display: flex;
+    width: auto;
+    height: 100%;
+}

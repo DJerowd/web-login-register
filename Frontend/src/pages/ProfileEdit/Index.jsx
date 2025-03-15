@@ -1,8 +1,6 @@
 import { React } from 'react';
 import { getLoggedInUser } from '../../utils/auth.js';
 
-import useUserById from '../../hooks/Users/useUserById.jsx';
-
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import LoginError from '../loginError/Index.jsx';
@@ -11,7 +9,6 @@ import Form from './Form.jsx';
 import './Styles.css';
 
 function ProfileEdit() {
-    const { userById, setUpdateUserByIdList, setUserId, loading, errors } = useUserById();
     const loggedInUser = getLoggedInUser();
 
     // ERRO DE FALTA DE LOGIN
@@ -30,7 +27,7 @@ function ProfileEdit() {
                     </main>
 
                     <aside className='profile-edit-form'>
-                        <Form loggedInUser={loggedInUser} userById={userById} />
+                        <Form loggedInUser={loggedInUser} />
                     </aside>
                 </div>
 
