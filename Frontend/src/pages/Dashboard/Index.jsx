@@ -35,7 +35,7 @@ function Dashboard() {
                 </main>
 
                 <aside className='options-panel'>
-                    <Link to="/profile">Ver Perfil</Link>
+                    <Link to={`/profile/${loggedInUser.id}`}>Ver Perfil</Link>
                     <Link to="/users">Ver outros Usuários</Link>
                 </aside>
 

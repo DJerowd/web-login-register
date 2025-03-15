@@ -21,6 +21,7 @@
     align-items: center;
     gap: 16px;
     padding: 0 12px;
+    margin: 0 0 0 56px;
     
     border-radius: 6px;
     border: 1px solid var(--border-color);
@@ -33,7 +34,7 @@
     font-size: medium;
     padding: 4px 6px;
     height: 100%;
-    width: 26vw;
+    min-width: 32vw;
 
     border: 0;
     background-color: #0000;
@@ -42,6 +43,7 @@
     outline: 2px solid var(--font-color-2);
 }
 
+/* LISTA DE USUÁRIOS */
 .users-list ul tr {
     display: grid;
     grid-template-columns: 4% 8% 36% 52%;
@@ -63,34 +65,9 @@
 }
 .users-list ul tr th:first-child {
     font-weight: bolder;
-    color: var(--font-color);
+    color: var(--border-color);
 }
 
-.return-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    transition: all 0.25s;
-    padding: 12px;
-    border-radius: 6px;
-
-    text-decoration: none;
-    font-size: medium;
-
-    border: 1px solid var(--border-color);
-    background-color: var(--button-color);
-    color: var(--font-color);
-}
-.return-btn:hover {
-    background-color: var(--button-selected-color);
-    border: 2px solid currentColor;
-}
-.return-icon {
-    display: flex;
-    width: auto;
-    height: 100%;
-}
 
 .icon {
     padding: 12px 0;

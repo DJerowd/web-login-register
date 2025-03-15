@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import './Styles.css';
 
-function Form({loggedInUser}) {
+function Form({loggedInUser, userById}) {
     const navigate = useNavigate();
     const [user, setUser] = useState({ id: loggedInUser.id, username: loggedInUser.username, email: loggedInUser.email, password: loggedInUser.password });
     const [errors, setErrors] = useState({ username: '', email: '', password: '', confirmPassword: '', geral: '' });
@@ -62,8 +62,8 @@ function Form({loggedInUser}) {
             <input type="password" name="password" onChange={handleChange} value={user.password} autoComplete='off' required/>
         </label>
 
-        <button className='edit-button' type="submit">Editar usuário</button>
-
+        <button className='profile-edit-button' type="submit">Editar usuário</button>
+        {JSON.stringify(userById)}
     </form>
   );
 }

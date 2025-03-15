@@ -9,7 +9,9 @@
     min-height: calc(116vh - 96px);
 }
 .profile-content div {
-    min-width: 90%;
+    min-width: 60%;
+    padding: 12px 8px 14px 8px;
+    
     border-radius: 8px;
     border: 1px solid var(--border-color);
     background-color: var(--background-color-2);
@@ -18,12 +20,14 @@
 
 .profile-panel {
     display: flex;
+    flex-direction: column;
     align-items: center;
 
-    padding: 26px 20% 14px 20%;
+    padding: 26px 0 14px 0;
     gap: 28px;
     font-size: larger;
 }
+
 .svg-profile-bigger {
     width: 146px;
     height: 146px;
@@ -33,48 +37,20 @@
     background-color: var(--background-color);
 }
 
-
-.profile-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    padding: 14px 20% 26px 20%;
+.profile-panel .profile-list {
+    min-width: 90%;
 }
-.profile-form form{
-    width: 100%;
-    font-size: medium;
-    display: block;
+.profile-panel .profile-list tr {
+    display: grid;
+    grid-template-columns: 24% auto;
+    font-size: larger;
+    text-align: left;
 }
-.profile-form label{
-    display: block;
-    margin: 10px 0;
+.profile-panel .profile-list tr th {
+    font-weight: normal;
 }
-.profile-form label input{
-    font-size: medium;
-    width: 100%;
-    margin: 4px 0 0 0;
-    padding: 12px 8px;
-    border-radius: 6px;
-
-    border: 1px solid var(--border-color);
-    background-color: var(--background-color);
-    color: var(--font-color-2);
-}
-
-.edit-button {
-    transition: all 0.25s;
-    font-size: medium;
-    width: 100%;
-    padding: 8px 6px;
-    margin: 10px 0;
-    border-radius: 8px;
-  
-    border: 1px solid var(--border-color);
-    background-color: var(--button-color);
-    color: var(--font-color);
-  }
-.edit-button:hover {
-    background-color: var(--button-selected-color);
-    cursor: pointer;
+.profile-panel .profile-list tr th:first-child {
+    padding: 0 12px 0 0;
+    font-weight: bold;
+    text-align: end;
 }

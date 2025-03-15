@@ -1,0 +1,80 @@
+.profile-edit-content {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    width: 100vw;
+    padding: 128px 0 0 0;
+    min-height: calc(116vh - 96px);
+}
+.profile-edit-content div {
+    min-width: 90%;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: var(--background-color-2);
+    color: var(--font-color);
+}
+
+.profile-edit-panel {
+    display: flex;
+    align-items: center;
+
+    padding: 26px 20% 14px 20%;
+    gap: 28px;
+    font-size: larger;
+}
+.svg-profile-edit-bigger {
+    width: 146px;
+    height: 146px;
+    border-radius: 100%;
+
+    border: 1px solid var(--border-color);
+    background-color: var(--background-color);
+}
+
+
+.profile-edit-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 14px 20% 26px 20%;
+}
+.profile-edit-form form{
+    width: 100%;
+    font-size: medium;
+    display: block;
+}
+.profile-edit-form label{
+    display: block;
+    margin: 10px 0;
+}
+.profile-edit-form label input{
+    font-size: medium;
+    width: 100%;
+    margin: 4px 0 0 0;
+    padding: 12px 8px;
+    border-radius: 6px;
+
+    border: 1px solid var(--border-color);
+    background-color: var(--background-color);
+    color: var(--font-color-2);
+}
+
+.profile-edit-button {
+    transition: all 0.25s;
+    font-size: medium;
+    width: 100%;
+    padding: 8px 6px;
+    margin: 10px 0;
+    border-radius: 8px;
+  
+    border: 1px solid var(--border-color);
+    background-color: var(--button-color);
+    color: var(--font-color);
+  }
+.profile-edit-button:hover {
+    background-color: var(--button-selected-color);
+    cursor: pointer;
+}

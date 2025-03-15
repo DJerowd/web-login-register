@@ -1,12 +1,13 @@
 import { React, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { getLoggedInUser } from '../../utils/auth.js';
-import { Link } from 'react-router-dom';
 import { IoArrowBack, IoSearch } from "react-icons/io5";
 
 import useUsers from '../../hooks/Users/useUsers';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import LoginError from '../loginError/Index.jsx';
 import Loading from '../Loading/Index.jsx';
 import List from './List.jsx';
 
@@ -16,41 +17,39 @@ function UsersList() {
     const [ search, setSearch ] = useState("");
     const { users, setUpdateUserList, loading } = useUsers();
     const loggedInUser = getLoggedInUser();
+    const navigate = useNavigate();
 
-    if (!loggedInUser) {
-        return (
-            <div className='container'>
-                    <div className='content-background'>
-                        <main className='login-error-panel'>
-                            <h2>Página não encontrada.</h2>
-                            <h3>Faça login para acessar essa página ou volte para a página anterior.</h3>
-                            <Link className='login-error-button' to="/login">Entrar</Link>
-                        </main>
-                    </div>
-            </div>
-        );
-    }
+    // ERRO DE FALTA DE LOGIN
+    if (!loggedInUser) { return ( <LoginError/> ); }
 
     // TELA DE LOADING
-    if (loading) {
-        return <div className="spinner"> <Loading/> </div>;
-    }
+    if (loading) { return <Loading/>; }
 
     return (
         <div className='container'>
             <Header/>
-
             <div className='content'>
-
                 <main className='users-list'>
+
                     <div>
-                        <Link className='return-btn' to="/dashboard"> <IoArrowBack className='return-icon' /> </Link>
+                        <button className='return-btn' onClick={() => navigate('/dashboard')}> 
+                            <IoArrowBack className='return-icon' /> 
+                        </button>
+                        
                         <label>
                             <IoSearch className='icon'/>
-                            <input type="text" placeholder="Pesquisar..." value={search} autoComplete='off' onChange={(e) => setSearch(e.target.value)} />
+                            <input 
+                                type="text" 
+                                placeholder="Pesquisar..." 
+                                value={search} 
+                                autoComplete='off' 
+                                onChange={(e) => setSearch(e.target.value)} 
+                            />
                         </label>
                     </div>
+
                     <List users={users} />
+
                 </main>
 
             </div>

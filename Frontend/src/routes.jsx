@@ -17,7 +17,7 @@ function MainRoutes(){
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/profile/:id" element={<Profile />} />
             <Route path="/users" element={<UsersList />} />
             <Route path="/settings" element={<Settings />} />
         </Routes>

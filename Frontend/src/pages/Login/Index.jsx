@@ -12,7 +12,7 @@ function Login() {
 
     // TELA DE LOADING
     if (loading) {
-        return <div className="spinner"> <Loading/> </div>;
+        return <Loading/>;
     }
 
     return (

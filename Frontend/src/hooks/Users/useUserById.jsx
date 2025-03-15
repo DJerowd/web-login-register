@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const useUsers = () => {
-    const [users, setUsers] = useState([]);
-    const [updateUserList, setUpdateUserList] = useState(false);
+const useUserById = () => {
+    const [userById, setUserById] = useState([]);
+    const [updateUserByIdList, setUpdateUserByIdList] = useState(false);
+    const [userId, setUserId] = useState(0);
     const [loading, setLoading] = useState(true);
     const [errors, setErrors] = useState(null);
 
@@ -12,27 +13,26 @@ const useUsers = () => {
             setLoading(true);
             setErrors(null);
             try {
-                const res = await axios.get(`http://localhost:8800/users`);
-                setUsers(res.data.sort((a, b) => (a.createDate > b.createDate ? 1 : -1)));
+                const res = await axios.get(`http://localhost:8800/users/` + userId);
+                setUserById(res.data.sort((a, b) => (a.createDate > b.createDate ? 1 : -1)));
             } catch (error) {
-                toast.error(error);
-            } finally {
+                setErrors('Erro ao carregar usuários');
                 setLoading(false);
             }
         };
 
         fetchUsers();
-    }, [updateUserList]);
+    }, [updateUserByIdList]);
 
+    
     // useEffect(() => {
     //     const fetchUsers = async () => {
     //         setLoading(true);
     //         setErrors(null);
     //         try {
-    //             const res = await axios.get(`http://localhost:8800/users`);
-
+    //             const res = await axios.get(`http://localhost:8800/users/` + userId);
     //             const timer = setTimeout(() => {
-    //                 setUsers(res.data.sort((a, b) => (a.createDate > b.createDate ? 1 : -1)));
+    //                 setUserById(res.data.sort((a, b) => (a.createDate > b.createDate ? 1 : -1)));
     //                 setLoading(false);
     //               }, 1000);
     //               return () => clearTimeout(timer);
@@ -44,9 +44,9 @@ const useUsers = () => {
     //     };
 
     //     fetchUsers();
-    // }, [updateUserList]);
+    // }, [updateUserByIdList]);
 
-    return { users, setUpdateUserList, loading, errors };
+    return { userById, setUpdateUserByIdList, setUserId, loading, errors };
 };
 
-export default useUsers;
+export default useUserById;
