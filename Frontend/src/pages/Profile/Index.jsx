@@ -19,12 +19,6 @@ function Profile() {
     const loggedInUser = getLoggedInUser();
     const navigate = useNavigate();
 
-    // ERRO DE FALTA DE LOGIN
-    if (!loggedInUser) { return ( <LoginError/> ); }
-
-    // TELA DE LOADING
-    if (loading && errors) { return <Loading/>; }
-
     // CARREGA DADOS DO USUÁRIO
     useEffect(() => {
         const fetchUsers = async () => {
@@ -33,6 +27,34 @@ function Profile() {
         fetchUsers();
         setUpdateUserByIdList(prevState => !prevState);
     }, [errors]);
+
+    // ERRO DE FALTA DE LOGIN
+    if (!loggedInUser) { return ( <LoginError/> ); }
+
+    // TELA DE LOADING
+    if (loading && errors) { return <Loading/>; }
+
+    // TELA DE USUÁRIO INEXISTENTE
+    if (!userById.length) { 
+        return (
+            <div className='container'>
+                <Header/>
+                <div className='profile-content'>
+                    <div className='error-message'>
+
+                        <button className='return-btn' title="Voltar" onClick={() => navigate('/users')}> 
+                            <IoArrowBack className='return-icon' /> 
+                        </button>
+
+                        <h2>{errors}</h2>
+                        <h3>O usuário com o ID {id} não foi encontrado.</h3>
+
+                    </div>
+                </div>
+                <Footer/>
+            </div>
+        );
+     }
 
     return (
         <div className='container'>
