@@ -1,7 +1,6 @@
-import { React, useState, useEffect } from 'react';
+import { React } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getLoggedInUser } from '../../utils/auth.js';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import Header from '../../components/Header';

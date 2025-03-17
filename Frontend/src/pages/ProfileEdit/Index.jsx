@@ -24,7 +24,7 @@ function ProfileEdit() {
             <div className='profile-edit-content'>
                 <div>
 
-                    <button className='return-btn' title="Voltar" onClick={() => navigate(`/profile/${loggedInUser.id}`)}> 
+                    <button className='return-btn' title="Voltar" onClick={() => navigate(-1)}> 
                         <IoArrowBack className='return-icon' /> 
                     </button>
 

@@ -15,7 +15,7 @@ import './Styles.css';
 
 function Profile() {
     const { id } = useParams();
-    const { userById, setUpdateUserByIdList, setUserId, loading, errors } = useUserById();
+    const { users, setUpdateList, loading, errors, setUserId } = useUserById();
     const loggedInUser = getLoggedInUser();
     const navigate = useNavigate();
 
@@ -25,7 +25,7 @@ function Profile() {
             setUserId(id)
         };
         fetchUsers();
-        setUpdateUserByIdList(prevState => !prevState);
+        setUpdateList(prevState => !prevState);
     }, [errors]);
 
     // ERRO DE FALTA DE LOGIN
@@ -35,14 +35,14 @@ function Profile() {
     if (loading && errors) { return <Loading/>; }
 
     // TELA DE USUÁRIO INEXISTENTE
-    if (!userById.length) { 
+    if (errors) { 
         return (
             <div className='container'>
                 <Header/>
                 <div className='profile-content'>
                     <div className='error-message'>
 
-                        <button className='return-btn' title="Voltar" onClick={() => navigate('/users')}> 
+                        <button className='return-btn' title="Voltar" onClick={() => navigate(-1)}> 
                             <IoArrowBack className='return-icon' /> 
                         </button>
 
@@ -62,11 +62,11 @@ function Profile() {
             <div className='profile-content'>
                 <div>
 
-                    <button className='return-btn' title="Voltar" onClick={() => navigate(loggedInUser.id === userById[0]?.id ? '/dashboard' : '/users')}> 
+                    <button className='return-btn' title="Voltar" onClick={() => navigate(-1)}> 
                         <IoArrowBack className='return-icon' /> 
                     </button>
 
-                    {loggedInUser.id === userById[0]?.id && (
+                    {loggedInUser.id === users[0]?.id && (
                         <button className='edit-btn' title="Editar" onClick={() => navigate('/profile/edit')}>
                             <IoPencil className="edit-icon" />
                         </button>
@@ -74,7 +74,7 @@ function Profile() {
 
                     <main className='profile-panel'>
                         <svg className='svg-profile-bigger'></svg>
-                        {userById.map((user, index) => (
+                        {users.map((user, index) => (
                             <ul class='profile-list' key={user.id}>
                                 <tr>
                                     <th>Nome: </th>

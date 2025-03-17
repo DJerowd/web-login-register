@@ -7,7 +7,7 @@ import Footer from '../../components/Footer';
 import Form from './Form';
 
 function Signup() {
-    const { users, setUpdateUserList } = useUsers();
+    const { users, setUpdateList, loading, errors } = useUsers();
 
     return (
         <div className='container'>
@@ -18,7 +18,7 @@ function Signup() {
 
                     <h2>Registre-se:</h2>
 
-                    <Form users={users} setUpdateUserList={setUpdateUserList} />
+                    <Form users={users} setUpdateList={setUpdateList} />
 
                 </main>
             </div>

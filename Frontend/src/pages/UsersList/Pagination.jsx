@@ -13,16 +13,12 @@ function Pagination({ users, currentPage, setCurrentPage, itemsPerPage }) {
             </button>
             
             {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
-                <button
-                    key={pageNum}
-                    onClick={() => setCurrentPage(pageNum)}
-                    className={currentPage === pageNum ? 'active' : ''}
-                >
+                <button key={pageNum} onClick={() => setCurrentPage(pageNum)} className={currentPage === pageNum ? 'active' : ''} >
                     {pageNum}
                 </button>
             ))}
             
-            <button onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))} disabled={currentPage === totalPages} >
+            <button onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))} disabled={currentPage >= totalPages} >
                 Próximo
             </button>
         </div>

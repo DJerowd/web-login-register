@@ -2,9 +2,9 @@ import { React } from 'react';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import Socials from '../../components/Socials';
 
 import './Styles.css';
-import Socials from '../../components/Socials';
 
 function Home() {
     return (

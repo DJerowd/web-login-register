@@ -2,7 +2,7 @@ import { React, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-function Form({users}) {
+function Form({ users }) {
     const navigate = useNavigate();
     const [user, setUser] = useState({ email: '', password: '' });
     const [errors, setErrors] = useState({ email: '', password: '' });

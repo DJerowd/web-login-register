@@ -11,21 +11,35 @@
     background-color: var(--background-color-2);
 }
 
-.users-list div {
+.users-list .navigation {
     display: flex;
     height: 48px;
 }
+
 .users-list div label {
     display: flex;
     align-items: center;
     gap: 16px;
     padding: 0 12px;
-    margin: 0 0 0 56px;
+    margin: 0 0 0 164px;
     
-    border-radius: 6px;
+    border-radius: 8px;
     border: 1px solid var(--border-color);
     background-color: var(--background-color);
     color: var(--font-color);
+}
+.users-list div .icon {
+    height: 100%;
+    padding: 12px 12px;
+    border: none;
+    background-color: #0000;
+    color: var(--font-color);
+}
+.users-list div .icon :only-child {
+    transition: all 0.25s;
+    color: var(--font-color);
+    height: 100%;
+    width: 24px;
 }
 .users-list div label input {
     display: flex;
@@ -40,11 +54,6 @@
 }
 .users-list div label input:focus {
     outline: 2px solid var(--font-color-2);
-}
-.icon {
-    padding: 12px 0;
-    height: 100%;
-    width: auto;
 }
 
 /* LISTA DE USUÁRIOS */
@@ -84,7 +93,7 @@
     cursor: pointer;
     transition: all 0.25s;
     font-size: medium;
-    padding: 0 18px;
+    padding: 8px 12px;
     border-radius: 8px;
 
     border: 2px solid var(--border-color);

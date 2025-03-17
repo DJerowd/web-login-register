@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-function Form({ users, setUpdateUserList }) {
+function Form({ users, setUpdateList }) {
     const navigate = useNavigate();
     const [user, setUser] = useState({ username: '', email: '', password: '', confirmPassword: '' });
     const [errors, setErrors] = useState({ username: '', email: '', password: '', confirmPassword: '', geral: '' });
@@ -46,7 +46,7 @@ function Form({ users, setUpdateUserList }) {
                 confirmPassword: ''
             });
         }
-        setUpdateUserList(prevState => !prevState);
+        setUpdateList(prevState => !prevState);
         setErrors(newErrors);
         navigate('/login');
     };
