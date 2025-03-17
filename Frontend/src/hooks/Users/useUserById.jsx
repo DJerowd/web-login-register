@@ -36,13 +36,11 @@ const useUserById = () => {
     //                 setLoading(false);
     //               }, 1000);
     //               return () => clearTimeout(timer);
-
     //         } catch (error) {
     //             setErrors('Erro ao carregar usuários');
     //             setLoading(false);
     //         }
     //     };
-
     //     fetchUsers();
     // }, [updateUserByIdList]);
 

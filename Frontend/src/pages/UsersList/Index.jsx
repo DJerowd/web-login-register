@@ -10,6 +10,7 @@ import Footer from '../../components/Footer';
 import LoginError from '../loginError/Index.jsx';
 import Loading from '../Loading/Index.jsx';
 import List from './List.jsx';
+import Pagination from './Pagination.jsx';
 
 import './Styles.css';
 
@@ -18,6 +19,9 @@ function UsersList() {
     const { users, setUpdateUserList, loading } = useUsers();
     const loggedInUser = getLoggedInUser();
     const navigate = useNavigate();
+
+    const [currentPage, setCurrentPage] = useState(1);
+        const itemsPerPage = 8;
 
     // ERRO DE FALTA DE LOGIN
     if (!loggedInUser) { return ( <LoginError/> ); }
@@ -32,7 +36,7 @@ function UsersList() {
                 <main className='users-list'>
 
                     <div>
-                        <button className='return-btn' onClick={() => navigate('/dashboard')}> 
+                        <button className='return-btn' title="Voltar" onClick={() => navigate('/dashboard')}> 
                             <IoArrowBack className='return-icon' /> 
                         </button>
                         
@@ -48,7 +52,9 @@ function UsersList() {
                         </label>
                     </div>
 
-                    <List users={users} />
+                    <List users={users} currentPage={currentPage} setCurrentPage={setCurrentPage} itemsPerPage={itemsPerPage} />
+                    
+                    <Pagination users={users} currentPage={currentPage} setCurrentPage={setCurrentPage} itemsPerPage={itemsPerPage} />
 
                 </main>
 

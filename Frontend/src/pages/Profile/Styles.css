@@ -9,7 +9,7 @@
     min-height: calc(116vh - 96px);
 }
 .profile-content div {
-    min-width: 60%;
+    min-width: 90%;
     padding: 12px 8px 14px 8px;
     
     border-radius: 8px;
@@ -43,7 +43,7 @@
 .profile-panel .profile-list tr {
     display: grid;
     grid-template-columns: 24% auto;
-    font-size: larger;
+    font-size: x-large;
     text-align: left;
 }
 .profile-panel .profile-list tr th {
@@ -65,7 +65,7 @@
     transition: all 0.25s;
     padding: 14px;
     margin: 0 0 0 56px;
-    border-radius: 6px;
+    border-radius: 100%;
 
     font-size: large;
 
@@ -74,6 +74,7 @@
     color: var(--font-color);
 }
 .edit-btn:hover {
+    border-radius: 6px;
     background-color: var(--button-selected-color);
     border: 2px solid currentColor;
 }

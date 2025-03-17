@@ -30,19 +30,16 @@ const useUsers = () => {
     //         setErrors(null);
     //         try {
     //             const res = await axios.get(`http://localhost:8800/users`);
-
     //             const timer = setTimeout(() => {
     //                 setUsers(res.data.sort((a, b) => (a.createDate > b.createDate ? 1 : -1)));
     //                 setLoading(false);
     //               }, 1000);
     //               return () => clearTimeout(timer);
-
     //         } catch (error) {
     //             setErrors('Erro ao carregar usuários');
     //             setLoading(false);
     //         }
     //     };
-
     //     fetchUsers();
     // }, [updateUserList]);
 

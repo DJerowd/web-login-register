@@ -10,6 +10,8 @@
 }
 .profile-edit-content div {
     min-width: 90%;
+    padding: 12px 8px 14px 8px;
+    
     border-radius: 8px;
     border: 1px solid var(--border-color);
     background-color: var(--background-color-2);

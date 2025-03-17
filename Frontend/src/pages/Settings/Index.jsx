@@ -13,9 +13,9 @@ function Settings() {
     const navigate = useNavigate();
     const loggedInUser = getLoggedInUser();
 
+    // FUNÇÃO PARA DELETAR USUÁRIO
     const handleDelete = async (e) => {
         e.preventDefault();
-
         const confirm = window.confirm("Tem certeza de que deseja excluir este usuário? Todas as informações serão perdidas para sempre.");
         if (!confirm) {
             return;
@@ -31,19 +31,8 @@ function Settings() {
         }
     };
 
-    if (!loggedInUser) {
-        return (
-            <div className='container'>
-                    <div className='content-background'>
-                        <main className='login-error-panel'>
-                            <h2>Página não encontrada.</h2>
-                            <h3>Faça login para acessar essa página ou volte para a página anterior.</h3>
-                            <Link className='login-error-btn' to="/login">Entrar</Link>
-                        </main>
-                    </div>
-            </div>
-        );
-    }
+    // ERRO DE FALTA DE LOGIN
+    if (!loggedInUser) { return ( <LoginError/> ); }
 
     return (
         <div className='container'>

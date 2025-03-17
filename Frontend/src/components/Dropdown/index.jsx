@@ -19,12 +19,8 @@ function Dropdown(){
 
             <main>
                 <div>
-                    <h4>
-                        {loggedInUser.username}
-                    </h4>
-                    <h4>
-                        {loggedInUser.email}
-                    </h4>
+                    <h4>{loggedInUser.username}</h4>
+                    <h4>{loggedInUser.email}</h4>
                 </div>
             </main>
 

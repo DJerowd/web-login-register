@@ -20,7 +20,6 @@ function Form({ users, setUpdateUserList }) {
     // FUNÇÃO PARA REALIZAR O REGISTRO DE USUÁRIO.
     const handleSignup = async (e) => {
         e.preventDefault();
-
         let newErrors = { username: '', email: '', password: '', confirmPassword: '', geral: '' };
         if ( !user.username || !user.email || !user.password || !user.confirmPassword ) {
             newErrors.geral = `Todos os campos devem ser preenchidos!`;
