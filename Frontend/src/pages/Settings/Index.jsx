@@ -1,12 +1,14 @@
-import { React } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getLoggedInUser } from '../../utils/auth.js';
+import { IoArrowBack } from "react-icons/io5";
+
 import axios from 'axios';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import Error from "../Error";
 
-import './Styles.css';
+import '../../Styles/settings.css';
 
 function Settings() {
     const navigate = useNavigate();
@@ -21,33 +23,38 @@ function Settings() {
         } else {
             await axios
             .delete("http://localhost:8800/users/" + loggedInUser.id)
-            .then(({ data }) => {
+            .then(() => {
                 localStorage.setItem('loggedInUser', null);
                 navigate('/login');
             })
-            .catch(({ data }) => toast.error(data)
+            .catch(({ data }) => console.log(data)
             );
         }
     };
 
-    // ERRO DE FALTA DE LOGIN
-    if (!loggedInUser) { return ( <LoginError/> ); }
+    // ERRO LOGIN INATIVO
+    if (!loggedInUser) { return ( <Error/> ); }
 
     return (
         <div className='container'>
-
             <Header/>
-
             <div className='content'>
-                <main className='settings-form'>
+
+                <main className='settings'>
+
+                    <div className='btn-bar'>
+                        <button className='return-btn' title="Voltar" onClick={() => navigate(-1)}> 
+                            <IoArrowBack className='return-icon' /> 
+                        </button>
+                    </div>
 
                     <h2>Excluir conta</h2>
-                    <h3>Excluir a conta é um processo irreversível que apagará seus dados de forma irreversível.</h3>
+                    <p>Excluir a conta é um processo irreversível que apagará seus dados de forma irreversível.</p>
                     <button className='delete-btn' onClick={handleDelete} >
-                        <span class="text">
-                            <h4>Excluir usuário</h4>
+                        <span className="text">
+                            Excluir usuário
                         </span>
-                        <span class="icon">
+                        <span className="icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                 <path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"></path>
                             </svg>
@@ -55,8 +62,8 @@ function Settings() {
                     </button>
 
                 </main>
-            </div>
 
+            </div>
             <Footer/>
         </div>
     );

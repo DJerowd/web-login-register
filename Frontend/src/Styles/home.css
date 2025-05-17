@@ -1,0 +1,29 @@
+.home {
+    display: block;
+    text-align: center;
+    
+    text-shadow: #000000 0 2px 2px;
+    color: var(--font-color);
+}
+.home h1 {
+    font-size: 2.6em;
+}
+.home h2 {
+    font-size: 1.4em;
+}
+.home h1, .home h2 {
+    transition: all 0.5s;
+    line-height: 1.1;
+    padding: 8px;
+}
+.home h1:hover, .home h2:hover {
+    text-shadow: var(--font-color) 0 0 4px;
+}
+
+.content-home .socials {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 1.0rem;
+}

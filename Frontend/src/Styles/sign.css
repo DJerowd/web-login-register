@@ -1,0 +1,44 @@
+/* ACESSO */
+.sign {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 400px;
+    max-width: 100%;
+    padding: 1.0rem;
+    gap: 1.0rem;
+    border-radius: 8px;
+
+    border: 2px solid var(--border-color);
+    box-shadow: 4px 4px var(--shadow-color);
+    background-color: var(--background-color-2);
+}
+.sign .title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 2.0rem;
+
+    width: 100%;
+
+    text-shadow: 4px 4px var(--shadow-color);
+}
+
+.sign-form .link {
+    transition: all 0.25s;
+    text-decoration: none;
+
+    text-shadow: 2px 2px var(--shadow-color);
+    color: var(--primary-color);
+}
+.sign-form .link:hover {
+    filter: brightness(150%);
+}
+.sign-form div {
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+}

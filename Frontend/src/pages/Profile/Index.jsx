@@ -1,4 +1,4 @@
-import { React, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from "react-router";
 import { getLoggedInUser } from '../../utils/auth.js';
@@ -8,10 +8,10 @@ import useUserById from '../../hooks/Users/useUserById.jsx';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import LoginError from '../loginError/Index.jsx';
-import Loading from '../Loading/Index.jsx';
+import Error from "../Error";
+import Loading from '../Loading';
 
-import './Styles.css';
+import '../../Styles/profile.css';
 
 function Profile() {
     const { id } = useParams();
@@ -26,30 +26,35 @@ function Profile() {
         };
         fetchUsers();
         setUpdateList(prevState => !prevState);
-    }, [errors]);
+    }, [errors, id, setUpdateList, setUserId]);
 
-    // ERRO DE FALTA DE LOGIN
-    if (!loggedInUser) { return ( <LoginError/> ); }
+    // ERRO LOGIN INATIVO
+    if (!loggedInUser) { return <Error/>; }
 
     // TELA DE LOADING
-    if (loading && errors) { return <Loading/>; }
+    if (loading) { return <Loading/>; }
 
     // TELA DE USUÁRIO INEXISTENTE
-    if (errors) { 
+    if (!loading && errors) { 
         return (
             <div className='container'>
                 <Header/>
-                <div className='profile-content'>
-                    <div className='error-message'>
+                <div className='content content-profile'>
 
-                        <button className='return-btn' title="Voltar" onClick={() => navigate(-1)}> 
-                            <IoArrowBack className='return-icon' /> 
-                        </button>
+                    <main className='error-message'>
 
-                        <h2>{errors}</h2>
-                        <h3>O usuário com o ID {id} não foi encontrado.</h3>
+                        <div className='btn-bar'>
+                            <button className='return-btn' title="Voltar" onClick={() => navigate(-1)}> 
+                                <IoArrowBack className='return-icon' /> 
+                            </button>
+                        </div>
 
-                    </div>
+                        <section>
+                            {errors && <h2>{errors}</h2>}
+                        </section>
+
+                    </main>
+
                 </div>
                 <Footer/>
             </div>
@@ -59,36 +64,30 @@ function Profile() {
     return (
         <div className='container'>
             <Header/>
-            <div className='profile-content'>
-                <div>
+            <div className='content content-profile'>
 
-                    <button className='return-btn' title="Voltar" onClick={() => navigate(-1)}> 
-                        <IoArrowBack className='return-icon' /> 
-                    </button>
-
-                    {loggedInUser.id === users[0]?.id && (
-                        <button className='edit-btn' title="Editar" onClick={() => navigate('/profile/edit')}>
-                            <IoPencil className="edit-icon" />
+                <main>
+                    <div className='btn-bar'>
+                        <button className='return-btn' title="Voltar" onClick={() => navigate(-1)}> 
+                            <IoArrowBack className='return-icon' /> 
                         </button>
-                    )}
 
-                    <main className='profile-panel'>
-                        <svg className='svg-profile-bigger'></svg>
-                        {users.map((user, index) => (
-                            <ul class='profile-list' key={user.id}>
-                                <tr>
-                                    <th>Nome: </th>
-                                    <th>{`${user.username}`}</th>
-                                </tr>
-                                <tr>
-                                    <th>Email: </th>
-                                    <th>{`${user.email}`}</th>
-                                </tr>
-                            </ul>
-                        ))}
-                    </main>
+                        {loggedInUser.id === users?.id && (
+                            <button className='edit-btn' title="Editar" onClick={() => navigate('/profile/edit')}>
+                                <IoPencil className="edit-icon" />
+                            </button>
+                        )}
+                    </div>
 
-                </div>
+                    <svg className='svg-profile-bigger'></svg>
+
+                    <section>
+                        <h3 id='username'>{`${users.username}`}</h3>
+                        <p id='email'>{`${users.email}`}</p>
+                    </section>
+
+                </main>
+                
             </div>
             <Footer/>
         </div>

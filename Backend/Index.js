@@ -1,13 +1,12 @@
 import express from "express";
 import cors from "cors";
 
-import userRoutes from './src/routes/userRoutes.js';
+import userRouter from './src/routes/userRouter.js';
 
-const app = express();
+const server = express();
 
-app.use(express.json());
-app.use(cors());
+server.use(express.json());
+server.use(cors());
+server.use("/users", userRouter)
 
-app.use("/users", userRoutes)
-
-app.listen(8800);
+server.listen(8800, () => console.log(`Servidor rodando na porta 8800`));

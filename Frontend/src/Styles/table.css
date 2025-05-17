@@ -1,0 +1,61 @@
+/* TABELA DE USUÁRIOS */
+.users-table {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    border-radius: 8px;
+
+    border: 2px solid var(--border-color);
+    box-shadow: 4px 4px var(--shadow-color);
+    background-color: var(--background-color);
+    color: var(--font-color);
+}
+.users-table th, .users-table tr {
+    display: grid;
+    grid-template-columns: 4rem 6rem 1fr 1fr;
+}
+/* HEADER DA TABELA */
+.users-table th {
+    background-color: var(--primary-color);
+}
+/* LINHAS DA TABELA */
+.users-table tr {
+    cursor: pointer;
+    
+    border-top: 2px solid var(--border-color);
+}
+.users-table tr:hover {
+    background-color: var(--background-color-2);
+}
+/* DADOS DA TABELA */
+.users-table td {
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 1.2rem;
+    
+    padding: 0.4rem 0.8rem;
+}
+.users-table td:first-child {
+    text-align: center;
+    font-weight: bolder;
+    color: var(--font-color-2);
+}
+.users-table #index {
+    display: flex;
+    justify-content: center;
+}
+.users-table #user-id {
+    display: flex;
+    justify-content: center;
+}
+.users-table #user-name {
+    display: flexbox;
+    justify-content: start;
+}
+.users-table #user-email{
+    display: flexbox;
+    justify-content: start;
+}

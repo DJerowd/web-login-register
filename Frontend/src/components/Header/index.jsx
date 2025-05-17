@@ -5,7 +5,8 @@ import { IoHome } from "react-icons/io5";
 
 import Dropdown from '../Dropdown/index.jsx';
 
-import './Styles.css';
+import '../../Styles/components/header.css';
+import '../../Styles/profile.css';
 
 function Header(){
     const loggedInUser = getLoggedInUser();
@@ -19,13 +20,11 @@ function Header(){
         return (
             <header className='header'>
 
-                <div>
-                    <Link to="/"><IoHome className='header-icon' /></Link>
-                </div>
+                <Link className='header-icon' to="/"><IoHome /></Link>
 
                 <div>
-                    <Link to="/login">Entrar</Link>
-                    <Link to="/signup">Cadastrar-se</Link>
+                    <Link className='link' to="/signin">Entrar</Link>
+                    <Link className='link' to="/signup">Cadastrar-se</Link>
                 </div>
                 
             </header>
@@ -35,13 +34,9 @@ function Header(){
     return (
         <header className='header'>
 
-            <div>
-                <Link to="/"><IoHome className='header-icon' /></Link>
-            </div>
+            <Link className='header-icon' to="/"><IoHome /></Link>
 
-            <div>
-                <svg className='svg-profile' onClick={toggleDropdown}></svg>
-            </div>
+            <svg className='svg-profile' onClick={toggleDropdown}></svg>
 
             {showDropdown && <Dropdown/>}
 

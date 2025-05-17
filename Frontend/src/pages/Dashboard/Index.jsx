@@ -1,32 +1,33 @@
-import { React } from 'react';
 import { getLoggedInUser } from '../../utils/auth.js';
 import { Link } from 'react-router-dom';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import Error from "../Error";
 
-import './Styles.css';
+import '../../Styles/dashboard.css';
 
 function Dashboard() {
     const loggedInUser = getLoggedInUser();
 
-    // ERRO DE FALTA DE LOGIN
-    if (!loggedInUser) { return ( <LoginError/> ); }
+    // ERRO LOGIN INATIVO
+    if (!loggedInUser) { return <Error/>; }
 
     return (
         <div className='container'>
             <Header/>
 
-            <div className='dashboard-content'>
+            <div className='content content-dashboard'>
 
-                <main className='dashboard-panel'>
-                    Olá, {loggedInUser.username}.
+                <main>
+                    <h2>Olá, {loggedInUser.username}.</h2>
+                
+                    <section className='options-panel'>
+                        <Link className='dashboard-btn' to={`/profile/${loggedInUser.id}`}>Ver Perfil</Link>
+                        <Link className='dashboard-btn' to="/users">Ver outros Usuários</Link>
+                    </section>
+
                 </main>
-
-                <aside className='options-panel'>
-                    <Link to={`/profile/${loggedInUser.id}`}>Ver Perfil</Link>
-                    <Link to="/users">Ver outros Usuários</Link>
-                </aside>
 
             </div>
 

@@ -1,0 +1,52 @@
+/* ICONE DE PERFIL */
+.svg-profile {
+  transition: all 0.25s;
+  cursor: pointer;
+  
+  width: 3.0rem;
+  height: 3.0rem;
+  border-radius: 100%;
+  
+  border: 2px solid var(--border-color);
+  box-shadow: 2px 2px var(--shadow-color);
+  background-color: var(--background-color);
+  color: var(--font-color);
+}
+.svg-profile:hover {
+  border: 2px solid var(--font-color);
+}
+  
+/* IMAGEM DE PERFIL */
+.svg-profile-bigger {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 146px;
+  height: 146px;
+  border-radius: 100%;
+
+  border: 2px solid var(--border-color);
+  box-shadow: 2px 2px var(--shadow-color);
+  background-color: var(--background-color);
+  color: var(--font-color);
+}
+
+.content-profile section {
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.4rem;
+}
+.content-profile #username {
+  display: flex;
+  font-size: 1.6rem;
+
+  width: 100%;
+}
+.content-profile #email {
+  display: flex;
+  font-size: 1.2rem;
+
+  width: 100%;
+}

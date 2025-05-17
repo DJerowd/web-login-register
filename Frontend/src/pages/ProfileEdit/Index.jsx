@@ -1,45 +1,41 @@
-import { React } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getLoggedInUser } from '../../utils/auth.js';
 import { IoArrowBack } from "react-icons/io5";
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import LoginError from '../loginError/Index.jsx';
+import Error from "../Error";
 import Form from './Form.jsx';
 
-import './Styles.css';
+import '../../Styles/form.css';
+import '../../Styles/profile.css';
 
 function ProfileEdit() {
     const loggedInUser = getLoggedInUser();
     const navigate = useNavigate();
 
-    // ERRO DE FALTA DE LOGIN
-    if (!loggedInUser) { return ( <LoginError/> ); }
+    // ERRO LOGIN INATIVO
+    if (!loggedInUser) { return ( <Error/> ); }
 
     return (
         <div className='container'>
             <Header/>
+            <div className='content content-profile'>
 
-            <div className='profile-edit-content'>
-                <div>
+                <main>
+                    <div className='btn-bar'>
+                        <button className='return-btn' title="Voltar" onClick={() => navigate(-1)}> 
+                            <IoArrowBack className='return-icon' /> 
+                        </button>
+                    </div>
 
-                    <button className='return-btn' title="Voltar" onClick={() => navigate(-1)}> 
-                        <IoArrowBack className='return-icon' /> 
-                    </button>
+                    <svg className='svg-profile-bigger'></svg>
 
-                    <main className='profile-edit-panel'>
-                        <svg className='svg-profile-edit-bigger'></svg>
-                        {loggedInUser.username} 
-                    </main>
+                    <Form loggedInUser={loggedInUser} />
 
-                    <aside className='profile-edit-form'>
-                        <Form loggedInUser={loggedInUser} />
-                    </aside>
+                </main>
 
-                </div>
             </div>
-
             <Footer/>
         </div>
     );

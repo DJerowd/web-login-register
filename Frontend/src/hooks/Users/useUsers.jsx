@@ -15,7 +15,7 @@ const useUsers = () => {
                 const res = await axios.get(`http://localhost:8800/users`);
                 setUsers(res.data.sort((a, b) => (a.createDate > b.createDate ? 1 : -1)));
             } catch (error) {
-                setErrors('Erro ao carregar usuários');
+                setErrors(error);
             } finally {
                 setLoading(false);
             }

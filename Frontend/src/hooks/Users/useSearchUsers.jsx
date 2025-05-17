@@ -21,15 +21,15 @@ const useSearchUsers = () => {
                     setUsers(res.data.sort((a, b) => (a.createDate > b.createDate ? 1 : -1)));
                 } else {
                     setUsers([]);
+                    setErrors('Nenhum usuário encontrado');
                 }
-                setLoading(false);
             } finally {
                 setLoading(false);
             }
         };
 
         fetchUsers();
-    }, [updateList]);
+    }, [search, updateList]);
 
     return { users, setUpdateList, loading, errors, search, setSearch };
 }

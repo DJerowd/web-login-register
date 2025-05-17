@@ -1,5 +1,4 @@
-import { React, useState } from 'react';
-import './Styles.css';
+import '../../Styles/components/pagination.css';
 
 function Pagination({ users, currentPage, setCurrentPage, itemsPerPage }) {
 

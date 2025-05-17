@@ -1,6 +1,4 @@
-import { React } from 'react';
-
-import './Styles.css';
+import '../../Styles/loading.css';
 
 function Loading() {
     return (
@@ -8,7 +6,7 @@ function Loading() {
 
             <div className='content'>
                 <main className='loader'>
-                    <div class="justify-content-center jimu-primary-loading"/>
+                    <div className="justify-content-center jimu-primary-loading"/>
                 </main>
             </div>
 

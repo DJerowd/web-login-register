@@ -1,6 +1,4 @@
-import { React, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Styles.css';
 
 function List({ users, currentPage, setCurrentPage, itemsPerPage }) {
     const navigate = useNavigate();
@@ -17,22 +15,22 @@ function List({ users, currentPage, setCurrentPage, itemsPerPage }) {
     );
 
     return (
-        <ul>
-            <tr>
-                <th> </th>
-                <th>ID</th>
-                <th>NOME</th>
-                <th>EMAIL</th>
-            </tr>
+        <table className='users-table'>
+            <th>
+                <td id='index'> </td>
+                <td id='user-id'>ID</td>
+                <td id='user-name'>NOME</td>
+                <td id='user-email'>EMAIL</td>
+            </th>
             {currentUsers.map((user, index) => (
             <tr key={user.id} onClick={() => handleUserDetails(user.id)}>
-                <th>{(currentPage - 1) * itemsPerPage + index + 1}</th>
-                <th>{`${user.id}`}</th>
-                <th>{`${user.username}`}</th>
-                <th>{`${user.email}`}</th>
+                <td id='index'>{(currentPage - 1) * itemsPerPage + index + 1}</td>
+                <td id='user-id'>{`${user.id}`}</td>
+                <td id='user-name'>{`${user.username}`}</td>
+                <td id='user-email'>{`${user.email}`}</td>
             </tr>
             ))}
-        </ul>
+        </table>
     );
 }
     

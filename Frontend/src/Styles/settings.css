@@ -1,0 +1,40 @@
+.settings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: var(--main-height);
+    padding: 14px;
+    gap: 16px;
+    border-radius: 8px;
+
+    border: 1px solid var(--border-color);
+    background-color: var(--background-color-2);
+}
+.settings h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+    font-size: 2.0rem;
+
+    width: 100%;
+    padding: 0.4rem 0.8rem;
+
+    border-bottom: 2px solid var(--border-color);
+    text-shadow: 4px 4px var(--shadow-color);
+}
+.settings p{
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    text-align: start;
+    text-indent: 1.0rem;
+    font-weight: normal;
+    font-size: 1.2rem;
+
+    width: 100%;
+
+    text-shadow: 2px 2px var(--shadow-color);
+}

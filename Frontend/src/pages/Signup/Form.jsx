@@ -1,12 +1,15 @@
-import { React, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { IoEye, IoEyeOff } from "react-icons/io5";
 import { Link } from 'react-router-dom';
+
 import axios from 'axios';
 
-function Form({ users, setUpdateList }) {
+function Form() {
     const navigate = useNavigate();
     const [user, setUser] = useState({ username: '', email: '', password: '', confirmPassword: '' });
     const [errors, setErrors] = useState({ username: '', email: '', password: '', confirmPassword: '', geral: '' });
+    const [showPassword, setShowPassword] = useState(false);
 
     // FUNÇÃO PARA ALTERAR DADOS DO FORMULÁRIO.
     const handleChange = (e) => {
@@ -23,8 +26,12 @@ function Form({ users, setUpdateList }) {
         let newErrors = { username: '', email: '', password: '', confirmPassword: '', geral: '' };
         if ( !user.username || !user.email || !user.password || !user.confirmPassword ) {
             newErrors.geral = `Todos os campos devem ser preenchidos!`;
-        } else if ( user.confirmPassword != user.password ) {
+            setErrors(newErrors);
+            return;
+        } else if ( user.password != user.confirmPassword ) {
             newErrors.confirmPassword = `A senha e confirmação não coincidem!`;
+            setErrors(newErrors);
+            return;
         } else {
             await axios
             .post("http://localhost:8800/users", {
@@ -33,7 +40,6 @@ function Form({ users, setUpdateList }) {
                 password: user.password
         })
             .then(({ data }) => {
-                setUpdateCharacterList(prevState => !prevState);
                 newErrors.email = `Personagem ${user.username} | ${user.email} salvo! ${JSON.stringify(data)}`;
         })
             .catch(({ data }) => {
@@ -46,46 +52,48 @@ function Form({ users, setUpdateList }) {
                 confirmPassword: ''
             });
         }
-        setUpdateList(prevState => !prevState);
         setErrors(newErrors);
-        navigate('/login');
+        navigate('/signin');
     };
 
 
   return (
-    <form onSubmit={handleSignup}>
+    <form className='sign-form' onSubmit={handleSignup}>
 
         <label>
             Nome de Usuário:
-            <input type="text" name="username" placeholder="Insira um nome de usuário" onChange={handleChange} value={user.username} autoComplete='off' required/>
+            <input className='sign-input' type="text" name="username" placeholder="Insira um nome de usuário" onChange={handleChange} value={user.username} autoComplete='off' required/>
         </label>
-        <h4 className='error' >{errors.username}</h4>
+        {errors.username && <span className='form-error' >{errors.username}</span>}
 
         <label>
-            E-mail
-            <input type="email" name="email" placeholder="Insira um email válido" onChange={handleChange} value={user.email} autoComplete='off' required/>
+            E-mail:
+            <input className='sign-input' type="email" name="email" placeholder="Insira um email válido" onChange={handleChange} value={user.email} autoComplete='off' required/>
         </label>
-        <h4 className='error' >{errors.email}</h4>
+        {errors.email && <span className='form-error' >{errors.email}</span>}
 
         <label>
-            Senha
-            <input type="password" name="password" placeholder="Crie uma senha" onChange={handleChange} value={user.password} autoComplete='off' required/>
+            Senha:
+            <label className='sign-input password'>
+                <input type={showPassword ? "text" : "password"} name="password" placeholder="Crie uma senha" onChange={handleChange} value={user.password} autoComplete='off' required/>
+                <button className='show-button' type='button' onClick={() => setShowPassword(prevState => !prevState)} value={showPassword}>{showPassword ? <IoEye/> : <IoEyeOff/>}</button>
+            </label>
         </label>
-        <h4 className='error' >{errors.password}</h4>
+        {errors.password && <span className='form-error' >{errors.password}</span>}
 
         <label>
             Confirmar Senha:
-            <input type="Password" name="confirmPassword" placeholder="Confirme a senha" onChange={handleChange} value={user.confirmPassword} autoComplete='off' required/>
+            <input className='sign-input' type={showPassword ? "text" : "password"} name="confirmPassword" placeholder="Confirme a senha" onChange={handleChange} value={user.confirmPassword} autoComplete='off' required/>
         </label>
-        <h4 className='error' >{errors.confirmPassword}</h4>
+        {errors.confirmPassword && <span className='form-error' >{errors.confirmPassword}</span>}
+        
+        {errors.geral && <span className='form-error' >{errors.geral}</span>}
+        
+        <button className='sign-btn' type='submit'>Criar conta</button>
         
         <div>
-        <h4 className='error' >{errors.geral}</h4>
-            <button className='signup-btn' type='submit'>Criar conta</button>
-            <div>
-                Já possui uma conta?
-                <Link to="/login">Entre aqui</Link>
-            </div>
+            Já possui uma conta?
+            <Link className='link' to="/signin">Entre aqui</Link>
         </div>
 
     </form>

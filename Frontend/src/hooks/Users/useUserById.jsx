@@ -14,16 +14,16 @@ const useUserById = () => {
             setErrors(null);
             try {
                 const res = await axios.get(`http://localhost:8800/users/` + userId);
-                setUsers(res.data.sort((a, b) => (a.createDate > b.createDate ? 1 : -1)));
+                setUsers(res.data[0]);
             } catch (error) {
-                setErrors('Erro ao carregar usuários');
+                setErrors(error.message);
             } finally {
                 setLoading(false);
             }
         };
 
         fetchUsers();
-    }, [updateList]);
+    }, [updateList, userId]);
 
     return { users, setUpdateList, loading, errors, setUserId };
 };

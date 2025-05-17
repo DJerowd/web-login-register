@@ -1,0 +1,163 @@
+/* IMPUT DE ACESSO */
+.sign-input{
+    font-weight: normal;
+    font-size: 1.2rem;
+
+    width: 100%;
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
+
+    border: 2px solid var(--border-color);
+    box-shadow: 4px 4px var(--shadow-color);
+    background-color: var(--background-color);
+    color: var(--font-color);
+}
+.sign-input:placeholder-shown {
+    color: var(--font-color-2);
+}
+.sign-input:focus {
+    outline: 2px solid var(--primary-color);
+}
+.sign-input.password  {
+    display: flex;
+    flex-direction: row;
+
+    width: 100%;
+    padding: 0;
+    border-radius: 8px;
+
+    border: 2px solid var(--border-color);
+    box-shadow: 4px 4px var(--shadow-color);
+    background-color: var(--background-color);
+    color: var(--font-color);
+}
+.sign-input.password input{
+    font-weight: normal;
+    font-size: 1.2rem;
+
+    width: 100%;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px 0 0 6px;
+
+    border: none;
+    background: none;
+    color: var(--font-color);
+}
+.sign-input.password :placeholder-shown {
+    color: var(--font-color-2);
+}
+.sign-input.password input:focus {
+    outline: 2px solid var(--primary-color);
+}
+.sign-input.password button{
+    margin: 0 0.4rem;
+}
+
+/* IMPUT DE PESQUISA */
+.search-input {
+    display: flex;
+    align-items: center;
+
+    height: 3.0rem;
+    width: 100%;
+    border-radius: 100px;
+
+    border: 2px solid var(--border-color);
+    box-shadow: 4px 4px var(--shadow-color);
+    background-color: var(--background-color);
+    color: var(--font-color);
+}
+.search-input .icon {
+    transition: all 0.25s;
+
+    height: 100%;
+    width: max-content;
+    padding: 10px 10px;
+    border-radius: 24px;
+    
+    border: none;
+    background: none;
+    color: var(--font-color);
+}
+.search-input .icon:hover {
+    background-color: var(--background-color-2);
+}
+.search-input .icon :only-child {
+    transition: all 0.25s;
+
+    height: 100%;
+    width: max-content;
+    
+    color: var(--font-color);
+}
+.search-input input {
+    display: flex;
+    font-size: 1.2rem;
+    transition: all 0.25s;
+    
+    height: 100%;
+    width: 100%;
+    padding: 0.4rem 0.8rem;
+    border-radius: 0 100px 100px 0;
+
+    border: 0;
+    background-color: #0000;
+}
+.search-input input:focus {
+    outline: 2px solid var(--primary-color);
+}
+
+/* IMPUT DE EDIÇÃO */
+.edit-input{
+    font-weight: normal;
+    font-size: 1.2rem;
+
+    width: 100%;
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
+
+    border: 2px solid var(--border-color);
+    box-shadow: 4px 4px var(--shadow-color);
+    background-color: var(--background-color);
+    color: var(--font-color);
+}
+.edit-input:placeholder-shown {
+    color: var(--font-color-2);
+}
+.edit-input:focus {
+    outline: 2px solid var(--primary-color);
+}
+.edit-input.password  {
+    display: flex;
+    flex-direction: row;
+
+    width: 100%;
+    padding: 0;
+    border-radius: 8px;
+
+    border: 2px solid var(--border-color);
+    box-shadow: 4px 4px var(--shadow-color);
+    background-color: var(--background-color);
+    color: var(--font-color);
+}
+.edit-input.password input{
+    font-weight: normal;
+    font-size: 1.2rem;
+
+    width: 100%;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px 0 0 6px;
+
+    border: none;
+    background: none;
+    color: var(--font-color);
+}
+.edit-input.password :placeholder-shown {
+    color: var(--font-color-2);
+}
+.edit-input.password input:focus {
+    outline: 2px solid var(--primary-color);
+}
+.edit-input.password button{
+    margin: 0 0.4rem;
+}

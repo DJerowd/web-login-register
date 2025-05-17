@@ -3,7 +3,7 @@ import { getLoggedInUser } from '../../utils/auth.js';
 import { Link } from 'react-router-dom';
 import { IoList, IoSettings, IoLogOut } from "react-icons/io5";
 
-import './Styles.css';
+import '../../Styles/components/dropdown.css';
 
 function Dropdown(){
     const navigate = useNavigate();
@@ -11,35 +11,24 @@ function Dropdown(){
 
     const logoff = () => {
         localStorage.setItem('loggedInUser', null);
-        navigate('/login');
+        navigate('/signin');
     };
 
     return (
-        <div className='dropdown'>
+        <main className='dropdown'>
+            <section>
+                <h3>{loggedInUser.username}</h3>
+                <p>{loggedInUser.email}</p>
+            </section>
 
-            <main>
-                <div>
-                    <h4>{loggedInUser.username}</h4>
-                    <h4>{loggedInUser.email}</h4>
-                </div>
-            </main>
+            <section>
+                <Link className='dropdown-btn' to="/dashboard"> <IoList className='dropdown-icon'/> Painel</Link>
 
-            <aside>
+                <Link className='dropdown-btn' to="/settings"> <IoSettings className='dropdown-icon' /> Configurações</Link>
 
-                <div>
-                    <Link to="/dashboard"> <IoList className='dropdown-icon'/> Painel</Link>
-                </div>
-
-                <div>
-                    <Link to="/settings"> <IoSettings className='dropdown-icon' /> Configurações</Link>
-                </div>
-
-                <div>
-                    <button className='logoff-btn' onClick={logoff}> <IoLogOut className='dropdown-icon' /> Sair</button>
-                </div>
-            </aside>
-
-        </div>
+                <button className='dropdown-btn' onClick={logoff}> <IoLogOut className='dropdown-icon' /> Sair</button>
+            </section>
+        </main>
     )
 }
 
