@@ -1,9 +1,9 @@
 import '../../Styles/components/pagination.css';
 
-function Pagination({ users, currentPage, setCurrentPage, itemsPerPage }) {
+function Pagination({ itens, currentPage, setCurrentPage, itemsPerPage }) {
 
     // CALCULA O TOTAL DE PÁGINAS NECESSÁRIAS
-    const totalPages = Math.ceil(users.length / itemsPerPage);
+    const totalPages = Math.ceil(itens.length / itemsPerPage);
 
     return (
         <div className="pagination">

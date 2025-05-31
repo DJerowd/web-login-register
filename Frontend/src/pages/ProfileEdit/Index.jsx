@@ -1,7 +1,6 @@
-import { useNavigate } from 'react-router-dom';
 import { getLoggedInUser } from '../../utils/auth.js';
-import { IoArrowBack } from "react-icons/io5";
 
+import { ReturnButton } from '../../components/Buttons';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Error from "../Error";
@@ -12,7 +11,6 @@ import '../../Styles/profile.css';
 
 function ProfileEdit() {
     const loggedInUser = getLoggedInUser();
-    const navigate = useNavigate();
 
     // ERRO LOGIN INATIVO
     if (!loggedInUser) { return ( <Error/> ); }
@@ -24,9 +22,7 @@ function ProfileEdit() {
 
                 <main>
                     <div className='btn-bar'>
-                        <button className='return-btn' title="Voltar" onClick={() => navigate(-1)}> 
-                            <IoArrowBack className='return-icon' /> 
-                        </button>
+                        <ReturnButton/>
                     </div>
 
                     <svg className='svg-profile-bigger'></svg>

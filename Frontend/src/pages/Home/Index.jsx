@@ -8,7 +8,7 @@ function Home() {
     return (
         <div className='container'>
             <Header/>
-            <div className='content content-home'>
+            <div className='content'>
                 
                 <main className='home'>
                     <h1>Crie uma conta gratuitamente</h1>

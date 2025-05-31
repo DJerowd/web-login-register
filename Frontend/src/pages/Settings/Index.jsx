@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getLoggedInUser } from '../../utils/auth.js';
-import { IoArrowBack } from "react-icons/io5";
 
 import axios from 'axios';
 
+import { ReturnButton } from '../../components/Buttons';
+import ModalConfirm from '../../components/Modal/Index.jsx';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Error from "../Error";
@@ -11,25 +13,26 @@ import Error from "../Error";
 import '../../Styles/settings.css';
 
 function Settings() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const navigate = useNavigate();
     const loggedInUser = getLoggedInUser();
 
     // FUNÇÃO PARA DELETAR USUÁRIO
     const handleDelete = async (e) => {
         e.preventDefault();
-        const confirm = window.confirm("Tem certeza de que deseja excluir este usuário? Todas as informações serão perdidas para sempre.");
-        if (!confirm) {
-            return;
-        } else {
-            await axios
-            .delete("http://localhost:8800/users/" + loggedInUser.id)
-            .then(() => {
-                localStorage.setItem('loggedInUser', null);
-                navigate('/login');
-            })
-            .catch(({ data }) => console.log(data)
-            );
-        }
+        await axios
+        .delete("http://localhost:8800/users/" + loggedInUser.id)
+        .then(() => {
+            localStorage.setItem('loggedInUser', null);
+            navigate('/signin');
+        })
+        .catch(({ data }) => console.log(data)
+        );
+    };
+    
+    // FUNÇÃO PARA CANCELAR EXCLUSÃO
+    const handleCancel = () => {
+        setIsModalOpen(false);
     };
 
     // ERRO LOGIN INATIVO
@@ -43,14 +46,12 @@ function Settings() {
                 <main className='settings'>
 
                     <div className='btn-bar'>
-                        <button className='return-btn' title="Voltar" onClick={() => navigate(-1)}> 
-                            <IoArrowBack className='return-icon' /> 
-                        </button>
+                        <ReturnButton/>
                     </div>
 
                     <h2>Excluir conta</h2>
                     <p>Excluir a conta é um processo irreversível que apagará seus dados de forma irreversível.</p>
-                    <button className='delete-btn' onClick={handleDelete} >
+                    <button className='delete-btn' onClick={() => setIsModalOpen(true)} >
                         <span className="text">
                             Excluir usuário
                         </span>
@@ -64,6 +65,13 @@ function Settings() {
                 </main>
 
             </div>
+            <ModalConfirm
+                isOpen={isModalOpen}
+                title="Confirmar Ação"
+                message="Tem certeza de que deseja continuar com esta ação?"
+                onConfirm={handleDelete}
+                onCancel={handleCancel}
+            />
             <Footer/>
         </div>
     );

@@ -1,21 +1,23 @@
 import { useState } from 'react';
 import axios from 'axios';
 
+const URL = "http://localhost:8800";
+
 const useLogin = () => {
-    const [ loading, setLoading ] = useState(true);
+    const [ loading, setLoading ] = useState(false);
     const [ errors, setErrors ] = useState(null);
 
     const login = async (email, password) => {
         setLoading(true);
         setErrors(null);
         try {
-            const res = await axios.post(`http://localhost:8800/users/login`, { email, password });
-            setLoading(false);
+            const res = await axios.post(`${URL}/users/login`, { email, password });
             return res.data;
         } catch (err) {
             setErrors(err.response?.data || `Erro ao fazer login`);
-            setLoading(false);
             return;
+        } finally {
+            setLoading(false);
         }
     };
     console.log(login);

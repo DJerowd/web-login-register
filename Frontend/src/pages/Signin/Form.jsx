@@ -9,10 +9,7 @@ function Form({ login, errors }) {
     // FUNÇÃO PARA ALTERAR DADOS DO FORMULÁRIO.
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setUser(prevState => ({
-        ...prevState,
-        [name]: value
-        }));
+        setUser(prevState => ({ ...prevState, [name]: value }));
     };
 
     // FUNÇÃO PARA REALIZAR O LOGIN DE USUÁRIO.
@@ -20,12 +17,10 @@ function Form({ login, errors }) {
         e.preventDefault();
         const foundUser = await login(user.email, user.password);
         if (!foundUser) return;
-        const loggedInUser = JSON.stringify({
-            id: foundUser.id,
-            username: foundUser.username,
-            email: foundUser.email,
-        });
+        const loggedInUser = JSON.stringify({ id: foundUser.user.id, username: foundUser.user.username, email: foundUser.user.email, });
+        const token = JSON.stringify(foundUser.token);
         localStorage.setItem('loggedInUser', loggedInUser);
+        localStorage.setItem('token', token);
         navigate('/dashboard');
     };
 
@@ -43,7 +38,7 @@ function Form({ login, errors }) {
             <input className='sign-input' type={"password"}  name="password" onChange={handleChange} value={user.password} required/>
         </label>
         
-        {errors && <span className='error' >{errors} </span>}
+        {errors && <span className='form-error' >{errors} </span>}
         
         <button className='sign-btn' type='submit'>Fazer login</button>
 

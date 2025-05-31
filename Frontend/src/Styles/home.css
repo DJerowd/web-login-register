@@ -20,7 +20,7 @@
     text-shadow: var(--font-color) 0 0 4px;
 }
 
-.content-home .socials {
+.content .socials {
     display: flex;
     justify-content: center;
     align-items: center;

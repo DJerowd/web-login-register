@@ -1,0 +1,34 @@
+.content-modal {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100vh;
+
+    background-color: #000000AA;
+    backdrop-filter: blur(12px);
+}
+.modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 1.0rem;
+    gap: 0.4rem;
+    border-radius: 8px;
+
+    border: 2px solid var(--border-color);
+    box-shadow: 4px 4px var(--shadow-color);
+    background-color: var(--background-color-2);
+    color: var(--font-color);
+}
+.modal .title {
+    font-size: 1.6rem;
+    font-weight: bolder;
+}
+.modal .text {
+    font-size: 1.2rem;
+}

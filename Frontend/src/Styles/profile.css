@@ -1,10 +1,12 @@
 /* ICONE DE PERFIL */
 .svg-profile {
+  font-size: 2.0rem;
   transition: all 0.25s;
   cursor: pointer;
   
   width: 3.0rem;
   height: 3.0rem;
+  padding: 0.4rem;
   border-radius: 100%;
   
   border: 2px solid var(--border-color);

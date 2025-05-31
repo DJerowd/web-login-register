@@ -8,24 +8,7 @@
 
 :root {
   /* VARIÁVEIS DE PALETA DE CORES */
-  --header-color: #00225F;
-  --footer-color: #000000;
-
-  --primary-color: #00225F;
-
-  --background-color: #0d1117;
-  --background-color-2: #151b23;
-
-  --font-color: #FFFFFF;
-  --font-color-2: #555555;
-
-  --button-color: #3458a0;
-  --button-selected-color: #4e73bc;
-
   --border-color: #000000;
-
-  --shadow-color: #000000;
-
   --error-color: #dc3545;
 
   /* VARIÁVEIS DE TIPOS DE FONTES */
@@ -33,20 +16,48 @@
   
   /* VARIÁVEIS DE FORMATAÇÂO DO HEADER */
   --header-height: 64px;
-
+  
   /* VARIÁVEIS DE FORMATAÇÂO DO PRINCIPAL */
   --main-width: 640px;
   
   font-family: var(--font-family-1);
-
+  
   color-scheme: light dark;
   color: var(--font-color);
   background-color: var(--background-color);
-
+  
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+/* MODO ESCURO */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* VARIÁVEIS DE PALETA DE CORES */
+    --header-color: #00225F;
+    --footer-color: #000000;
+    --primary-color: #00225F;
+    --background-color: #0d1117;
+    --background-color-2: #151b23;
+    --font-color: #FFFFFF;
+    --font-color-2: #555555;
+    --shadow-color: #000000;
+  }
+}
+/* MODO CLARO */
+@media (prefers-color-scheme: light) {
+  :root {
+    /* VARIÁVEIS DE PALETA DE CORES */
+    --header-color: #55A8AF;
+    --footer-color: #FFFFFF;
+    --primary-color: #55A8AF;
+    --background-color: #AEAEAE;
+    --background-color-2: #D5D5D5;
+    --font-color: #000000;
+    --font-color-2: #CCCCCC ;
+    --shadow-color: #FFFFFF;
+  }
 }
 
 body {

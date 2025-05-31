@@ -9,5 +9,6 @@ npm i cors
     "start": "nodemon index.js"
 },
 
-cd .\Backend\
+<!-- Iniciar a aplicação -->
 npm start 
+

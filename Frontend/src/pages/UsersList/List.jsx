@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-function List({ users, currentPage, setCurrentPage, itemsPerPage }) {
+function List({ users, currentPage, itemsPerPage }) {
     const navigate = useNavigate();
 
     // DIRECIONA PARA A PAGINA DE DETALHES DO USUÁRIO SELECIONADO.

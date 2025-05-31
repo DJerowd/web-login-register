@@ -1,24 +1,23 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { getLoggedInUser } from '../../utils/auth.js';
-import { IoArrowBack, IoSearch } from "react-icons/io5";
+import { IoSearch } from "react-icons/io5";
 
 import useSearchUsers from '../../hooks/Users/useSearchUsers';
 
+import { ReturnButton } from '../../components/Buttons';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import Error from "../Error";
 
+import Error from "../Error";
 import Loading from '../Loading';
 import List from './List.jsx';
-import Pagination from './Pagination.jsx';
+import Pagination from '../../components/Pagination';
 
 import '../../Styles/table.css';
 
 function UsersList() {
     const { users, setUpdateList, loading, errors, search, setSearch } = useSearchUsers();
     const loggedInUser = getLoggedInUser();
-    const navigate = useNavigate();
     const itemsPerPage = 10;
     const [currentPage, setCurrentPage] = useState(1);
 
@@ -34,11 +33,9 @@ function UsersList() {
             <div className='content content-list'>
 
                 <main>
-                    
+
                     <div className='btn-bar'>
-                        <button className='return-btn' title="Voltar" onClick={() => navigate(-1)}> 
-                            <IoArrowBack className='return-icon' /> 
-                        </button>
+                        <ReturnButton/>
                         
                         <label className='search-input'>
                             <button className='icon' onClick={() => setUpdateList(prevState => !prevState)}>
@@ -54,11 +51,11 @@ function UsersList() {
                         </label>
                     </div>
 
-                    <List users={users} currentPage={currentPage} setCurrentPage={setCurrentPage} itemsPerPage={itemsPerPage} />
+                    <List users={users} currentPage={currentPage} itemsPerPage={itemsPerPage} />
 
-                    {errors && <h3 className={'error'}>{errors}</h3>}
+                    {errors && <h3 className={'form-error'}>{errors}</h3>}
                     
-                    <Pagination users={users} currentPage={currentPage} setCurrentPage={setCurrentPage} itemsPerPage={itemsPerPage} />
+                    <Pagination itens={users} currentPage={currentPage} setCurrentPage={setCurrentPage} itemsPerPage={itemsPerPage} />
                     
                 </main>
 
