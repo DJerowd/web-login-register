@@ -41,7 +41,7 @@ function Settings() {
     return (
         <div className='container'>
             <Header/>
-            <div className='content'>
+            <div className='content content-settings'>
 
                 <main className='settings'>
 

@@ -8,9 +8,17 @@
 
 :root {
   /* VARIÁVEIS DE PALETA DE CORES */
+  --header-color: #00225F;
+  --footer-color: #000000;
+  --primary-color: #00225F;
+  --background-color: #0d1117;
+  --background-color-2: color-mix(in srgb, var(--background-color) 90%, #FFFFFF 10%);
+  --font-color: #FFFFFF;
+  --font-color-2: #555555;
+  --shadow-color: #000000;
   --border-color: #000000;
   --error-color: #dc3545;
-
+  
   /* VARIÁVEIS DE TIPOS DE FONTES */
   --font-family-1: "Inter", system-ui, Helvetica, Arial, sans-serif;
   
@@ -31,32 +39,18 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-/* MODO ESCURO */
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* VARIÁVEIS DE PALETA DE CORES */
-    --header-color: #00225F;
-    --footer-color: #000000;
-    --primary-color: #00225F;
-    --background-color: #0d1117;
-    --background-color-2: #151b23;
-    --font-color: #FFFFFF;
-    --font-color-2: #555555;
-    --shadow-color: #000000;
-  }
-}
 /* MODO CLARO */
 @media (prefers-color-scheme: light) {
   :root {
     /* VARIÁVEIS DE PALETA DE CORES */
-    --header-color: #55A8AF;
-    --footer-color: #FFFFFF;
-    --primary-color: #55A8AF;
-    --background-color: #AEAEAE;
-    --background-color-2: #D5D5D5;
+    --header-color: #505050;
+    --footer-color: #505050;
+    --primary-color: #505050;
+    --background-color: #E6E7EB;
+    --background-color-2: #FFFFFF;
     --font-color: #000000;
-    --font-color-2: #CCCCCC ;
-    --shadow-color: #FFFFFF;
+    --font-color-2: #555555 ;
+    --shadow-color: #B2B9C2;
   }
 }
 

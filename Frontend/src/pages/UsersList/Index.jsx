@@ -18,7 +18,7 @@ import '../../Styles/table.css';
 function UsersList() {
     const { users, setUpdateList, loading, errors, search, setSearch } = useSearchUsers();
     const loggedInUser = getLoggedInUser();
-    const itemsPerPage = 10;
+    const itemsPerPage = 6;
     const [currentPage, setCurrentPage] = useState(1);
 
     // ERRO LOGIN INATIVO

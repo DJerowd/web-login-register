@@ -11,16 +11,17 @@
     background-color: var(--background-color);
     color: var(--font-color);
 }
-.users-table th, .users-table tr {
-    display: grid;
-    grid-template-columns: 4rem 6rem 1fr 1fr;
-}
 /* HEADER DA TABELA */
 .users-table th {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: var(--primary-color);
 }
 /* LINHAS DA TABELA */
 .users-table tr {
+    display: grid;
+    grid-template-columns: 4rem max-content 1fr;
     cursor: pointer;
     
     border-top: 2px solid var(--border-color);
@@ -30,32 +31,31 @@
 }
 /* DADOS DA TABELA */
 .users-table td {
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
     font-size: 1.2rem;
     
     padding: 0.4rem 0.8rem;
 }
-.users-table td:first-child {
-    text-align: center;
-    font-weight: bolder;
-    color: var(--font-color-2);
+.users-table td span {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 .users-table #index {
-    display: flex;
-    justify-content: center;
+    text-align: center;
+    font-weight: bolder;
+
+    color: var(--font-color-2);
 }
-.users-table #user-id {
-    display: flex;
-    justify-content: center;
+.users-table #user-image {
+    display: flexbox;
 }
 .users-table #user-name {
     display: flexbox;
-    justify-content: start;
 }
-.users-table #user-email{
-    display: flexbox;
-    justify-content: start;
+.users-table #user-name :last-child{
+    color: var(--font-color-2);
 }

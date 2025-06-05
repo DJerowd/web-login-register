@@ -21,7 +21,5 @@ npm run dev
 <!-- 
 1. Corrigir o carregamento de profile 
 2. Criar imagem de perfil
-3. Atualizar itens da listagem
-4. Atualizar os erros por JWT
-5. Light/Dark mode
+3. Atualizar os erros por JWT
 -->

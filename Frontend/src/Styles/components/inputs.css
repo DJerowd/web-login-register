@@ -101,7 +101,7 @@
     border-radius: 0 100px 100px 0;
 
     border: 0;
-    background-color: #0000;
+    background: none;
 }
 .search-input input:focus {
     outline: 2px solid var(--primary-color);

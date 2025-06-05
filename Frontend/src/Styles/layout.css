@@ -15,7 +15,6 @@
     padding: calc(var(--header-height) + 16px) 16px 16px 16px;
     min-height: 100vh;
 }
-
 .content main {
   display: flex;
   flex-direction: column;
@@ -63,5 +62,10 @@
 .content-list main {
   display: flex;
   
+  width: var(--main-width);
+}
+
+/* CONTEUDO DE CONFIGURAÇÕES */
+.content-settings main {
   width: var(--main-width);
 }
