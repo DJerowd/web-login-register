@@ -1,38 +1,62 @@
-/* ICONE DE PERFIL */
-.svg-profile {
-  font-size: 2.0rem;
-  transition: all 0.25s;
-  cursor: pointer;
-  
-  width: 3.0rem;
-  height: 3.0rem;
-  padding: 0.4rem;
-  border-radius: 100%;
-  
+/* BANNER DE PERFIL */
+.profile-banner {
+  position: relative;
+  overflow: hidden;
+  align-content: center;
+  text-align: center;
+  font-size: var(--font-size-small);
+
+  width: 100%;
+  height: 200px;
+  border-radius: 8px;
+
   border: 2px solid var(--border-color);
   box-shadow: 2px 2px var(--shadow-color);
   background-color: var(--background-color);
   color: var(--font-color);
 }
-.svg-profile:hover {
-  border: 2px solid var(--font-color);
+.banner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-  
-/* IMAGEM DE PERFIL */
-.svg-profile-bigger {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* AVATAR DE PERFIL */
+.avatar-container {
+  position: absolute;
+  align-content: center;
+  text-align: center;
+  font-size: var(--font-size-small);
+  overflow: hidden;
+  bottom: 27px;
+  left: 27px;
 
   width: 146px;
   height: 146px;
   border-radius: 100%;
 
   border: 2px solid var(--border-color);
-  box-shadow: 2px 2px var(--shadow-color);
   background-color: var(--background-color);
   color: var(--font-color);
 }
+.avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.avatar-container-list {
+  align-content: center;
+  text-align: center;
+  font-size: var(--font-size-small);
+  overflow: hidden;
+  
+  width: 3.0rem;
+  height: 3.0rem;
+  border-radius: 100%;
+  
+  border: 2px solid var(--border-color);
+  background-color: var(--background-color);
+}
+
 
 .content-profile section {
   display: flex;
@@ -42,13 +66,13 @@
 }
 .content-profile #username {
   display: flex;
-  font-size: 1.6rem;
+  font-size: var(--font-size-medium);
 
   width: 100%;
 }
 .content-profile #email {
   display: flex;
-  font-size: 1.2rem;
+  font-size: var(--font-size-small);
 
   width: 100%;
 }

@@ -9,8 +9,9 @@
 }
 
 /* BOTÕES GERAIS */
-.sign-btn, .return-btn, .edit-btn, .delete-btn, .error-btn {
+.sign-btn, .dashboard-btn, .action-btn, .profile-edit-button, .show-button, .modal-btn, .delete-btn, .error-btn {
     cursor: pointer;
+    font-size: var(--font-size-small);
 }
 
 /* BOTÃO DE FORMULÁRIO DE ACESSO */
@@ -19,7 +20,6 @@
     justify-content: center;
     align-items: center;
     align-self: center;
-    font-size: 1.2rem;
     transition: all 0.25s;
 
     width: max-content;
@@ -42,7 +42,6 @@
     text-wrap: nowrap;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-size: 1.2rem;
     transition: all 0.5s ease;
     overflow: hidden;
 
@@ -60,13 +59,12 @@
     filter: brightness(150%);
 }
 
-/* BOTÃO DE RETORNAR */
-.return-btn {
+/* BOTÃO DE AÇÃO */
+.action-btn {
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    font-size: 1.2rem;
     transition: all 0.25s;
 
     width: 3.0rem;
@@ -79,48 +77,15 @@
     background-color: var(--primary-color);
     color: var(--font-color);
 }
-.return-btn:hover {
+.action-btn:hover {
     border-radius: 6px;
-
     filter: brightness(150%);
 }
-.return-btn .return-icon {
-    display: flex;
-
-    width: auto;
-    height: 100%;
-
-    color: var(--font-color);
-}
-
-/* BOTÃO DE EDITAR */
-.edit-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    font-size: 1.2rem;
-    transition: all 0.25s;
-
-    width: 3.0rem;
-    height: 3.0rem;
-    padding: 0.4rem;
-    border-radius: 100%;
-
-    border: 2px solid var(--border-color);
-    box-shadow: 4px 4px var(--shadow-color);
-    background-color: var(--primary-color);
-    color: var(--font-color);
-}
-.edit-btn:hover {
-    border-radius: 6px;
-
-    filter: brightness(150%);
-}
-.edit-btn .return-icon {
+.action-btn .action-icon {
     display: flex;
     width: auto;
-    height: 100%;
+    height: var(--font-size-medium);
+
 }
 
 /* BOTÃO EDITAR PERFIL */
@@ -128,7 +93,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.2rem;
     transition: all 0.25s;
 
     width: max-content;
@@ -141,15 +105,13 @@
     color: var(--font-color);
   }
 .profile-edit-button:hover {
-    background-color: var(--button-selected-color);
-    cursor: pointer;
+    filter: brightness(150%);
 }
 
 /* BOTÃO EXIBIR */
 .show-button {
     display: flex;
     align-self: center;
-    font-size: 1.2rem;
 
     width: max-content;
     height: max-content;
@@ -162,11 +124,26 @@
     color: var(--font-color);
 }
 
+/* BOTÃO DO MODAL */
+.modal-btn {
+    transition: all 0.25s;
+
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
+
+    border: 2px solid var(--border-color);
+    box-shadow: 2px 2px var(--shadow-color);
+    background-color: var(--primary-color);
+    color: var(--font-color);
+}
+.modal-btn:hover {
+    filter: brightness(150%);
+}
+
 /* BOTÃO DELETAR USUÁRIO */
 .delete-btn {
     display: flex;
     align-items: center;
-    cursor: pointer;
     
     width: 40%;
     height: 50px;
@@ -182,7 +159,6 @@
 }
 .delete-btn .text {
     font-weight: bold;
-    font-size: 1.2rem;
     width: 70%;
     color: var(--font-color);
 }
@@ -223,15 +199,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.0rem;
     position: relative;
     text-wrap: nowrap;
     overflow: hidden;
     transition-duration: 0.3s;
 
-    width: 3.0rem;
-    height: 3.0rem;
-    font-weight: 600;
+    width: calc(2 * var(--font-size-small));
+    height: calc(2 * var(--font-size-small));
+    font-weight: bold;
     border-radius: 100px;
     
     border: 2px solid var(--border-color);
@@ -256,13 +231,13 @@
     font-size: 0px;
 }
 .error-btn:hover::before {
-    font-size: large;
+    font-size: var(--font-size-small);
     opacity: 1;
     bottom: unset;
     transition-duration: 0.3s;
 }
 .error-btn .svgIcon {
-    width: 12px;
+    width: var(--font-size-small);
     transition-duration: 0.3s;
 }
 .error-btn .svgIcon path {

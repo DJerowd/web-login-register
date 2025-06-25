@@ -8,9 +8,7 @@
 }
 .pagination button {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2rem;
+    font-size: var(--font-size-small);
     cursor: pointer;
     transition: all 0.25s;
 
@@ -35,4 +33,11 @@
 }
 .pagination button:hover:not(:disabled) {
     filter: brightness(150%);
+}
+
+.pagination .ellipsis {
+    font-size: var(--font-size-small);
+    width: max-content;
+    padding: 0.4rem;
+    color: var(--font-color);
 }

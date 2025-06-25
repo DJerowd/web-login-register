@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getLoggedInUser } from '../../utils/auth.js';
-
-import axios from 'axios';
+import useDeleteUser from '../../hooks/Users/useDeleteUser.jsx';
 
 import { ReturnButton } from '../../components/Buttons';
 import ModalConfirm from '../../components/Modal/Index.jsx';
@@ -16,18 +15,16 @@ function Settings() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const navigate = useNavigate();
     const loggedInUser = getLoggedInUser();
+    const { deleteUser, error } = useDeleteUser();
 
     // FUNÇÃO PARA DELETAR USUÁRIO
     const handleDelete = async (e) => {
         e.preventDefault();
-        await axios
-        .delete("http://localhost:8800/users/" + loggedInUser.id)
-        .then(() => {
-            localStorage.setItem('loggedInUser', null);
+        const success = await deleteUser(loggedInUser.id);
+        setIsModalOpen(false);
+        if (success) {
             navigate('/signin');
-        })
-        .catch(({ data }) => console.log(data)
-        );
+        }
     };
     
     // FUNÇÃO PARA CANCELAR EXCLUSÃO
@@ -47,10 +44,11 @@ function Settings() {
 
                     <div className='btn-bar'>
                         <ReturnButton/>
+                        <h2>Configurações</h2>
                     </div>
 
-                    <h2>Excluir conta</h2>
-                    <p>Excluir a conta é um processo irreversível que apagará seus dados de forma irreversível.</p>
+                    <h3>Excluir conta</h3>
+                    <p>A ação de excluir a conta é um processo irreversível que apagará seus dados de forma irreversível.</p>
                     <button className='delete-btn' onClick={() => setIsModalOpen(true)} >
                         <span className="text">
                             Excluir usuário

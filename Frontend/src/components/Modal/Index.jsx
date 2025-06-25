@@ -12,7 +12,7 @@ const ModalConfirm = ({ isOpen, title, message, onConfirm, onCancel }) => {
         <h2 className="title">{title}</h2>
         <p className="text">{message}</p>
 
-        <div className="flex justify-end space-x-3">
+        <div>
           <button className="modal-btn" onClick={onCancel}>
             Cancelar
           </button>

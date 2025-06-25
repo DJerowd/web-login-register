@@ -12,8 +12,8 @@
 /* LOGOS */
 .social-medias .icon-content a svg {
     position: relative;
-    width: 30px;
-    height: 30px;
+    width: var(--font-size-large);
+    height: var(--font-size-large);
 }
 
 /* ICONES */

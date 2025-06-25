@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
+    
     width: 100vw;
     height: 64px;
     
@@ -11,5 +11,6 @@
 }
 
 .footer h3 {
+    font-size: var(--font-size-small);
     color: var(--font-color);
 }

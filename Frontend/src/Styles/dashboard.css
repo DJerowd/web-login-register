@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 1.6rem;
+    font-size: var(--font-size-medium);
 
     width: 100%;
 }

@@ -5,6 +5,7 @@
     align-items: center;
     position: fixed;
     z-index: 1;
+    font-size: var(--font-size-small);
 
     width: 100vw;
     padding: 0.4rem 4vw;
@@ -26,7 +27,6 @@
 .header .link {
     text-decoration: none;
     font-weight: bold;
-    font-size: 1.2rem;
     transition: all 0.25s;
     cursor: pointer;
 
@@ -46,24 +46,30 @@
     color: var(--font-color-2);
 }
 
-/* ICONES */
+/* MENU DO HEADER */
+.dropdown-menu {
+    align-content: center;
+    text-align: center;
+    font-size: var(--font-size-large);
+    transition: all 0.25s;
+    cursor: pointer;
+    overflow: hidden;
+    
+    width: 3.0rem;
+    height: 3.0rem;
+    border-radius: 100%;
+    
+    border: 2px solid var(--border-color);
+    background-color: var(--background-color);
+    color: var(--font-color);
+}
+.dropdown-menu:hover {
+    border: 2px solid var(--font-color);
+}
+
+/* ICONES DO HEADER */
 .header-icon {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2.0rem;
-    transition: all 0.25s;
-
-    width: 3.0rem;
-    height: 3.0rem;
-    padding: 0.4rem;
-    border-radius: 100px;
-
-    border: 2px solid var(--border-color);
-    box-shadow: 2px 2px var(--shadow-color);
-    background-color: var(--background-color-2);
-    color: var(--font-color);
-}
-.header-icon:hover {
-    color: var(--font-color-2);
 }

@@ -1,10 +1,14 @@
 import express from "express";
 import cors from "cors";
+import dotenv from "dotenv";
 import authRouter from './src/routes/authRouter.js';
 import userRouter from './src/routes/userRouter.js';
 
+
 const server = express();
 const port = 8800;
+
+dotenv.config();
 
 server.use(express.json());
 server.use(cors());

@@ -2,7 +2,7 @@
 .sign-form {
     display: flex;
     flex-direction: column;
-    font-size: 1.2rem;
+    font-size: var(--font-size-small);
 
     width: 100%;
     gap: 1.0rem;
@@ -13,14 +13,12 @@
     display: flex;
     flex-direction: column;
     font-weight: bold;
-    font-size: 1.2rem;
 }
 .sign-form div {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    font-size: 1.0rem;
 }
 
 /* FORMULÁRIO DE EDIÇÃO */
@@ -29,7 +27,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 1.2rem;
+    font-size: var(--font-size-small);
 
     width: 100%;
     max-width: 400px;
@@ -41,7 +39,6 @@
     display: flex;
     flex-direction: column;
     font-weight: bold;
-    font-size: 1.2rem;
 
     width: 100%;
 }

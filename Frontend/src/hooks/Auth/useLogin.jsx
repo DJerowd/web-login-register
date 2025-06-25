@@ -1,26 +1,23 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-const URL = "http://localhost:8800";
-
 const useLogin = () => {
     const [ loading, setLoading ] = useState(false);
-    const [ errors, setErrors ] = useState(null);
+    const [ errors, setErrors ] = useState('');
 
     const login = async (email, password) => {
         setLoading(true);
-        setErrors(null);
+        setErrors('');
         try {
-            const res = await axios.post(`${URL}/users/login`, { email, password });
+            const res = await axios.post(`${import.meta.env.VITE_URL}/users/login`, { email, password });
             return res.data;
         } catch (err) {
-            setErrors(err.response?.data || `Erro ao fazer login`);
+            setErrors(`${err.response?.data.message}` || `Erro ao fazer login`);
             return;
         } finally {
             setLoading(false);
         }
     };
-    console.log(login);
 
     return { login, loading, errors };
 };

@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { getLoggedInUser } from '../../utils/auth.js';
 import { IoSearch } from "react-icons/io5";
 
+import { getLoggedInUser } from '../../utils/auth.js';
 import useSearchUsers from '../../hooks/Users/useSearchUsers';
 
 import { ReturnButton } from '../../components/Buttons';
@@ -10,7 +10,7 @@ import Footer from '../../components/Footer';
 
 import Error from "../Error";
 import Loading from '../Loading';
-import List from './List.jsx';
+import List from './List';
 import Pagination from '../../components/Pagination';
 
 import '../../Styles/table.css';
@@ -53,7 +53,7 @@ function UsersList() {
 
                     <List users={users} currentPage={currentPage} itemsPerPage={itemsPerPage} />
 
-                    {errors && <h3 className={'form-error'}>{errors}</h3>}
+                    {errors && <h2 className={'form-error'}>{errors}</h2>}
                     
                     <Pagination itens={users} currentPage={currentPage} setCurrentPage={setCurrentPage} itemsPerPage={itemsPerPage} />
                     

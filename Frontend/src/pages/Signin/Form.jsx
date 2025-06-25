@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { IoEye, IoEyeOff } from "react-icons/io5";
 import { Link } from 'react-router-dom';
 
 function Form({ login, errors }) {
     const navigate = useNavigate();
     const [user, setUser] = useState({ email: '', password: '' });
+    const [showPassword, setShowPassword] = useState(false);
 
     // FUNÇÃO PARA ALTERAR DADOS DO FORMULÁRIO.
     const handleChange = (e) => {
@@ -35,7 +37,10 @@ function Form({ login, errors }) {
 
         <label>
             Senha:
-            <input className='sign-input' type={"password"}  name="password" onChange={handleChange} value={user.password} required/>
+            <label className='sign-input password'>
+                <input type={showPassword ? "text" : "password"} name="password" onChange={handleChange} value={user.password} required/>
+                <button className='show-button' type='button' onClick={() => setShowPassword(prevState => !prevState)} value={showPassword}>{showPassword ? <IoEye/> : <IoEyeOff/>}</button>
+            </label>
         </label>
         
         {errors && <span className='form-error' >{errors} </span>}

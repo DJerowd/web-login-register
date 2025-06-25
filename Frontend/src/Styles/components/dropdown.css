@@ -2,19 +2,27 @@
 .dropdown {
     display: flex;
     flex-direction: column;
+    font-size: var(--font-size-small);
     position: absolute;
     z-index: 1;
     top: var(--header-height);
     right: 0;
+    animation-name: navAnimation;
+    animation-duration: 0.4s;
     
     height: calc(100vh - var(--header-height));
-    max-width: calc(var(--main-width) / 2);
+    width: calc(var(--main-width) / 1.8);
     padding: 0.4rem 0.8rem;
 
     border: 2px solid var(--border-color);
     box-shadow: 4px 4px var(--shadow-color);
     color: var(--font-color);
     background-color: var(--background-color-2);
+}
+
+@keyframes navAnimation {
+    0%   {width: 0rem; padding: 0rem;}
+    100% {width: calc(var(--main-width) / 1.8); padding: 0.4rem 0.8rem}
 }
 
 /* TÍTULO DO MENU */
@@ -35,11 +43,10 @@
 }
 .dropdown section h3 {
     font-weight: bold;
-    font-size: 1.4rem;
+    font-size: var(--font-size-medium);
 }
 .dropdown section p {
     font-weight: normal;
-    font-size: 1.2rem;
 }
 
 /* BOTÕES DO MENU */
@@ -49,7 +56,7 @@
     align-items: center;
     text-align: center;
     text-decoration: none;
-    font-size: 1.0rem;
+    font-size: var(--font-size-small);
     transition: all 0.25s;
     cursor: pointer;
 
@@ -68,7 +75,7 @@
 }
 .dropdown-btn a, .logoff-btn {
     display: flex;
-    font-size: larger;
+    font-size: var(--font-size-large);
     font-weight: normal;
     width: 100%;
     gap: 10px;

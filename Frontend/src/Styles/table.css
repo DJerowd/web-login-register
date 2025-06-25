@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    font-size: var(--font-size-small);
 
     border-radius: 8px;
 
@@ -21,7 +22,7 @@
 /* LINHAS DA TABELA */
 .users-table tr {
     display: grid;
-    grid-template-columns: 4rem max-content 1fr;
+    grid-template-columns: 3rem max-content 1fr;
     cursor: pointer;
     
     border-top: 2px solid var(--border-color);
@@ -35,26 +36,20 @@
     flex-direction: column;
     justify-content: center;
     overflow: hidden;
-    font-size: 1.2rem;
-    
-    padding: 0.4rem 0.8rem;
+
+    padding: 0.4rem;
 }
 .users-table td span {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
-.users-table #index {
+.users-table #user-index {
     text-align: center;
     font-weight: bolder;
 
+    text-shadow: 2px 2px 0 var(--shadow-color);
     color: var(--font-color-2);
-}
-.users-table #user-image {
-    display: flexbox;
-}
-.users-table #user-name {
-    display: flexbox;
 }
 .users-table #user-name :last-child{
     color: var(--font-color-2);

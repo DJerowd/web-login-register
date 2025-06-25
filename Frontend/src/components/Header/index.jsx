@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { getLoggedInUser } from '../../utils/auth.js';
 import { Link } from 'react-router-dom';
-import { IoHome, IoPerson } from "react-icons/io5";
+import { IoHome } from "react-icons/io5";
 
 import Dropdown from '../Dropdown/index.jsx';
 
@@ -20,7 +20,7 @@ function Header(){
         return (
             <header className='header'>
 
-                <Link className='header-icon' to="/">
+                <Link className='header-icon dropdown-menu' to="/">
                     <IoHome />
                 </Link>
 
@@ -36,13 +36,18 @@ function Header(){
     return (
         <header className='header'>
 
-            <Link className='header-icon' to="/">
+            <Link className='header-icon dropdown-menu' to="/">
                 <IoHome />
             </Link>
 
-            <svg className='svg-profile' onClick={toggleDropdown}>
-                <IoPerson />
-            </svg>
+            <div className='dropdown-menu' onClick={toggleDropdown}>
+                <img
+                    className='avatar-image'
+                    src='/assets/avatar.jpg'
+                    alt='Avatar do usuário'
+                    onError={(e) => {e.target.onerror = null; e.target.src = '/default-avatar.jpg'; }}
+                />
+            </div>
 
             {showDropdown && <Dropdown/>}
 

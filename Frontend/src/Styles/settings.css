@@ -2,8 +2,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-size: var(--font-size-small);
 
-    width: var(--main-height);
+    width: var(--main-width);
     padding: 14px;
     gap: 16px;
     border-radius: 8px;
@@ -15,15 +16,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
     font-weight: bold;
-    font-size: 2.0rem;
+    font-size: var(--font-size-medium);
+
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
+  
+    border: 2px solid var(--border-color);
+    box-shadow: 4px 4px var(--shadow-color);
+    background-color: var(--primary-color);
+}
+.settings h3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    text-indent: 1.0rem;
 
     width: 100%;
-    padding: 0.4rem 0.8rem;
-
-    border-bottom: 2px solid var(--border-color);
-    text-shadow: 4px 4px var(--shadow-color);
 }
 .settings p{
     display: flex;
@@ -32,9 +42,6 @@
     text-align: start;
     text-indent: 1.0rem;
     font-weight: normal;
-    font-size: 1.2rem;
 
     width: 100%;
-
-    text-shadow: 2px 2px var(--shadow-color);
 }

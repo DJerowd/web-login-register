@@ -2,26 +2,25 @@ import { useState, useEffect } from 'react';
 import { getToken } from '../../utils/auth.js';
 import axios from 'axios';
 
-const URL = "http://localhost:8800";
-
 const useUserById = () => {
     const [ users, setUsers ] = useState([]);
-    const [ updateList, setUpdateList ] = useState(false);
     const [ loading, setLoading ] = useState(false);
-    const [ errors, setErrors ] = useState();
-    const [ userId, setUserId ] = useState(null);
+    const [ errors, setErrors ] = useState('');
+    const [ userId, setUserId ] = useState();
     const token = getToken();
 
     useEffect(() => {
         const fetchUsers = async () => {
             setLoading(true);
-            setErrors();
+            setErrors('');
             if (userId) {
                 try {
-                    const res = await axios.get(`${URL}/users/` + userId, { headers: { Authorization: `Bearer ${token}` } });
+                    const res = await axios.get(`${import.meta.env.VITE_URL}/users/` + userId, { headers: { Authorization: `Bearer ${token}` } });
                     setUsers(res.data);
-                } catch (error) {
-                    setErrors(error.message);
+                    return true;
+                } catch (err) {
+                    setErrors(`${err.response?.data.message || err.message}`);
+                    return false;
                 } finally {
                     setLoading(false);
                 }
@@ -29,9 +28,9 @@ const useUserById = () => {
         };
 
         fetchUsers();
-    }, [updateList]);
+    }, [token, userId]);
 
-    return { users, setUpdateList, loading, errors, setUserId };
+    return { users, loading, errors, setUserId };
 };
 
 export default useUserById;

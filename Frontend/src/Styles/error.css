@@ -4,6 +4,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-size: var(--font-size-small);
 
     gap: 24px;
     max-width: var(--main-width);
@@ -14,12 +15,10 @@
     color: var(--font-color);
 }
 .error-panel h2 {
-    font-size: 2.0rem;
+    font-size: var(--font-size-large);
     font-weight: bold;
 }
 .error-panel p {
-    text-indent: 1.0rem;
-    font-size: 1.2rem;
     font-weight: normal;
 }
 
@@ -29,6 +28,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    font-size: var(--font-size-small);
 
     width: 100%;
     padding: 0.2rem;
