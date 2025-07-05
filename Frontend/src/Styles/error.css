@@ -32,7 +32,7 @@
 
     width: 100%;
     padding: 0.2rem;
-    border-radius: 8px;
+    border-radius: var(--radius);
 
     text-shadow: 2px 2px var(--shadow-color);
     border: 1px solid currentColor;

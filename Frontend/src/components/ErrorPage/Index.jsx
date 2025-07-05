@@ -3,7 +3,7 @@ import { getLoggedInUser } from '../../utils/auth.js';
 
 import '../../Styles/error.css';
 
-function Error() {
+export default function Error() {
     const loggedInUser = getLoggedInUser();
 
     return (
@@ -29,5 +29,3 @@ function Error() {
         </div>
     );
 }
-
-export default Error;

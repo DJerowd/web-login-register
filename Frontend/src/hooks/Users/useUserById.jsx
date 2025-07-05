@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getToken } from '../../utils/auth.js';
-import axios from 'axios';
+import api from '../../services/api.js';
 
 const useUserById = () => {
     const [ users, setUsers ] = useState([]);
@@ -15,7 +15,10 @@ const useUserById = () => {
             setErrors('');
             if (userId) {
                 try {
-                    const res = await axios.get(`${import.meta.env.VITE_URL}/users/` + userId, { headers: { Authorization: `Bearer ${token}` } });
+                    const res = await api.get(
+                        `/users/` + userId, 
+                        { headers: { Authorization: `Bearer ${token}` } }
+                    );
                     setUsers(res.data);
                     return true;
                 } catch (err) {

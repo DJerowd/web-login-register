@@ -9,9 +9,18 @@
 }
 
 /* BOTÕES GERAIS */
-.sign-btn, .dashboard-btn, .action-btn, .profile-edit-button, .show-button, .modal-btn, .delete-btn, .error-btn {
+.sign-btn, .dashboard-btn, .action-btn, .profile-edit-btn, .show-btn, .delete-btn, .error-btn {
     cursor: pointer;
     font-size: var(--font-size-small);
+
+    border: 2px solid var(--border-color);
+    box-shadow: 4px 4px var(--shadow-color);
+    background-color: var(--primary-color);
+    color: var(--font-color);
+}
+.sign-btn:hover, .dashboard-btn:hover, .action-btn:hover, .profile-edit-btn:hover, .image-edit-btn:hover, .delete-btn:hover {
+    border-radius: var(--radius);
+    filter: brightness(150%);
 }
 
 /* BOTÃO DE FORMULÁRIO DE ACESSO */
@@ -24,15 +33,7 @@
 
     width: max-content;
     padding: 0.4rem 0.8rem;
-    border-radius: 8px;
-
-    border: 2px solid var(--border-color);
-    box-shadow: 4px 4px var(--shadow-color);
-    background-color: var(--primary-color);
-    color: var(--font-color);
-}
-.sign-btn:hover {
-    filter: brightness(150%);
+    border-radius: var(--radius);
 }
   
 /* BOTÃO DO DASHBOARD */
@@ -45,18 +46,9 @@
     transition: all 0.5s ease;
     overflow: hidden;
 
-
     width: 100%;
     padding: 14px;
-    border-radius: 8px;
-    
-    border: 2px solid var(--border-color);
-    box-shadow: 4px 4px var(--shadow-color);
-    background-color: var(--primary-color);
-    color: var(--font-color);
-}
-.dashboard-btn:hover {
-    filter: brightness(150%);
+    border-radius: var(--radius);
 }
 
 /* BOTÃO DE AÇÃO */
@@ -71,25 +63,15 @@
     height: 3.0rem;
     padding: 0.4rem;
     border-radius: 100%;
-
-    border: 2px solid var(--border-color);
-    box-shadow: 4px 4px var(--shadow-color);
-    background-color: var(--primary-color);
-    color: var(--font-color);
-}
-.action-btn:hover {
-    border-radius: 6px;
-    filter: brightness(150%);
 }
 .action-btn .action-icon {
     display: flex;
     width: auto;
     height: var(--font-size-medium);
-
 }
 
 /* BOTÃO EDITAR PERFIL */
-.profile-edit-button {
+.profile-edit-btn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -97,19 +79,34 @@
 
     width: max-content;
     padding: 0.4rem 0.8rem;
-    border-radius: 8px;
-  
-    border: 2px solid var(--border-color);
-    box-shadow: 4px 4px var(--shadow-color);
-    background-color: var(--primary-color);
+    border-radius: var(--radius);
+}
+
+/* BOTÃO EDITAR IMAGEM */
+.image-edit-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    transition: all 0.25s;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    stroke-width: 1px;
+    stroke: var(--border-color);
     color: var(--font-color);
-  }
-.profile-edit-button:hover {
-    filter: brightness(150%);
+}
+.image-edit-btn svg {
+    width: var(--font-size-medium);
+    height: var(--font-size-medium);
+
+    fill: currentColor;
 }
 
 /* BOTÃO EXIBIR */
-.show-button {
+.show-btn {
     display: flex;
     align-self: center;
 
@@ -118,26 +115,8 @@
     padding: 0.2rem;
     border-radius: 100px;
 
-    border: 2px solid var(--border-color);
     box-shadow: 2px 2px var(--shadow-color);
     background-color: var(--background-color-2);
-    color: var(--font-color);
-}
-
-/* BOTÃO DO MODAL */
-.modal-btn {
-    transition: all 0.25s;
-
-    padding: 0.4rem 0.8rem;
-    border-radius: 8px;
-
-    border: 2px solid var(--border-color);
-    box-shadow: 2px 2px var(--shadow-color);
-    background-color: var(--primary-color);
-    color: var(--font-color);
-}
-.modal-btn:hover {
-    filter: brightness(150%);
 }
 
 /* BOTÃO DELETAR USUÁRIO */
@@ -148,10 +127,8 @@
     width: 40%;
     height: 50px;
     padding: 10px 0;
-    border-radius: 5px;
+    border-radius: var(--radius);
 
-    border: 2px solid var(--border-color);
-    box-shadow: 4px 4px var(--shadow-color);
     background: #e62222;
 }
 .delete-btn, .delete-btn span {
@@ -172,9 +149,6 @@
 .delete-btn svg {
     width: 100%;
     fill: var(--font-color);
-}
-.delete-btn:hover {
-    filter: brightness(150%);
 }
 .delete-btn:hover .icon {
     width: 100%;
@@ -209,10 +183,7 @@
     font-weight: bold;
     border-radius: 100px;
     
-    border: 2px solid var(--border-color);
-    box-shadow: 4px 4px var(--shadow-color);
     background-color: var(--background-color);
-    color: var(--font-color);
 }
 .error-btn:hover {
     align-items: center;
@@ -220,8 +191,6 @@
 
     width: 100%;
     max-width: calc(var(--main-width) / 2);
-
-    background-color: var(--primary-color);
 }
 .error-btn::before {
     position: absolute;

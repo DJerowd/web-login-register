@@ -21,8 +21,8 @@
 }
 
 @keyframes navAnimation {
-    0%   {width: 0rem; padding: 0rem;}
-    100% {width: calc(var(--main-width) / 1.8); padding: 0.4rem 0.8rem}
+    0%   {opacity: 0;}
+    100% {opacity: 100;}
 }
 
 /* TÍTULO DO MENU */

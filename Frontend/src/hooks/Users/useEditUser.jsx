@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import { getToken } from '../../utils/auth.js';
-import axios from 'axios';
+import api from '../../services/api.js';
 
 const useEditUser = () => {
     const [ errors, setErrors ] = useState('');
     const token = getToken();
 
     const edit = async (user, loggedInUser) => {
-
         const confirm = window.confirm("Tem certeza de que deseja editar as informações deste usuário?");
         if (!confirm) {
             return false;
@@ -20,15 +19,13 @@ const useEditUser = () => {
             setErrors(`A senha e confirmação não coincidem!`);
             return false;
         }
-
         try {
-            const loggedUser = JSON.stringify({
-                id: user.id,
-                username: user.username,
-                email: user.email,
-                password: user.password
-            });
-            await axios.put(`${import.meta.env.VITE_URL}/users/${loggedInUser.id}`, { username: user.username, email: user.email, password: user.password }, { headers: { Authorization: `Bearer ${token}` } });
+            const loggedUser = JSON.stringify({ id: user.id, username: user.username, email: user.email, password: user.password });
+            await api.put(
+                `/users/${loggedInUser.id}`, 
+                { username: user.username, email: user.email, password: user.password }, 
+                { headers: { Authorization: `Bearer ${token}` } }
+            );
             localStorage.setItem('loggedInUser', loggedUser);
             return true;
         } catch (err) {

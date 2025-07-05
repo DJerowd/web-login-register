@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import axios from 'axios';
+import api from '../../services/api';
 
 const useLogin = () => {
     const [ loading, setLoading ] = useState(false);
@@ -7,13 +7,15 @@ const useLogin = () => {
 
     const login = async (email, password) => {
         setLoading(true);
-        setErrors('');
         try {
-            const res = await axios.post(`${import.meta.env.VITE_URL}/users/login`, { email, password });
+            const res = await api.post(
+                `/users/login`, 
+                { email, password }
+            );
             return res.data;
         } catch (err) {
             setErrors(`${err.response?.data.message}` || `Erro ao fazer login`);
-            return;
+            return false;
         } finally {
             setLoading(false);
         }

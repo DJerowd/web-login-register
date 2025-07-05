@@ -39,7 +39,7 @@ function Form({ login, errors }) {
             Senha:
             <label className='sign-input password'>
                 <input type={showPassword ? "text" : "password"} name="password" onChange={handleChange} value={user.password} required/>
-                <button className='show-button' type='button' onClick={() => setShowPassword(prevState => !prevState)} value={showPassword}>{showPassword ? <IoEye/> : <IoEyeOff/>}</button>
+                <button className='show-btn' type='button' onClick={() => setShowPassword(prevState => !prevState)} value={showPassword}>{showPassword ? <IoEye/> : <IoEyeOff/>}</button>
             </label>
         </label>
         

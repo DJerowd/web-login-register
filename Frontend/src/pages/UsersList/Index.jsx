@@ -8,10 +8,10 @@ import { ReturnButton } from '../../components/Buttons';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
-import Error from "../Error";
-import Loading from '../Loading';
-import List from './List';
+import ErrorPage from "../../components/ErrorPage";
+import LoadingPage from '../../components/LoadingPage';
 import Pagination from '../../components/Pagination';
+import List from './List';
 
 import '../../Styles/table.css';
 
@@ -22,10 +22,10 @@ function UsersList() {
     const [currentPage, setCurrentPage] = useState(1);
 
     // ERRO LOGIN INATIVO
-    if (!loggedInUser) { return ( <Error/> ); }
+    if (!loggedInUser) return <ErrorPage/>;
 
     // TELA DE LOADING
-    if (loading) { return <Loading/>; }
+    if (loading) return <LoadingPage/>;
 
     return (
         <div className='container'>
@@ -38,7 +38,7 @@ function UsersList() {
                         <ReturnButton/>
                         
                         <label className='search-input'>
-                            <button className='icon' onClick={() => setUpdateList(prevState => !prevState)}>
+                            <button className='icon' onClick={() => { setUpdateList(prevState => !prevState); setCurrentPage(1); }}>
                                 <IoSearch/>
                             </button>
                             <input 

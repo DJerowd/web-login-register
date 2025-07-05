@@ -4,6 +4,19 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+
+  ::-webkit-scrollbar {
+    width: 50px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #d0d5dd;
+    border-radius: 0px;
+  }
 }
 
 :root {
@@ -11,8 +24,8 @@
   --header-color: light-dark(#505050, #00225F);
   --footer-color: light-dark( #505050, #000000);
   --primary-color: light-dark( #505050, #00225F);
-  --background-color: light-dark( #C0C0C0, #0d1117);
-  --background-color-2: light-dark( #FFFFFF, #25292E);
+  --background-color: light-dark( #C0C0C0, #040404);
+  --background-color-2: light-dark( #FFFFFF, #222222);
   --font-color: light-dark( #000000, #FFFFFF);
   --font-color-2: light-dark( #555555, #555555);
   --shadow-color: light-dark( #B2B9C2, #000000);
@@ -25,6 +38,7 @@
   /* VARIÁVEIS DE FORMATAÇÂO */
   --header-height: 64px;
   --main-width: 640px;
+  --radius: 8px;
   --font-size-small: 1.2rem;
   --font-size-medium: 1.4rem;
   --font-size-large: 2.0rem;

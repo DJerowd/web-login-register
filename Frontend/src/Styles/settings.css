@@ -7,7 +7,7 @@
     width: var(--main-width);
     padding: 14px;
     gap: 16px;
-    border-radius: 8px;
+    border-radius: var(--radius);
 
     border: 1px solid var(--border-color);
     background-color: var(--background-color-2);
@@ -20,7 +20,7 @@
     font-size: var(--font-size-medium);
 
     padding: 0.4rem 0.8rem;
-    border-radius: 8px;
+    border-radius: var(--radius);
   
     border: 2px solid var(--border-color);
     box-shadow: 4px 4px var(--shadow-color);

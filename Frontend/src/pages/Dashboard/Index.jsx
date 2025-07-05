@@ -1,9 +1,9 @@
 import { getLoggedInUser } from '../../utils/auth.js';
 import { Link } from 'react-router-dom';
 
+import ErrorPage from "../../components/ErrorPage";
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import Error from "../Error";
 
 import '../../Styles/dashboard.css';
 
@@ -11,7 +11,7 @@ function Dashboard() {
     const loggedInUser = getLoggedInUser();
 
     // ERRO LOGIN INATIVO
-    if (!loggedInUser) { return <Error/>; }
+    if (!loggedInUser) return <ErrorPage/>;
 
     return (
         <div className='container'>

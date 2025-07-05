@@ -1,39 +1,30 @@
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getLoggedInUser } from '../../utils/auth.js';
 import useDeleteUser from '../../hooks/Users/useDeleteUser.jsx';
 
 import { ReturnButton } from '../../components/Buttons';
-import ModalConfirm from '../../components/Modal/Index.jsx';
+import ErrorPage from "../../components/ErrorPage";
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import Error from "../Error";
 
 import '../../Styles/settings.css';
 
 function Settings() {
-    const [isModalOpen, setIsModalOpen] = useState(false);
     const navigate = useNavigate();
     const loggedInUser = getLoggedInUser();
-    const { deleteUser, error } = useDeleteUser();
+    const { deleteUser, errors } = useDeleteUser();
 
     // FUNÇÃO PARA DELETAR USUÁRIO
     const handleDelete = async (e) => {
         e.preventDefault();
         const success = await deleteUser(loggedInUser.id);
-        setIsModalOpen(false);
         if (success) {
             navigate('/signin');
         }
     };
-    
-    // FUNÇÃO PARA CANCELAR EXCLUSÃO
-    const handleCancel = () => {
-        setIsModalOpen(false);
-    };
 
     // ERRO LOGIN INATIVO
-    if (!loggedInUser) { return ( <Error/> ); }
+    if (!loggedInUser) return <ErrorPage/>;
 
     return (
         <div className='container'>
@@ -49,7 +40,8 @@ function Settings() {
 
                     <h3>Excluir conta</h3>
                     <p>A ação de excluir a conta é um processo irreversível que apagará seus dados de forma irreversível.</p>
-                    <button className='delete-btn' onClick={() => setIsModalOpen(true)} >
+                    
+                    <button className='delete-btn' onClick={handleDelete} >
                         <span className="text">
                             Excluir usuário
                         </span>
@@ -60,16 +52,11 @@ function Settings() {
                         </span>
                     </button>
 
+                    {errors && <span className='form-error'>{errors}</span>}
+
                 </main>
 
             </div>
-            <ModalConfirm
-                isOpen={isModalOpen}
-                title="Confirmar Ação"
-                message="Tem certeza de que deseja continuar com esta ação?"
-                onConfirm={handleDelete}
-                onCancel={handleCancel}
-            />
             <Footer/>
         </div>
     );

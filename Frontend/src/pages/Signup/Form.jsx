@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 function Form({ register, errors }) {
     const navigate = useNavigate();
     const [user, setUser] = useState({ username: '', email: '', password: '', confirmPassword: '' });
-    // const [errors, setErrors] = useState('');
     const [showPassword, setShowPassword] = useState(false);
 
     // FUNÇÃO PARA ALTERAR DADOS DO FORMULÁRIO.
@@ -51,7 +50,7 @@ function Form({ register, errors }) {
             Senha:
             <label className='sign-input password'>
                 <input type={showPassword ? "text" : "password"} name="password" placeholder="Crie uma senha" onChange={handleChange} value={user.password} autoComplete='off' required/>
-                <button className='show-button' type='button' onClick={() => setShowPassword(prevState => !prevState)} value={showPassword}>{showPassword ? <IoEye/> : <IoEyeOff/>}</button>
+                <button className='show-btn' type='button' onClick={() => setShowPassword(prevState => !prevState)} value={showPassword}>{showPassword ? <IoEye/> : <IoEyeOff/>}</button>
             </label>
         </label>
 

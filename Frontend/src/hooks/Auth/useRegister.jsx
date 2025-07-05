@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import axios from 'axios';
+import api from '../../services/api.js';
 
 const useRegister = () => {
     const [ errors, setErrors ] = useState('');
@@ -15,11 +15,10 @@ const useRegister = () => {
             return false;
         }
         try {
-            const { data } = await axios.post(`${import.meta.env.VITE_URL}/users`, {
-                username: user.username,
-                email: user.email,
-                password: user.password,
-            });
+            const { data } = await api.post(
+                `/users`, 
+                { username: user.username, email: user.email, password: user.password }
+            );
             setErrors(`${data.message}`);
             return true;
         } catch (err) {

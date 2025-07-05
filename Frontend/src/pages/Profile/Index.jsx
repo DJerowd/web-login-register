@@ -5,10 +5,10 @@ import { getLoggedInUser } from '../../utils/auth.js';
 import useUserById from '../../hooks/Users/useUserById.jsx';
 
 import { ReturnButton, EditButton } from '../../components/Buttons';
+import ErrorPage from '../../components/ErrorPage';
+import LoadingPage from '../../components/LoadingPage';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import Error from "../Error";
-import Loading from '../Loading';
 
 import '../../Styles/profile.css';
 
@@ -28,10 +28,10 @@ function Profile() {
     }, [id, loading, setUserId]);
 
     // ERRO LOGIN INATIVO
-    if (!loggedInUser) { return <Error/>; }
+    if (!loggedInUser) return <ErrorPage/>;
 
     // TELA DE LOADING
-    if (loading) { return <Loading/>; }
+    if (loading) return <LoadingPage/>;
 
     return (
         <div className='container'>
@@ -67,7 +67,7 @@ function Profile() {
                                     className='avatar-image'
                                     src='/assets/avatar.jpg'
                                     alt='Avatar do usuário'
-                                    onError={(e) => {e.target.onerror = null; e.target.src = '/default-avatar.jpg'; }}
+                                    onError={(e) => {e.target.onerror = null; e.target.src = `https://ui-avatars.com/api/?name=${users.username}&rounded=true&background=random`; }}
                                 />
                             </div>
                         </div>

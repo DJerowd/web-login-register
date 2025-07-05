@@ -42,7 +42,7 @@ function Form({edit, errors, loggedInUser}) {
             Senha:
             <label className='edit-input password'>
                 <input type={showPassword ? "text" : "password"} name="password" placeholder="Crie uma senha" onChange={handleChange} value={user.password} autoComplete='off' required/>
-                <button className='show-button' type='button' onClick={() => setShowPassword(prevState => !prevState)} value={showPassword}>{showPassword ? <IoEye/> : <IoEyeOff/>}</button>
+                <button className='show-btn' type='button' onClick={() => setShowPassword(prevState => !prevState)} value={showPassword}>{showPassword ? <IoEye/> : <IoEyeOff/>}</button>
             </label>
         </label>
 
@@ -53,7 +53,7 @@ function Form({edit, errors, loggedInUser}) {
 
         {errors && <span className='form-error'>{errors}</span>}
 
-        <button className='profile-edit-button' type="submit">Editar usuário</button>
+        <button className='profile-edit-btn' type="submit">Salvar Alterações</button>
 
     </form>
   );

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getToken } from '../../utils/auth.js';
-import axios from 'axios';
+import api from '../../services/api.js';
 
 
 const useSearchUsers = () => {
@@ -17,10 +17,16 @@ const useSearchUsers = () => {
             setErrors('');
             try {
                 if (!search) {
-                    const res = await axios.get(`${import.meta.env.VITE_URL}/users`, { headers: { Authorization: `Bearer ${token}` } });
+                    const res = await api.get(
+                        `/users`, 
+                        { headers: { Authorization: `Bearer ${token}` } }
+                    );
                     setUsers(res.data.sort((a, b) => (a.createDate > b.createDate ? 1 : -1)));
                 } else {
-                    const res = await axios.get(`${import.meta.env.VITE_URL}/users/search/` + search, { headers: { Authorization: `Bearer ${token}` } });
+                    const res = await api.get(
+                        `/users/search/` + search, 
+                        { headers: { Authorization: `Bearer ${token}` } }
+                    );
                     setUsers(res.data.sort((a, b) => (a.createDate > b.createDate ? 1 : -1)));
                 }
                 return true;
