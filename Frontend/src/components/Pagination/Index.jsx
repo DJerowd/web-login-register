@@ -19,7 +19,7 @@ function Pagination({ itens, currentPage, setCurrentPage, itemsPerPage }) {
     return (
         <div className="pagination">
             <button onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))} disabled={currentPage === 1} >
-                Anterior
+                ❮
             </button>
 
             {visiblePages[0] > 1 && (
@@ -47,7 +47,7 @@ function Pagination({ itens, currentPage, setCurrentPage, itemsPerPage }) {
             )}
             
             <button onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))} disabled={currentPage >= totalPages} >
-                Próximo
+                ❯
             </button>
         </div>
     );

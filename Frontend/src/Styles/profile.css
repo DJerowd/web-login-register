@@ -11,7 +11,7 @@
   border-radius: var(--radius);
 
   border: 2px solid var(--border-color);
-  box-shadow: 2px 2px var(--shadow-color);
+  box-shadow: var(--box-shadow);
   background-color: var(--background-color);
   color: var(--font-color);
 }
@@ -36,7 +36,7 @@
 
   border: 2px solid var(--border-color);
   background-color: var(--background-color);
-  color: var(--font-color);
+  color: var(--font-color-2);
 }
 .avatar-image {
   width: 100%;
@@ -55,9 +55,7 @@
   
   border: 2px solid var(--border-color);
   background-color: var(--background-color);
-}
-.avatar-container-list {
-  background-color: var(--background-color);
+  color: var(--font-color-2);
 }
 
 
@@ -65,17 +63,13 @@
   display: flex;
   flex-direction: column;
 
+  width: 100%;
   gap: 0.4rem;
 }
 .content-profile #username {
-  display: flex;
   font-size: var(--font-size-medium);
-
-  width: 100%;
 }
 .content-profile #email {
-  display: flex;
   font-size: var(--font-size-small);
-
-  width: 100%;
+  color: var(--font-color-2);
 }

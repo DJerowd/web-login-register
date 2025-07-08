@@ -6,8 +6,6 @@
 
     width: 100%;
     gap: 1.0rem;
-
-    text-shadow: 2px 2px var(--shadow-color);
 }
 .sign-form label{
     display: flex;
@@ -32,8 +30,6 @@
     width: 100%;
     max-width: 400px;
     gap: 1.0rem;
-
-    text-shadow: 2px 2px var(--shadow-color);
 }
 .profile-edit-form label{
     display: flex;

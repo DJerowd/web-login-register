@@ -19,10 +19,6 @@ function Form({ login, errors }) {
         e.preventDefault();
         const foundUser = await login(user.email, user.password);
         if (!foundUser) return;
-        const loggedInUser = JSON.stringify({ id: foundUser.user.id, username: foundUser.user.username, email: foundUser.user.email, });
-        const token = JSON.stringify(foundUser.token);
-        localStorage.setItem('loggedInUser', loggedInUser);
-        localStorage.setItem('token', token);
         navigate('/dashboard');
     };
 
@@ -45,7 +41,7 @@ function Form({ login, errors }) {
         
         {errors && <span className='form-error' >{errors} </span>}
         
-        <button className='sign-btn' type='submit'>Fazer login</button>
+        <button className='sign-btn' type='submit'>Entrar</button>
 
         <div>
             Não possui conta?

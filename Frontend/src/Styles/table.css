@@ -8,8 +8,7 @@
     border-radius: var(--radius);
 
     border: 2px solid var(--border-color);
-    box-shadow: 4px 4px var(--shadow-color);
-    background-color: var(--background-color);
+    box-shadow: var(--box-shadow);
     color: var(--font-color);
 }
 /* HEADER DA TABELA */
@@ -25,10 +24,11 @@
     grid-template-columns: 3rem max-content 1fr;
     cursor: pointer;
     
+    background-color: var(--background-color-2);
     border-top: 2px solid var(--border-color);
 }
 .users-table tr:hover {
-    background-color: var(--background-color-2);
+    filter: brightness(150%);
 }
 /* DADOS DA TABELA */
 .users-table td {
@@ -48,7 +48,7 @@
     text-align: center;
     font-weight: bolder;
 
-    text-shadow: 2px 2px 0 var(--shadow-color);
+    text-shadow: 1px 1px 0 var(--shadow-color);
     color: var(--font-color-2);
 }
 .users-table #user-name :last-child{

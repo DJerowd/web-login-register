@@ -12,6 +12,8 @@ const useLogin = () => {
                 `/users/login`, 
                 { email, password }
             );
+            localStorage.setItem('loggedInUser', JSON.stringify(res.data.user));
+            localStorage.setItem('token', JSON.stringify(res.data.token));
             return res.data;
         } catch (err) {
             setErrors(`${err.response?.data.message}` || `Erro ao fazer login`);

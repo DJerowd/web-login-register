@@ -4,32 +4,22 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-
-  ::-webkit-scrollbar {
-    width: 50px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: #d0d5dd;
-    border-radius: 0px;
-  }
+}
+::selection {
+  background-color: color-mix(in srgb, var(--font-color) 100%, #00000000 99%);
 }
 
 :root {
   /* VARIÁVEIS DE PALETA DE CORES */
-  --header-color: light-dark(#505050, #00225F);
+  --primary-color: light-dark( #409FFF, #7FA000);
+  --header-color: color-mix(in srgb, var(--primary-color) 100%, #00000000 20%);
   --footer-color: light-dark( #505050, #000000);
-  --primary-color: light-dark( #505050, #00225F);
   --background-color: light-dark( #C0C0C0, #040404);
   --background-color-2: light-dark( #FFFFFF, #222222);
   --font-color: light-dark( #000000, #FFFFFF);
   --font-color-2: light-dark( #555555, #555555);
-  --shadow-color: light-dark( #B2B9C2, #000000);
-  --border-color: #000000;
+  --shadow-color: light-dark( #000000, #222222);
+  --border-color: #444444;
   --error-color: #dc3545;
   
   /* VARIÁVEIS DE TIPOS DE FONTES */
@@ -37,11 +27,14 @@
   
   /* VARIÁVEIS DE FORMATAÇÂO */
   --header-height: 64px;
-  --main-width: 640px;
+  --menu-width: 320px;
+  --main-width: 960px;
   --radius: 8px;
   --font-size-small: 1.2rem;
   --font-size-medium: 1.4rem;
   --font-size-large: 2.0rem;
+  --box-shadow: 0 0 8px var(--shadow-color);
+  --text-shadow: 1px 1px var(--shadow-color);
   
   font-family: var(--font-family-1); 
   font-synthesis: none;

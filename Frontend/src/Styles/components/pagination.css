@@ -17,7 +17,7 @@
     border-radius: 8px;
 
     border: 2px solid var(--border-color);
-    box-shadow: 4px 4px var(--shadow-color);
+    box-shadow: var(--box-shadow);
     background-color: var(--primary-color);
     color: var(--font-color);
 }
@@ -29,7 +29,7 @@
     cursor: not-allowed;
     opacity: 50%;
 
-    color: var(--shadow-color);
+    color: var(--border-color);
 }
 .pagination button:hover:not(:disabled) {
     filter: brightness(150%);
@@ -38,6 +38,6 @@
 .pagination .ellipsis {
     font-size: var(--font-size-small);
     width: max-content;
-    padding: 0.4rem;
+    padding: 0.2rem;
     color: var(--font-color);
 }

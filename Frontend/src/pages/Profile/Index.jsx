@@ -30,12 +30,10 @@ function Profile() {
     // ERRO LOGIN INATIVO
     if (!loggedInUser) return <ErrorPage/>;
 
-    // TELA DE LOADING
-    if (loading) return <LoadingPage/>;
-
     return (
         <div className='container'>
             <Header/>
+            { loading ? <LoadingPage/> :
             <div className='content content-profile'>
 
                 {errors ?
@@ -67,7 +65,7 @@ function Profile() {
                                     className='avatar-image'
                                     src='/assets/avatar.jpg'
                                     alt='Avatar do usuário'
-                                    onError={(e) => {e.target.onerror = null; e.target.src = `https://ui-avatars.com/api/?name=${users.username}&rounded=true&background=random`; }}
+                                    onError={(e) => {e.target.onerror = null; e.target.src = `https://ui-avatars.com/api/?name=${users.username}&rounded=true&background=transparent`; }}
                                 />
                             </div>
                         </div>
@@ -81,6 +79,7 @@ function Profile() {
                 }
                 
             </div>
+            }
             <Footer/>
         </div>
     );

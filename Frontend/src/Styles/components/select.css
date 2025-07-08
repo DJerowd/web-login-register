@@ -1,0 +1,28 @@
+/* SELECT DE PESQUISA */
+.search-select {
+    text-align: center;
+    cursor: pointer;
+    font-size: var(--font-size-small);
+    transition: all 0.25s;
+
+    height: 3.0rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 100px;
+
+    border: 1px solid var(--border-color);
+    box-shadow: var(--box-shadow);
+    text-shadow: var(--text-shadow);
+    background-color: var(--background-color-2);
+    color: var(--font-color);
+}
+.search-select:hover {
+    border-radius: var(--radius);
+}
+.search-select:focus {
+    border-radius: var(--radius);
+    outline: 2px solid var(--primary-color);
+}
+.search-select option {
+    display: flex;
+    text-align: center;
+}

@@ -21,17 +21,12 @@
 
   padding: 1.0rem;
   gap: 1.0rem;
-  border-radius: var(--radius);
 
-  border: 2px solid var(--border-color);
-  box-shadow: 4px 4px var(--shadow-color);
-  background-color: var(--background-color-2);
   color: var(--font-color);
 }
 
 /* CONTEUDO DO DASHBOARD */
 .content-dashboard main {
-  display: flex;
   justify-content: center;
   align-items: center;
   
@@ -41,7 +36,6 @@
 
 /* CONTEUDO DE PERFIL */
 .content-profile main {
-  display: flex;
   justify-content: center;
   align-items: center;
   text-align: start;
@@ -51,7 +45,6 @@
 
 /* CONTEUDO DE LISTA */
 .content-list main {
-  display: flex;
 
   width: var(--main-width);
 }

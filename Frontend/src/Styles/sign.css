@@ -12,7 +12,7 @@
     border-radius: var(--radius);
 
     border: 2px solid var(--border-color);
-    box-shadow: 4px 4px var(--shadow-color);
+    box-shadow: var(--box-shadow);
     background-color: var(--background-color-2);
 }
 .sign .title{
@@ -24,15 +24,13 @@
     font-size: var(--font-size-large);
 
     width: 100%;
-
-    text-shadow: 4px 4px var(--shadow-color);
 }
 
 .sign-form .link {
     transition: all 0.25s;
     text-decoration: none;
 
-    text-shadow: 2px 2px var(--shadow-color);
+    text-shadow: var(--text-shadow);
     color: var(--primary-color);
 }
 .sign-form .link:hover {

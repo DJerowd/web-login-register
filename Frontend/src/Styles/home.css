@@ -1,9 +1,6 @@
 .home {
     display: block;
     text-align: center;
-    
-    text-shadow: #000000 0 2px 2px;
-    color: var(--font-color);
 }
 .home h1 {
     font-size: var(--font-size-large);
@@ -13,11 +10,9 @@
 }
 .home h1, .home h2 {
     transition: all 0.5s;
-    line-height: 1.1;
-    padding: 8px;
 }
 .home h1:hover, .home h2:hover {
-    text-shadow: var(--font-color) 0 0 4px;
+    text-shadow: 0 0 4px var(--font-color);
 }
 
 .content .socials {

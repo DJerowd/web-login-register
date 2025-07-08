@@ -61,7 +61,7 @@ function ProfileEdit() {
                                 className='avatar-image'
                                 src={avatarPreview}
                                 alt='Avatar do usuário'
-                                onError={(e) => {e.target.onerror = null; e.target.src = `https://ui-avatars.com/api/?name=${loggedInUser.username}&rounded=true&background=random`; }}
+                                onError={(e) => {e.target.onerror = null; e.target.src = `https://ui-avatars.com/api/?name=${loggedInUser.username}&rounded=true&background=transparent`; }}
                             />
                             <label className='image-edit-btn'>
                                 <svg

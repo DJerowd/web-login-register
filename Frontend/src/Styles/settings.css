@@ -23,7 +23,7 @@
     border-radius: var(--radius);
   
     border: 2px solid var(--border-color);
-    box-shadow: 4px 4px var(--shadow-color);
+    box-shadow: var(--box-shadow);
     background-color: var(--primary-color);
 }
 .settings h3{

@@ -30,17 +30,17 @@ function Form({edit, errors, loggedInUser}) {
 
         <label>
             Nome do Usuário:
-            <input className='edit-input' type="text" name="username" placeholder="Insira um nome de usuário" onChange={handleChange} value={user.username} autoComplete='off' required/>
+            <input className='edit-input sign-input' type="text" name="username" placeholder="Insira um nome de usuário" onChange={handleChange} value={user.username} autoComplete='off' required/>
         </label>
 
         <label>
             E-mail
-            <input className='edit-input' type="email" name="email" placeholder="Insira um email válido" onChange={handleChange} value={user.email} autoComplete='off' required/>
+            <input className='edit-input sign-input' type="email" name="email" placeholder="Insira um email válido" onChange={handleChange} value={user.email} autoComplete='off' required/>
         </label>
 
         <label>
             Senha:
-            <label className='edit-input password'>
+            <label className='edit-input password sign-input'>
                 <input type={showPassword ? "text" : "password"} name="password" placeholder="Crie uma senha" onChange={handleChange} value={user.password} autoComplete='off' required/>
                 <button className='show-btn' type='button' onClick={() => setShowPassword(prevState => !prevState)} value={showPassword}>{showPassword ? <IoEye/> : <IoEyeOff/>}</button>
             </label>
@@ -48,12 +48,12 @@ function Form({edit, errors, loggedInUser}) {
 
         <label>
             Confirmar Senha:
-            <input className='edit-input' type={showPassword ? "text" : "password"} name="confirmPassword" placeholder="Confirme a senha" onChange={handleChange} value={user.confirmPassword} autoComplete='off' required/>
+            <input className='edit-input sign-input' type={showPassword ? "text" : "password"} name="confirmPassword" placeholder="Confirme a senha" onChange={handleChange} value={user.confirmPassword} autoComplete='off' required/>
         </label>
 
         {errors && <span className='form-error'>{errors}</span>}
 
-        <button className='profile-edit-btn' type="submit">Salvar Alterações</button>
+        <button className='sign-btn' type="submit">Salvar Alterações</button>
 
     </form>
   );

@@ -1,34 +1,43 @@
 import { useNavigate } from 'react-router-dom';
 import { getLoggedInUser } from '../../utils/auth.js';
-import { Link } from 'react-router-dom';
-import { IoList, IoSettings, IoLogOut } from "react-icons/io5";
+import { IoHome, IoPerson, IoList, IoSettings, IoLogOut } from "react-icons/io5";
 
 import '../../Styles/components/dropdown.css';
 
-function Dropdown(){
+function Dropdown({ showDropdown }){
     const navigate = useNavigate();
     const loggedInUser = getLoggedInUser();
 
     const logoff = () => {
-        localStorage.setItem('loggedInUser', null);
+        localStorage.removeItem('loggedInUser');
+        localStorage.removeItem('token');
         navigate('/signin');
     };
 
     return (
-        <main className='dropdown'>
-            <section>
-                <h3>{loggedInUser.username}</h3>
-                <p>{loggedInUser.email}</p>
-            </section>
+        <div className={showDropdown ? 'dropdown dropdown-show' : 'dropdown'}>
+            <nav className={showDropdown ? 'dropdown-nav dropdown-nav-show' : 'dropdown-nav'}>
+                <a className='dropdown-item' onClick={() => { navigate(`/`) }}>
+                    <IoHome className='dropdown-icon'/> Home 
+                </a>
 
-            <section>
-                <Link className='dropdown-btn' to="/dashboard"> <IoList className='dropdown-icon'/> Painel</Link>
+                <a className='dropdown-item' onClick={() => { navigate(`/profile/${loggedInUser.id}`) }}> 
+                    <IoPerson className='dropdown-icon'/> Meu Perfil 
+                </a>
+                
+                <a className='dropdown-item' onClick={() => { navigate(`/dashboard`) }}> 
+                    <IoList className='dropdown-icon'/> Painel
+                </a>
 
-                <Link className='dropdown-btn' to="/settings"> <IoSettings className='dropdown-icon' /> Configurações</Link>
+                <a className='dropdown-item' onClick={() => { navigate(`/settings`) }}> 
+                    <IoSettings className='dropdown-icon'/> Configurações 
+                </a>
 
-                <button className='dropdown-btn' onClick={logoff}> <IoLogOut className='dropdown-icon' /> Sair</button>
-            </section>
-        </main>
+                <a className='dropdown-item' onClick={logoff}> 
+                    <IoLogOut className='dropdown-icon'/> Sair 
+                </a>
+            </nav>
+        </div>
     )
 }
 
