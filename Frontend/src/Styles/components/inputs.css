@@ -71,7 +71,8 @@
     align-items: center;
 
     height: 3.0rem;
-    width: 80%;
+    width: 60%;
+    max-width: calc(var(--main-width) / 2);
     border-radius: 100px;
 
     border: 1px solid var(--border-color);

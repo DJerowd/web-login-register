@@ -1,17 +1,43 @@
-# React + Vite
+<h1 align="center">
+    Web Login and Register
+</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p align="center">
+  <a href="#techs">Techs</a> /
+  <a href="#how to download the project">How to download the project</a> /
+  <a href="#usage">Usage</a>
+</p>
 
-Currently, two official plugins are available:
+## Techs
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [x] React.js + Vite
+- [x] JavaScript
+- [x] Axios
+- [x] React Hook Form
+- [x] React Router Dom
+
+## How to download the project
+
+```bash
+    # Clone the repository
+    $ git clone https://github.com/DJerowd/web-login-register.git
+
+    # Enter directory
+    $ cd web-login-register
+```
+
+## Usage
+
+1. Run `npm install`.<br />
+2. Run 'npm run dev' and access http://localhost:5173/<br />
+
+<br />
+
+<p align="center"> Developed by <a href="https://www.linkedin.com/in/djerowd-moreschi/">Djerowd Alexsander Ruiz Moreschi Faria</a></p>
 
 <!-- 
-npm create vite@latest web-login-register -- --template react
-npm install
--->
-
 1. Criar imagem de perfil
 2. Tratar erro ao deletar usuário
 3. Incrementar Modal
+4. Incrementar Notificação
+ -->

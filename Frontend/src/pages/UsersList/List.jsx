@@ -29,7 +29,7 @@ function List({ users, currentPage, itemsPerPage }) {
                         <img
                             className='avatar-image'
                             src='/assets/avatar.jpg'
-                            alt='Avatar do usuário'
+                            alt='AV'
                             onError={(e) => {e.target.onerror = null; e.target.src = `https://ui-avatars.com/api/?name=${user.username}&rounded=true&background=transparent`; }}
                         />
                     </div>
