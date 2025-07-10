@@ -7,10 +7,6 @@ const useEditUser = () => {
     const token = getToken();
 
     const edit = async (user, loggedInUser) => {
-        const confirm = window.confirm("Tem certeza de que deseja editar as informações deste usuário?");
-        if (!confirm) {
-            return false;
-        }
         if (!user.username || !user.email || !user.password || !user.confirmPassword) {
             setErrors(`Todos os campos devem ser preenchidos!`);
             return false;

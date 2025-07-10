@@ -12,21 +12,22 @@ function Header(){
     const loggedInUser = getLoggedInUser();
     const [showDropdown, setShowDropdown] = useState(false);
 
-    if (!loggedInUser) {
-        return (
-            <header className='header'>
-                <Link className='link' to="/signin">Entrar</Link>
-                <Link className='link' to="/signup">Cadastrar-se</Link>
-            </header>
-        );
-      }
-
     return (
         <header className='header'>
-            <button className='dropdown-menu' onClick={() => { setShowDropdown(!showDropdown) }}>
-                <IoMenu />
-            </button>
-            <Dropdown showDropdown={showDropdown}/>
+            {!loggedInUser 
+                ?
+                <>
+                    <Link className='link' to="/signin">Entrar</Link>
+                    <Link className='link' to="/signup">Cadastrar-se</Link>
+                </>
+                :
+                <>
+                    <button className='dropdown-menu' onClick={() => { setShowDropdown(!showDropdown) }}>
+                        <IoMenu />
+                    </button>
+                    <Dropdown showDropdown={showDropdown}/>
+                </>
+            }
         </header>
     )
 }

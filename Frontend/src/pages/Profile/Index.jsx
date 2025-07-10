@@ -52,7 +52,6 @@ function Profile() {
                             )}
                         </div>
 
-                        {/* <svg className='svg-profile-bigger'></svg> */}
                         <div className='profile-banner'>
                             <img
                                 className='banner-image'
@@ -60,6 +59,7 @@ function Profile() {
                                 alt='Banner do perfil'
                                 onError={(e) => {e.target.onerror = null; e.target.src = '/default-banner.jpg'; }}
                             />
+                            
                             <div className='avatar-container'>
                                 <img
                                     className='avatar-image'

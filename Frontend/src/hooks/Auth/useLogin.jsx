@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 import api from '../../services/api';
 
 const useLogin = () => {
@@ -12,10 +13,12 @@ const useLogin = () => {
                 `/users/login`, 
                 { email, password }
             );
+            toast(`Sucesso ao fazer login!`);
             localStorage.setItem('loggedInUser', JSON.stringify(res.data.user));
             localStorage.setItem('token', JSON.stringify(res.data.token));
             return res.data;
         } catch (err) {
+            toast.error(`${err.response?.data.message}` || `Erro ao fazer login`);
             setErrors(`${err.response?.data.message}` || `Erro ao fazer login`);
             return false;
         } finally {

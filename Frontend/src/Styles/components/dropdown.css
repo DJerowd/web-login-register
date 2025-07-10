@@ -16,6 +16,7 @@
     
     opacity: 0;
     background-color: color-mix(in srgb, var(--background-color) 100%, transparent 80%);
+    backdrop-filter: blur(4px);
 }
 .dropdown-show {
     transition: opacity 0s, transform 0s;

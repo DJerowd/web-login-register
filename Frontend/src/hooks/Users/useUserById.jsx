@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 import { getToken } from '../../utils/auth.js';
 import api from '../../services/api.js';
 
@@ -22,6 +23,7 @@ const useUserById = () => {
                     setUsers(res.data);
                     return true;
                 } catch (err) {
+                    toast.error(`${err.response?.data.message || err.message}`);
                     setErrors(`${err.response?.data.message || err.message}`);
                     return false;
                 } finally {

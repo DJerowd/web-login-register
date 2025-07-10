@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 import { getToken } from '../../utils/auth.js';
 import api from '../../services/api.js';
 
@@ -20,6 +21,7 @@ const useUsers = () => {
                 );
                 setUsers(res.data.sort((a, b) => (a.createDate > b.createDate ? 1 : -1)));
             } catch (error) {
+                toast.error(error);
                 setErrors(error);
             } finally {
                 setLoading(false);

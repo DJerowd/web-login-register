@@ -1,0 +1,18 @@
+.toast :has(div) {
+  font-family: var(--font-family-1);
+  font-size: var(--font-size-small);
+
+  border-radius: var(--radius);
+
+  box-shadow: var(--box-shadow);
+  text-shadow: var(--text-shadow);
+  border: 2px solid var(--border-color);
+  background-color: var(--background-color-2);
+  color: var(--font-color);
+}
+
+.toast :has(svg) {
+  font-family: var(--font-family-1);
+  font-size: var(--font-size-small);
+  color: var(--font-color);
+}

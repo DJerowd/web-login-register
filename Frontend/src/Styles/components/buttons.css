@@ -9,7 +9,7 @@
 }
 
 /* BOTÕES GERAIS */
-.sign-btn, .dashboard-btn, .action-btn, .profile-edit-btn, .show-btn, .delete-btn, .error-btn {
+.sign-btn, .dashboard-btn, .action-btn, .profile-edit-btn, .show-btn, .delete-btn, .error-btn, .modal-btn {
     cursor: pointer;
     font-size: var(--font-size-small);
 
@@ -19,7 +19,7 @@
     background-color: var(--primary-color);
     color: var(--font-color);
 }
-.sign-btn:hover, .dashboard-btn:hover, .action-btn:hover, .profile-edit-btn:hover, .image-edit-btn:hover, .delete-btn:hover {
+.sign-btn:hover, .dashboard-btn:hover, .action-btn:hover, .profile-edit-btn:hover, .image-edit-btn:hover, .delete-btn:hover, .modal-btn:hover {
     border-radius: var(--radius);
     filter: brightness(150%);
 }
@@ -63,7 +63,7 @@
     width: 3.0rem;
     height: 3.0rem;
     padding: 0.4rem;
-    border-radius: 100%;
+    border-radius: 100px;
 }
 .action-btn .action-icon {
     display: flex;
@@ -82,16 +82,27 @@
     bottom: 0;
     left: 0;
     right: 0;
-
+    
     stroke-width: 1px;
     stroke: var(--border-color);
     color: var(--font-color);
 }
 .image-edit-btn svg {
-    width: var(--font-size-medium);
-    height: var(--font-size-medium);
+    display: flex;
+    transition: all 0.5s;
+    width: calc(2 * var(--font-size-small));
+    height: calc(2 * var(--font-size-small));
+    border-radius: var(--font-size-small);
 
+    padding: calc(var(--font-size-small) / 3);
+    
+    opacity: 0.5;
+    box-shadow: var(--box-shadow);
+    background-color: var(--background-color-2);
     fill: currentColor;
+}
+.image-edit-btn:hover svg {
+    opacity: 1;
 }
 
 /* BOTÃO EXIBIR */
@@ -204,4 +215,11 @@
 .error-btn:hover .svgIcon {
     transition-duration: 0.3s;
     transform: translateY(-200%);
+}
+
+.modal-btn {
+    padding: 0.4rem 0.8rem;
+    border-radius: var(--radius);
+    
+    background-color: var(--background-color);
 }

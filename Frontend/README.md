@@ -8,7 +8,16 @@
   <a href="#usage">Usage</a>
 </p>
 
-## Techs
+## Funcionalidades
+
+- [x] Login e Registro de usuários
+- [x] Autenticação por Tokens
+- [x] Listagem de usuários cadastrados
+- [x] Pesquisa por nome de usuário
+- [x] Edição de perfil
+- [x] Imagem e Banner de usuário
+
+## Tecnologias Utilizadas
 
 - [x] React.js + Vite
 - [x] JavaScript

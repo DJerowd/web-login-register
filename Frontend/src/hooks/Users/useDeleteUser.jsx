@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 import { getToken } from '../../utils/auth.js';
 import api from '../../services/api.js';
 
@@ -7,10 +8,6 @@ const useDeleteUser = () => {
     const token = getToken();
 
     const deleteUser = async (userId) => {
-        const confirm = window.confirm("Tem certeza de que deseja excluir o usuário?");
-        if (!confirm) {
-            return false;
-        }
         try {
             await api.delete(
                 `/users/${userId}`, 
@@ -20,6 +17,7 @@ const useDeleteUser = () => {
             localStorage.removeItem('token');
             return true;
         } catch (err) {
+            toast.error(`Erro ao deletar usuário: ${JSON.stringify(err.response?.data || err.message)}`);
             setErrors(`Erro ao deletar usuário: ${JSON.stringify(err.response?.data || err.message)}`);
             return false;
         }

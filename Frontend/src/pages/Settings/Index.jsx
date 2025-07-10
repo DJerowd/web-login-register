@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getLoggedInUser } from '../../utils/auth.js';
 import useDeleteUser from '../../hooks/Users/useDeleteUser.jsx';
 
 import { ReturnButton } from '../../components/Buttons';
+import ConfirmModal from '../../components/Modal/ConfirmModal.jsx';
 import ErrorPage from "../../components/ErrorPage";
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -13,10 +15,16 @@ function Settings() {
     const navigate = useNavigate();
     const loggedInUser = getLoggedInUser();
     const { deleteUser, errors } = useDeleteUser();
+    const [modalOpen, setModalOpen] = useState(false);
 
     // FUNÇÃO PARA DELETAR USUÁRIO
     const handleDelete = async (e) => {
         e.preventDefault();
+        setModalOpen(true);
+    };
+
+    const handleConfirm = async () => {
+        setModalOpen(false);
         const success = await deleteUser(loggedInUser.id);
         if (success) {
             navigate('/signin');
@@ -57,6 +65,13 @@ function Settings() {
                 </main>
 
             </div>
+
+            <ConfirmModal
+                title="Deseja excluir o perfil permanentemente?"
+                isOpen={modalOpen}
+                onConfirm={handleConfirm}
+                onCancel={() => { setModalOpen(false) }}
+            />
             <Footer/>
         </div>
     );

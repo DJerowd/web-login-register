@@ -1,6 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import { StrictMode} from 'react';
+import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
+import { Slide, ToastContainer } from 'react-toastify';
 
 import Routes from './routes.jsx';
 
@@ -9,11 +10,22 @@ import './Styles/layout.css';
 import './Styles/error.css';
 import './Styles/components/inputs.css';
 import './Styles/components/buttons.css';
+import './Styles/components/toast.css'
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
     <BrowserRouter>
       <Routes />
     </BrowserRouter>
-  </React.StrictMode>,
+    
+    <ToastContainer 
+      className='toast'
+      position="bottom-left"
+      autoClose={5000}
+      hideProgressBar={true}
+      draggable
+      theme="dark"
+      transition={Slide}
+    />
+  </StrictMode>
 )

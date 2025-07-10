@@ -3,6 +3,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: var(--font-size-small);
 
     top: 0;
     left: 0;
@@ -12,8 +13,8 @@
     width: 100%;
     height: 100vh;
 
-    background-color: #000000AA;
-    backdrop-filter: blur(12px);
+    background-color: color-mix(in srgb, var(--background-color) 100%, transparent 80%);
+    backdrop-filter: blur(4px);
 }
 .modal {
     display: flex;
@@ -22,7 +23,7 @@
     align-items: center;
 
     padding: 1.0rem;
-    gap: 0.4rem;
+    gap: 1.0rem;
     border-radius: 8px;
 
     border: 2px solid var(--border-color);
@@ -31,13 +32,15 @@
     color: var(--font-color);
 }
 .modal .title {
-    font-size: 1.6rem;
+    font-size: var(--font-size-medium);
     font-weight: bolder;
 }
-.modal .text {
-    font-size: 1.2rem;
-}
-.modal div {
+
+.modal .modal-btn-bar {
     display: flex;
-    gap: 1rem;
+    justify-content: center;
+    gap: 1.0rem;
+}
+.modal-btn.confirm {
+    background-color: var(--primary-color);
 }

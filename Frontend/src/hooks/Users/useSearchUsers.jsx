@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 import { getToken } from '../../utils/auth.js';
 import api from '../../services/api.js';
-
 
 const useSearchUsers = () => {
     const [ users, setUsers ] = useState([]);
@@ -32,6 +32,7 @@ const useSearchUsers = () => {
                 return true;
             } catch (err) {
                 setUsers([]);
+                toast.error(`${err.response?.data.message || err.message}`);
                 setErrors(`${err.response?.data.message || err.message}`);
                 return false;
             } finally {
