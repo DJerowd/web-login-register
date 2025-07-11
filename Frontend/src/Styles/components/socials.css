@@ -24,7 +24,7 @@
     overflow: hidden;
     justify-content: center;
     align-items: center;
-    transition: all 0.3s ease-in-out;
+    transition: var(--fast-transition);
 
     width: 50px;
     height: 50px;
@@ -42,7 +42,7 @@
 /* PREENCHIMENTO DOS ITENS */
 .social-medias .icon-content a .filled {
     position: absolute;
-    transition: all 0.3s ease-in-out;
+    transition: var(--fast-transition);
 
     top: auto;
     bottom: 0;
@@ -77,7 +77,7 @@
     position: absolute;
     transform: translateX(-50%);
     visibility: hidden;
-    transition: all 0.3s ease;
+    transition: var(--fast-transition);
     opacity: 0;
 
     top: -30px;

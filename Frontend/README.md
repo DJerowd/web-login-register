@@ -45,8 +45,6 @@
 <p align="center"> Developed by <a href="https://www.linkedin.com/in/djerowd-moreschi/">Djerowd Alexsander Ruiz Moreschi Faria</a></p>
 
 <!-- 
-1. Criar imagem de perfil
-2. Tratar erro ao deletar usuário
-3. Incrementar Modal
-4. Incrementar Notificação
+1. Validar login ativo constantemente
+2. Criar imagem de perfil
  -->

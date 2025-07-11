@@ -22,7 +22,7 @@
 .header .link {
     text-decoration: none;
     font-weight: bold;
-    transition: all 0.25s;
+    transition: var(--fast-transition);
     cursor: pointer;
 
     padding: 0.4rem 0.8rem;
@@ -48,7 +48,7 @@
     align-items: center;
     text-align: center;
     font-size: var(--font-size-large);
-    transition: all 0.25s;
+    transition: var(--fast-transition);
     cursor: pointer;
     overflow: hidden;
     

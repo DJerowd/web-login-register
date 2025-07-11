@@ -1,7 +1,7 @@
 /* IMPUTS GERAIS */
 .sign-input, .sign-input.password input, .edit-input, .edit-input.password input, .search-input input {
     cursor: text;
-    transition: all 0.3s ease;
+    transition: var(--fast-transition);
     font-size: var(--font-size-small);
     font-weight: normal;
 }
@@ -81,7 +81,7 @@
     color: var(--font-color);
 }
 .search-input .icon {
-    transition: all 0.25s;
+    transition: var(--fast-transition);
 
     height: 100%;
     width: max-content;
@@ -96,7 +96,7 @@
     backdrop-filter: brightness(150%);
 }
 .search-input .icon :only-child {
-    transition: all 0.25s;
+    transition: var(--fast-transition);
 
     height: 100%;
     width: max-content;
@@ -105,7 +105,7 @@
 }
 .search-input input {
     display: flex;
-    transition: all 0.25s;
+    transition: var(--fast-transition);
     
     height: 100%;
     width: 100%;

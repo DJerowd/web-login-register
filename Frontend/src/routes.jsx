@@ -1,3 +1,4 @@
+import { useEffect} from 'react';
 import { Routes, Route } from "react-router-dom";
 
 import ErrorPage from "./components/ErrorPage";
@@ -11,6 +12,13 @@ import UsersList from "./pages/UsersList/Index.jsx";
 import Settings from "./pages/Settings/Index.jsx";
 
 function MainRoutes(){
+    useEffect(() => {
+      const savedPrimaryColor = localStorage.getItem('primaryColor');
+      if (savedPrimaryColor) {
+        document.documentElement.style.setProperty('--primary-color', savedPrimaryColor);
+      }
+    }, []);
+
     return (
         <Routes>
             <Route index element={<Home />} />

@@ -12,10 +12,19 @@
     border: 1px solid var(--border-color);
     background-color: var(--background-color-2);
 }
-.settings h2{
+.settings section {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+
+    width: 100%;
+    padding: 1.0rem;
+    gap: 1.0rem;
+    border-radius: var(--radius);
+
+    border: 1px solid var(--border-color);
+}
+.settings h2 {
     font-weight: bold;
     font-size: var(--font-size-medium);
 
@@ -26,22 +35,38 @@
     box-shadow: var(--box-shadow);
     background-color: var(--primary-color);
 }
-.settings h3{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
+.settings h3, .settings p {
+    text-align: center;
     text-indent: 1.0rem;
 
     width: 100%;
 }
-.settings p{
-    display: flex;
-    justify-content: start;
-    align-items: start;
-    text-align: start;
-    text-indent: 1.0rem;
+.settings h3 {
+    font-weight: bold;
+}
+.settings p {
     font-weight: normal;
+}
 
-    width: 100%;
+.settings .color-options {
+    display: flex;
+    justify-content: center;
+    gap: 1.0rem;
+    padding: 0.6rem 0.4rem;
+}
+.settings .color-button {
+    cursor: pointer;
+    transition: var(--fast-transition);
+
+    width: calc(2 * var(--font-size-medium));
+    height: calc(2 * var(--font-size-medium));
+    border-radius: 100px;
+    
+    border: none;
+}
+.settings .color-button:hover {
+    transform: scale(1.1);
+}
+.settings .color-button.selected {
+    box-shadow: 0 0 0 2px white, 0 0 0 4px var(--primary-color);
 }

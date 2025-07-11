@@ -3,7 +3,7 @@
     text-align: center;
     cursor: pointer;
     font-size: var(--font-size-small);
-    transition: all 0.25s;
+    transition: var(--fast-transition);
 
     height: 3.0rem;
     padding: 0.4rem 0.8rem;

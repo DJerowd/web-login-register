@@ -6,10 +6,11 @@
     font-size: var(--font-size-large);
 }
 .home h2 {
-    font-size: var(--font-size-small);
+    font-size: var(--font-size-medium);
 }
 .home h1, .home h2 {
-    transition: all 0.5s;
+    transition: var(--fast-transition);
+    font-family: var(--font-family-2);
 }
 .home h1:hover, .home h2:hover {
     text-shadow: 0 0 4px var(--font-color);

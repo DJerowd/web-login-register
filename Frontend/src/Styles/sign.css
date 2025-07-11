@@ -27,7 +27,7 @@
 }
 
 .sign-form .link {
-    transition: all 0.25s;
+    transition: var(--fast-transition);
     text-decoration: none;
 
     text-shadow: var(--text-shadow);
