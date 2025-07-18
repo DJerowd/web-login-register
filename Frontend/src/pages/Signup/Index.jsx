@@ -6,7 +6,7 @@ import Form from './Form';
 
 import '../../Styles/sign.css';
 
-function Signup() {
+export default function Signup() {
     const { register, errors } = useRegister();
 
     return (
@@ -15,7 +15,7 @@ function Signup() {
             <div className='content'>
 
                 <main className='sign'>
-                    <h2 className='title'>Registre-se agora mesmo</h2>
+                    <h2 className='title'>Criar uma conta</h2>
                     <Form register={register} errors={errors} />
                 </main>
 
@@ -23,6 +23,4 @@ function Signup() {
             <Footer/>
         </div>
     );
-}
-
-export default Signup;
+};

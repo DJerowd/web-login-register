@@ -25,14 +25,19 @@
     border: 1px solid var(--border-color);
 }
 .settings h2 {
-    font-weight: bold;
+    display: flex;
+    align-items: center;
+    font-weight: normal;
     font-size: var(--font-size-medium);
+    transition: var(--fast-transition);
 
+    height: 3.0rem;
     padding: 0.4rem 0.8rem;
-    border-radius: var(--radius);
+    border-radius: 100px;
   
     border: 2px solid var(--border-color);
     box-shadow: var(--box-shadow);
+    text-shadow: var(--text-shadow);
     background-color: var(--primary-color);
 }
 .settings h3, .settings p {

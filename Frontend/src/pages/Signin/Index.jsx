@@ -6,7 +6,7 @@ import Form from './Form';
 
 import '../../Styles/sign.css';
 
-function Login() {
+export default function Login() {
     const { login, errors } = useLogin();
 
     return (
@@ -23,6 +23,4 @@ function Login() {
             <Footer/>
         </div>
     );
-}
-
-export default Login;
+};

@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IoEye, IoEyeOff } from "react-icons/io5";
+import PropTypes from 'prop-types';
 
-import ConfirmModal from '../../components/Modal/ConfirmModal.jsx';
+import { ConfirmModal } from '../../components/Modals';
 
-function Form({edit, errors, loggedInUser}) {
+export default function Form({edit, errors, loggedInUser}) {
     const navigate = useNavigate();
     const [user, setUser] = useState({ id: loggedInUser.id, username: loggedInUser.username, email: loggedInUser.email, password: '', confirmPassword: '' });
     const [showPassword, setShowPassword] = useState(false);
-    const [modalOpen, setModalOpen] = useState(false);
+    const [confirmEditing, setConfirmEditing] = useState(false);
 
     const handleChangeData = (e) => {
         const { name, value } = e.target;
@@ -20,11 +21,11 @@ function Form({edit, errors, loggedInUser}) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setModalOpen(true);
+        setConfirmEditing(true);
     };
 
     const handleConfirm = async () => {
-        setModalOpen(false);
+        setConfirmEditing(false);
         const success = await edit(user, loggedInUser);
         if (success) {
             navigate('/dashboard');
@@ -63,12 +64,16 @@ function Form({edit, errors, loggedInUser}) {
         
         <ConfirmModal
             title="Deseja salvar as alterações do perfil?"
-            isOpen={modalOpen}
+            isOpen={confirmEditing}
             onConfirm={handleConfirm}
-            onCancel={() => { setModalOpen(false) }}
+            onCancel={() => { setConfirmEditing(false) }}
         />
     </form>
   );
-}
+};
 
-export default Form;
+Form.propTypes = {
+    edit: PropTypes.func.isRequired,
+    errors: PropTypes.string.isRequired,
+    loggedInUser: PropTypes.object.isRequired
+};

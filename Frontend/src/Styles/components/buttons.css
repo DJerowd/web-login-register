@@ -61,6 +61,7 @@
     text-decoration: none;
     transition: var(--fast-transition);
 
+    min-width: 3.0rem;
     width: 3.0rem;
     height: 3.0rem;
     padding: 0.4rem;

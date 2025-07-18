@@ -1,22 +1,21 @@
 import { useState } from 'react';
-import { IoSearch } from "react-icons/io5";
 
 import { getLoggedInUser } from '../../utils/auth.js';
 import useSearchUsers from '../../hooks/Users/useSearchUsers';
 
 import { ReturnButton } from '../../components/Buttons';
+import { SearchInput } from '../../components/Inputs';
+import { Pagination } from '../../components/Pagination';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-
 import ErrorPage from "../../components/ErrorPage";
 import LoadingPage from '../../components/LoadingPage';
-import Pagination from '../../components/Pagination';
 import List from './List';
 
 import '../../Styles/table.css';
 import '../../Styles/components/select.css'
 
-function UsersList() {
+export default function UsersList() {
     const { users, setUpdateList, loading, errors, search, setSearch } = useSearchUsers();
     const loggedInUser = getLoggedInUser();
     const [itemsPerPage, setItemsPerPage] = useState(6);
@@ -36,20 +35,20 @@ function UsersList() {
                         <div className='btn-bar'>
                             <ReturnButton/>
                             
-                            <label className='search-input'>
-                                <button className='icon' onClick={() => { setUpdateList(prevState => !prevState); setCurrentPage(1); }}>
-                                    <IoSearch/>
-                                </button>
-                                <input 
-                                    type="text" 
-                                    placeholder="Pesquisar..." 
-                                    value={search} 
-                                    onChange={(e) => setSearch(e.target.value)} 
-                                    disabled={loading}
-                                />
-                            </label>
+                            <SearchInput
+                                value={search}
+                                onChange={e => setSearch(e.target.value)}
+                                onSearch={() => { setUpdateList(prevState => !prevState); setCurrentPage(1); }}
+                                placeholder="Pesquisar..."
+                                disabled={loading}
+                            />
 
-                            <select className='search-select' name="itemsPerPage" value={itemsPerPage} onChange={(e) => { setItemsPerPage(e.target.value); setCurrentPage(1);}}>
+                            <select 
+                                className='items-quantity-select' 
+                                name="itemsPerPage" 
+                                value={itemsPerPage} 
+                                onChange={(e) => { setItemsPerPage(e.target.value); setCurrentPage(1); }}
+                            >
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="4">4</option>
@@ -60,11 +59,20 @@ function UsersList() {
                             </select>
                         </div>
 
-                        <List users={users} currentPage={currentPage} itemsPerPage={itemsPerPage} />
+                        <List 
+                            users={users} 
+                            currentPage={currentPage} 
+                            itemsPerPage={itemsPerPage} 
+                        />
 
                         {errors && <h2 className={'form-error'}>{errors}</h2>}
                         
-                        <Pagination itens={users} currentPage={currentPage} setCurrentPage={setCurrentPage} itemsPerPage={itemsPerPage} />
+                        <Pagination 
+                            itens={users} 
+                            currentPage={currentPage} 
+                            setCurrentPage={setCurrentPage} 
+                            itemsPerPage={itemsPerPage} 
+                        />
                     </main>
 
                 </div>
@@ -72,6 +80,4 @@ function UsersList() {
             <Footer/>
         </div>
     );
-}
-
-export default UsersList;
+};

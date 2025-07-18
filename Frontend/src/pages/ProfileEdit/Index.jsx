@@ -11,7 +11,7 @@ import Form from './Form.jsx';
 import '../../Styles/form.css';
 import '../../Styles/profile.css';
 
-function ProfileEdit() {
+export default function ProfileEdit() {
     const loggedInUser = getLoggedInUser();
     const { edit, errors } = useEditUser();
 
@@ -84,6 +84,4 @@ function ProfileEdit() {
             <Footer/>
         </div>
     );
-}
-
-export default ProfileEdit;
+};

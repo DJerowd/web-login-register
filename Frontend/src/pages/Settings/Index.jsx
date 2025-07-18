@@ -4,28 +4,33 @@ import { getLoggedInUser } from '../../utils/auth.js';
 import useDeleteUser from '../../hooks/Users/useDeleteUser.jsx';
 
 import { ReturnButton } from '../../components/Buttons';
-import ConfirmModal from '../../components/Modal/ConfirmModal.jsx';
+import { ConfirmModal } from '../../components/Modals';
 import ErrorPage from "../../components/ErrorPage";
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
 import '../../Styles/settings.css';
+import '../../Styles/components/select.css'
 
-function Settings() {
+export default function Settings() {
     const navigate = useNavigate();
     const loggedInUser = getLoggedInUser();
     const { deleteUser, errors } = useDeleteUser();
-    const [modalOpen, setModalOpen] = useState(false);
-    const predefinedColors = ['#7FA000', '#409FFF', '#E74C3C', '#8E44AD'];
+    const [confirmDeletion, setConfirmDeletion] = useState(false);
+
+    const predefinedColors = ['#C0C0C0', '#7FA000', '#409FFF', '#E74C3C', '#8E44AD'];
     const [primaryColor, setPrimaryColor] = useState(localStorage.getItem('primaryColor'));
+    const [fontFamily, setFontFamily] = useState(localStorage.getItem('fontFamily') || 'Arial, sans-serif');
 
     useEffect(() => {
         document.documentElement.style.setProperty('--primary-color', primaryColor);
         localStorage.setItem('primaryColor', primaryColor);
-    }, [primaryColor]);
+        document.documentElement.style.setProperty('--font-family-1', fontFamily);
+        localStorage.setItem('fontFamily', fontFamily);
+    }, [primaryColor, fontFamily]);
 
     const handleDeleteUser = async () => {
-        setModalOpen(false);
+        setConfirmDeletion(false);
         const success = await deleteUser(loggedInUser.id);
         if (success) {
             navigate('/signin');
@@ -61,12 +66,31 @@ function Settings() {
                         </div>
                     </section>
 
+                    {/* FONTE DA PÁGINA */}
+                    <section>
+                        <h3>Fonte</h3>
+                        <p>Fonte padão da página</p>
+
+                        <label>
+                            <select className='settings-select' value={fontFamily} onChange={(e) => setFontFamily(e.target.value)}>
+                                <option value={`"Inter", system-ui, Helvetica, Arial, sans-serif`}>Inter</option>
+                                <option value={`"Michroma", Arial, sans-serif`}>Michroma</option>
+                                <option value={`Arial, sans-serif`}>Arial</option>
+                                <option value={`'Segoe UI', sans-serif`}>Segoe UI</option>
+                                <option value={`'Courier New', monospace`}>Courier New</option>
+                                <option value={`'Georgia', serif`}>Georgia</option>
+                                <option value={`'Roboto', sans-serif`}>Roboto</option>
+                            </select>
+                        </label>
+
+                    </section>
+
                     {/* EXCLUIR CONTA */}
                     <section>
                         <h3>Excluir conta</h3>
                         <p>A ação de excluir a conta é um processo irreversível que apagará seus dados de forma irreversível:</p>
                         
-                        <button className='delete-btn' onClick={ () => { setModalOpen(true) }} >
+                        <button className='delete-btn' onClick={ () => { setConfirmDeletion(true) }} >
                             <span className="text">
                                 Excluir usuário
                             </span>
@@ -83,13 +107,11 @@ function Settings() {
             </div>
             <ConfirmModal
                 title="Deseja excluir o perfil permanentemente?"
-                isOpen={modalOpen}
+                isOpen={confirmDeletion}
                 onConfirm={handleDeleteUser}
-                onCancel={() => { setModalOpen(false) }}
+                onCancel={() => { setConfirmDeletion(false) }}
             />
             <Footer/>
         </div>
     );
 }
-
-export default Settings;

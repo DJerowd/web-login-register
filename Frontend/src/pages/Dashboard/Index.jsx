@@ -7,7 +7,7 @@ import Footer from '../../components/Footer';
 
 import '../../Styles/dashboard.css';
 
-function Dashboard() {
+export default function Dashboard() {
     const navigate = useNavigate();
     const loggedInUser = getLoggedInUser();
 
@@ -29,5 +29,3 @@ function Dashboard() {
         </div>
     );
 }
-
-export default Dashboard;

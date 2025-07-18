@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-function List({ users, currentPage, itemsPerPage }) {
+export default function List({ users, currentPage, itemsPerPage }) {
     const navigate = useNavigate();
 
     // DIRECIONA PARA A PAGINA DE DETALHES DO USUÁRIO SELECIONADO.
@@ -20,7 +21,7 @@ function List({ users, currentPage, itemsPerPage }) {
                 <td>USUÁRIOS</td>
             </th>
             {currentUsers.map((user, index) => (
-            <tr key={user.id} onClick={() => handleUserDetails(user.id)}>
+            <tr key={user.id} title={`Ver perfil de ${user.username}`} onClick={() => handleUserDetails(user.id)}>
                 <td> 
                     <span id='user-index'>{(currentPage - 1) * itemsPerPage + index + 1} </span> 
                 </td>
@@ -42,6 +43,10 @@ function List({ users, currentPage, itemsPerPage }) {
             ))}
         </table>
     );
-}
-    
-export default List;
+};
+
+List.propTypes = {
+    users: PropTypes.array.isRequired,
+    currentPage: PropTypes.number.isRequired,
+    itemsPerPage: PropTypes.number.isRequired
+};

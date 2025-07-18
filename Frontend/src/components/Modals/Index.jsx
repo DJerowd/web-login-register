@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types';
 import '../../Styles/components/modal.css'
 
-const ConfirmModal = ({ title, isOpen, onConfirm, onCancel }) => {
+export function ConfirmModal({ title, isOpen, onConfirm, onCancel }) {
 
   if (!isOpen) return null;
 
@@ -21,4 +22,9 @@ const ConfirmModal = ({ title, isOpen, onConfirm, onCancel }) => {
     );
 };
 
-export default ConfirmModal;
+ConfirmModal.propTypes = {
+    title: PropTypes.string.isRequired,
+    isOpen: PropTypes.bool.isRequired,
+    onConfirm: PropTypes.func.isRequired,
+    onCancel: PropTypes.func.isRequired
+};

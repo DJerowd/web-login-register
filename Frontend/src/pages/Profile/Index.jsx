@@ -12,7 +12,7 @@ import Footer from '../../components/Footer';
 
 import '../../Styles/profile.css';
 
-function Profile() {
+export default function Profile() {
     const { id } = useParams();
     const { users, loading, errors, setUserId } = useUserById();
     const loggedInUser = getLoggedInUser();
@@ -83,6 +83,4 @@ function Profile() {
             <Footer/>
         </div>
     );
-}
-
-export default Profile;
+};

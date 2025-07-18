@@ -48,7 +48,6 @@
     justify-content: start;
     align-items: center;
     text-align: center;
-    text-decoration: underline;
     font-size: var(--font-size-small);
     overflow: hidden;
     text-wrap: nowrap;
@@ -64,6 +63,8 @@
     color: var(--font-color);
 }
 .dropdown-item:hover {
+    text-decoration: underline;
+    filter: brightness(150%);
     color: var(--primary-color);
 }
 .dropdown-item .dropdown-icon {

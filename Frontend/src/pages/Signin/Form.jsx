@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { IoEye, IoEyeOff } from "react-icons/io5";
 import { Link } from 'react-router-dom';
+import { IoEye, IoEyeOff } from "react-icons/io5";
+import PropTypes from 'prop-types';
 
-function Form({ login, errors }) {
+export default function Form({ login, errors }) {
     const navigate = useNavigate();
     const [user, setUser] = useState({ email: '', password: '' });
     const [showPassword, setShowPassword] = useState(false);
@@ -50,6 +51,9 @@ function Form({ login, errors }) {
 
     </form>
   );
-}
+};
 
-export default Form;
+Form.propTypes = {
+    login: PropTypes.func.isRequired,
+    errors: PropTypes.string.isRequired
+};

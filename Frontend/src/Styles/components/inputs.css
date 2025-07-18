@@ -55,7 +55,6 @@
 .edit-input.password  {
     flex-direction: row;
 
-    width: 100%;
     padding: 0;
     border-radius: 8px;
 
@@ -69,10 +68,11 @@
 .search-input {
     display: flex;
     align-items: center;
+    position: relative;
 
     height: 3.0rem;
-    width: 60%;
-    max-width: calc(var(--main-width) / 2);
+    width: 100%;
+    max-width: var(--main-width);
     border-radius: 100px;
 
     border: 1px solid var(--border-color);
@@ -80,37 +80,41 @@
     background-color: var(--background-color-2);
     color: var(--font-color);
 }
-.search-input .icon {
-    transition: var(--fast-transition);
 
+.search-input .icon {
     height: 100%;
     width: max-content;
-    padding: 10px 10px;
-    border-radius: 24px;
+    z-index: 1;
     
     border: none;
     background: none;
     color: var(--font-color);
 }
-.search-input .icon :hover {
-    backdrop-filter: brightness(150%);
-}
 .search-input .icon :only-child {
+    overflow: visible;
     transition: var(--fast-transition);
 
     height: 100%;
     width: max-content;
+    padding: 10px 10px;
+    border-radius: 100px;
     
     color: var(--font-color);
 }
+.search-input .icon :hover {
+    filter: brightness(150%);
+    background-color: var(--background-color-2);
+}
 .search-input input {
     display: flex;
+    position: absolute;
+    text-indent: 3.0rem;
     transition: var(--fast-transition);
     
     height: 100%;
     width: 100%;
     padding: 0.4rem 0.8rem;
-    border-radius: 0 100px 100px 0;
+    border-radius: 100px;
 
     border: 0;
     background: none;

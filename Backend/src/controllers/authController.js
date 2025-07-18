@@ -36,10 +36,23 @@ export const loginUser = (req, res) => {
     const validPassword = await bcrypt.compare(password, user.password);
     if (!validPassword) return res.status(401).json({ message: "A senha ou email do usuário incorreta" });
     const { password: _, ...userWithoutPassword } = user;
-    const token = jwt.sign({ id: user.id, username: user.username, email: user.email }, process.env.JWT_SECRET, { expiresIn: '60m' });
+    const token = jwt.sign({ id: user.id, username: user.username, email: user.email }, process.env.JWT_SECRET, { expiresIn: '0.060m' });
     return res.status(200).json({user: userWithoutPassword, token: token});
   });
   } catch (error) {
       return res.status(500).json({ message: "Erro interno no servidor" });
+  }
+};
+
+export const validateToken = (req, res) => {
+  const authHeader = req.headers['authorization'];
+  if (!authHeader) return res.status(401).json({ valid: false, message: 'No token provided.' });
+  const token = authHeader.split(' ')[1];
+  if (!token) return res.status(401).json({ valid: false, message: 'Malformed token.' });
+  try {
+      const decoded = jwt.verify(token.replace('Bearer ', ''), process.env.JWT_SECRET);
+      if (decoded) return res.status(200).json({ valid: true });
+  } catch (err) {
+      return res.status(401).json({ valid: false, message: 'Invalid or expired token.' });
   }
 };

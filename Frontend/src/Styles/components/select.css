@@ -1,28 +1,44 @@
-/* SELECT DE PESQUISA */
-.search-select {
-    text-align: center;
-    cursor: pointer;
+.items-quantity-select, .settings-select {
+    font-family: var(--font-family-1);
     font-size: var(--font-size-small);
     transition: var(--fast-transition);
+    cursor: pointer;
 
+    color: var(--font-color);
+}
+
+/* SELECT DE PESQUISA */
+.items-quantity-select {
+    text-align: center;
+
+    min-width: 3.0rem;
+    width: 3.0rem;
     height: 3.0rem;
-    padding: 0.4rem 0.8rem;
+    padding: 0.4rem;
     border-radius: 100px;
 
     border: 1px solid var(--border-color);
     box-shadow: var(--box-shadow);
     text-shadow: var(--text-shadow);
     background-color: var(--background-color-2);
-    color: var(--font-color);
 }
-.search-select:hover {
+.items-quantity-select:hover {
     border-radius: var(--radius);
 }
-.search-select:focus {
+.items-quantity-select:focus {
     border-radius: var(--radius);
     outline: 2px solid var(--primary-color);
 }
-.search-select option {
+.items-quantity-select option {
     display: flex;
     text-align: center;
+}
+
+/* SELECT DE CONFIGURAÇÔES */
+.settings-select {
+    padding: 0.4rem 0.8rem;
+    border-radius: var(--radius);
+
+    border: 1px solid var(--border-color);
+    background-color: var(--background-color);
 }

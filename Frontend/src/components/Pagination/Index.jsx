@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types';
 import '../../Styles/components/pagination.css';
 
-function Pagination({ itens, currentPage, setCurrentPage, itemsPerPage }) {
+export function Pagination({ itens, currentPage, setCurrentPage, itemsPerPage }) {
     const totalPages = Math.ceil(itens.length / itemsPerPage);
     const maxVisiblePages = 3;
 
@@ -52,5 +53,11 @@ function Pagination({ itens, currentPage, setCurrentPage, itemsPerPage }) {
         </div>
     );
 }
+
+Pagination.propTypes = {
+    itens: PropTypes.array.isRequired,
+    currentPage: PropTypes.number.isRequired,
+    setCurrentPage: PropTypes.func.isRequired,
+    itemsPerPage: PropTypes.number.isRequired
+};
     
-export default Pagination;

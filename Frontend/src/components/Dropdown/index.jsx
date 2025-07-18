@@ -2,18 +2,20 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getLoggedInUser } from '../../utils/auth.js';
 import { IoHome, IoPerson, IoList, IoSettings, IoLogOut } from "react-icons/io5";
+import PropTypes from 'prop-types';
 
-import ConfirmModal from '../../components/Modal/ConfirmModal.jsx';
+import { ConfirmModal } from '../Modals';
 
 import '../../Styles/components/dropdown.css';
 
-function Dropdown({ showDropdown }) {
+export function Dropdown({ showDropdown }) {
     const navigate = useNavigate();
     const loggedInUser = getLoggedInUser();
-    const [modalOpen, setModalOpen] = useState(false);
+    const [confirmLogoff, setConfirmLogoff] = useState(false);
 
     return (
         <div className={showDropdown ? 'dropdown dropdown-show' : 'dropdown'}>
+
             <nav className={showDropdown ? 'dropdown-nav dropdown-nav-show' : 'dropdown-nav'}>
                 <a className='dropdown-item' onClick={() => { navigate(`/`) }}>
                     <IoHome className='dropdown-icon'/> Home 
@@ -31,25 +33,26 @@ function Dropdown({ showDropdown }) {
                     <IoSettings className='dropdown-icon'/> Configurações 
                 </a>
 
-                <a className='dropdown-item' onClick={() => { setModalOpen(true) }}> 
+                <a className='dropdown-item' onClick={() => { setConfirmLogoff(true) }}> 
                     <IoLogOut className='dropdown-icon'/> Sair 
                 </a>
-
             </nav>
 
             <ConfirmModal
                 title="Deseja realmente sair?"
-                isOpen={modalOpen}
+                isOpen={confirmLogoff}
                 onConfirm={ async () => { 
-                    setModalOpen(false), 
+                    setConfirmLogoff(false), 
                     localStorage.removeItem('loggedInUser'), 
                     localStorage.removeItem('token'), 
                     navigate(`/signin`) 
                 }}
-                onCancel={ () => { setModalOpen(false) }}
+                onCancel={ () => { setConfirmLogoff(false) }}
             />
         </div>
     )
-}
+};
 
-export default Dropdown;
+Dropdown.propTypes = {
+    showDropdown: PropTypes.bool.isRequired
+};

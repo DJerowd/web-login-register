@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { toast } from 'react-toastify';
-import { getToken } from '../../utils/auth.js';
+import { getToken, clearAuthData } from '../../utils/auth.js';
 import api from '../../services/api.js';
 
 const useDeleteUser = () => {
@@ -13,8 +13,7 @@ const useDeleteUser = () => {
                 `/users/${userId}`, 
                 { headers: { Authorization: `Bearer ${token}` } }
             );
-            localStorage.removeItem('loggedInUser');
-            localStorage.removeItem('token');
+            clearAuthData();
             return true;
         } catch (err) {
             toast.error(`Erro ao deletar usuário: ${JSON.stringify(err.response?.data || err.message)}`);

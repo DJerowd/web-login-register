@@ -50,26 +50,14 @@
     width: 100%;
     height: 0;
     
-    background-color: #000;
+    background-color: var(--background-color);
 }
 .social-medias .icon-content a:hover .filled {
     height: 100%;
 }
-
-/* LINKEDIN */
-.social-medias .icon-content a[data-social="linkedin"] .filled,
-.social-medias .icon-content a[data-social="linkedin"] ~ .tooltip {
-  background-color: #0274B3;
-}
-/* GITHUB */
-.social-medias .icon-content a[data-social="github"] .filled,
-.social-medias .icon-content a[data-social="github"] ~ .tooltip {
-  background-color: #24262A;
-}
-/* YOUTUBE */
-.social-medias .icon-content a[data-social="youtube"] .filled,
-.social-medias .icon-content a[data-social="youtube"] ~ .tooltip {
-    background-color: #FF0000;
+.social-medias .icon-content a .filled,
+.social-medias .icon-content a ~ .tooltip {
+  background-color: var(--primary-color);
 }
 
 /* TOOLTIP */
@@ -77,19 +65,19 @@
     position: absolute;
     transform: translateX(-50%);
     visibility: hidden;
+    font-size: var(--font-size-small);
     transition: var(--fast-transition);
     opacity: 0;
 
     top: -30px;
     left: 50%;
     padding: 0.4rem 0.8rem;
-    border-radius: 5px;
-    font-size: 14px;
+    border-radius: var(--radius);
 
     color: var(--font-color);
 }
 .social-medias .icon-content:hover .tooltip {
     visibility: visible;
     opacity: 1;
-    top: -40px;
+    top: -50px;
 }

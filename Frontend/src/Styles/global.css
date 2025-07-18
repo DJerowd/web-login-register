@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Michroma&display=swap');
 
 * {
   box-sizing: border-box;
@@ -14,7 +14,7 @@
   /* VARIÁVEIS DE PALETA DE CORES */
   --primary-color: light-dark( #409FFF, #7FA000);
   --header-color: color-mix(in srgb, var(--primary-color) 100%, #00000000 20%);
-  --footer-color: light-dark( #505050, #000000);
+  --footer-color: light-dark( #D0D0D0, #101010);
   --background-color: light-dark( #C0C0C0, #040404);
   --background-color-2: light-dark( #FFFFFF, #222222);
   --font-color: light-dark( #000000, #FFFFFF);
@@ -25,7 +25,7 @@
   
   /* VARIÁVEIS DE TIPOS DE FONTES */
   --font-family-1: "Inter", system-ui, Helvetica, Arial, sans-serif;
-  --font-family-2: "Black Ops One", Arial, sans-serif;
+  --font-family-2: "Michroma", Arial, sans-serif;
   
   /* VARIÁVEIS DE FORMATAÇÂO */
   --header-height: 64px;

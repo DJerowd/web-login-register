@@ -21,6 +21,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    transform: translateY(calc(var(--header-height) - 2 * var(--header-height)));
 
     padding: 1.0rem;
     gap: 1.0rem;

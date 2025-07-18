@@ -3,7 +3,7 @@ import { getLoggedInUser } from '../../utils/auth.js';
 import { Link } from 'react-router-dom';
 import { IoMenu } from "react-icons/io5";
 
-import Dropdown from '../Dropdown/index.jsx';
+import { Dropdown } from '../Dropdown';
 
 import '../../Styles/components/header.css';
 import '../../Styles/profile.css';

@@ -12,26 +12,27 @@ import UsersList from "./pages/UsersList/Index.jsx";
 import Settings from "./pages/Settings/Index.jsx";
 
 function MainRoutes(){
-    useEffect(() => {
-      const savedPrimaryColor = localStorage.getItem('primaryColor');
-      if (savedPrimaryColor) {
-        document.documentElement.style.setProperty('--primary-color', savedPrimaryColor);
-      }
-    }, []);
 
-    return (
-        <Routes>
-            <Route index element={<Home />} />
-            <Route path="/*" element={<ErrorPage />} />
-            <Route path="/signin" element={<Signin />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/profile/:id" element={<Profile />} />
-            <Route path="/profile/edit" element={<ProfileEdit />} />
-            <Route path="/users" element={<UsersList />} />
-            <Route path="/settings" element={<Settings />} />
-        </Routes>
-    )
+  useEffect(() => {
+    const savedPrimaryColor = localStorage.getItem('primaryColor');
+    if (savedPrimaryColor) {
+      document.documentElement.style.setProperty('--primary-color', savedPrimaryColor);
+    }
+  }, []);
+
+  return (
+    <Routes>
+      <Route index element={<Home />} />
+      <Route path="/*" element={<ErrorPage />} />
+      <Route path="/signin" element={<Signin />} />
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/profile/:id" element={<Profile />} />
+      <Route path="/profile/edit" element={<ProfileEdit />} />
+      <Route path="/users" element={<UsersList />} />
+      <Route path="/settings" element={<Settings />} />
+    </Routes>
+  )
 }
 
 export default MainRoutes;
