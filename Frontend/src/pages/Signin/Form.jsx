@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { IoEye, IoEyeOff } from "react-icons/io5";
 import PropTypes from 'prop-types';
+import InputField from '../../components/Inputs/InputField';
+import ErrorMessage from '../../components/Inputs/ErrorMessage';
 
 export default function Form({ login, errors }) {
     const navigate = useNavigate();
@@ -27,20 +28,27 @@ export default function Form({ login, errors }) {
   return (
     <form className='sign-form' onSubmit={handleLogin}>
 
-        <label>
-            E-mail:
-            <input className='sign-input' type="email" name="email" onChange={handleChange} value={user.email} required/>
-        </label>
+        <InputField
+            label="E-mail:"
+            type="email"
+            name="email"
+            value={user.email}
+            onChange={handleChange}
+            required
+        />
 
-        <label>
-            Senha:
-            <label className='sign-input password'>
-                <input type={showPassword ? "text" : "password"} name="password" onChange={handleChange} value={user.password} required/>
-                <button className='show-btn' type='button' onClick={() => setShowPassword(prevState => !prevState)} value={showPassword}>{showPassword ? <IoEye/> : <IoEyeOff/>}</button>
-            </label>
-        </label>
+        <InputField
+            label="Senha:"
+            type={showPassword ? "text" : "password"}
+            name="password"
+            value={user.password}
+            onChange={handleChange}
+            required
+            showPassword={showPassword}
+            setShowPassword={setShowPassword}
+        />
         
-        {errors && <span className='form-error' >{errors} </span>}
+        {errors && <ErrorMessage message={errors} />}
         
         <button className='sign-btn' type='submit'>Entrar</button>
 

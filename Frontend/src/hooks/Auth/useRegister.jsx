@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import api from '../../services/api.js';
+import { toast } from 'react-toastify';
+import api from '../../services/api';
 
 const useRegister = () => {
     const [ errors, setErrors ] = useState('');
@@ -7,11 +8,11 @@ const useRegister = () => {
     const register = async (user) => {
         setErrors('');
         if (!user.username || !user.email || !user.password || !user.confirmPassword) {
-            setErrors(`Todos os campos devem ser preenchidos!`);
+            setErrors('Todos os campos devem ser preenchidos!');
             return false;
         }
         if (user.password !== user.confirmPassword) {
-            setErrors(`A senha e confirmação não coincidem!`);
+            setErrors('A senha e confirmação não coincidem!');
             return false;
         }
         try {
@@ -19,10 +20,17 @@ const useRegister = () => {
                 `/users`, 
                 { username: user.username, email: user.email, password: user.password }
             );
-            setErrors(`${data.message}`);
-            return true;
-        } catch (err) {
-            setErrors(`${err.response?.data.message || err.message}`);
+            if (data.success) {
+                toast.success(data.message);
+            } else {
+                toast.error(data.message);
+                setErrors(data.message);
+            }
+            return data;
+        } catch (error) {
+            const msg = error.response?.data?.message || 'Erro ao criar usuário';
+            toast.error(msg);
+            setErrors(msg);
             return false;
         }
     };

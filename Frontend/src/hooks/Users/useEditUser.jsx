@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 import { getToken } from '../../utils/auth.js';
 import api from '../../services/api.js';
 
@@ -8,11 +9,11 @@ const useEditUser = () => {
 
     const edit = async (user, loggedInUser) => {
         if (!user.username || !user.email || !user.password || !user.confirmPassword) {
-            setErrors(`Todos os campos devem ser preenchidos!`);
+            setErrors('Todos os campos devem ser preenchidos!');
             return false;
         }
         if (user.password !== user.confirmPassword) {
-            setErrors(`A senha e confirmação não coincidem!`);
+            setErrors('A senha e confirmação não coincidem!');
             return false;
         }
         try {
@@ -24,8 +25,10 @@ const useEditUser = () => {
             );
             localStorage.setItem('loggedInUser', loggedUser);
             return true;
-        } catch (err) {
-            setErrors(`${err.response?.data.message || err.message}`);
+        } catch (error) {
+            const msg = error.response?.data?.message || error.message;
+            toast.error(msg);
+            setErrors(msg);
             return false;
         }
     };

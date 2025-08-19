@@ -1,58 +1,87 @@
 import {db} from "../db.js";
 import bcrypt from 'bcrypt';
 import jwt from "jsonwebtoken";
+import { sendSuccess, sendError } from "../middlewares/responseMiddleware.js";
 
-// ADICIONAR NOVO USUÁRIO.
 export const registerUser = async  (req, res) => {
   const { username, email, password } = req.body;
+  if (!username || !email || !password) return sendError(res, "Campos obrigatórios: username, email, password", 400);
   try {
     const salt = await bcrypt.genSalt(10);
     const emailLowcase = await email.toLowerCase();
-    const hashedPassword = await bcrypt.hash(password, salt);
-    const q = "INSERT INTO users(`username`, `email`, `password`) VALUES (?)";
-    const values = [ username, emailLowcase, hashedPassword ];
-    db.query(q, [values], (err) => {
-      if (err) { 
-            if (err.code === 'ER_DUP_ENTRY') return res.status(400).json({ message: "Usuário já cadastrado" });
-            return res.status(500).json({ message: "Erro interno no servidor" });
-        }
-        return res.status(201).json({ message: "Usuário criado com sucesso" });
+    const checkEmailQuery = "SELECT id FROM users WHERE email = ?";
+    db.query(checkEmailQuery, [emailLowcase], (err, data) => {
+      if (err) return sendError(res, "Erro interno no servidor", 500);
+      if (data.length > 0) return sendError(res, "Email já cadastrado", 400);
+    });
+    bcrypt.hash(password, salt, (err, hash) => {
+      if (err)  return sendError(res, "Erro interno no servidor", 500);
+      const q = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
+      const values = [username, emailLowcase, hash];
+      db.query(q, values, (err, data) => {
+          if (err) return sendError(res, "Erro interno no servidor", 500);
+          return sendSuccess(res, "Usuário criado com sucesso", { id: data.insertId, username, email }, 201);
+      });
     });
   } catch (error) {
-      return res.status(500).json({ message: "Erro interno no servidor" });
+      sendError(res, "Erro interno no servidor", 500);
   }
 };
 
-// LOGIN DE USUÁRIO
 export const loginUser = (req, res) => {
   const { email, password } = req.body;
+  if (!email || !password) return sendError(res, "Campos obrigatórios: email, password", 400);
   const q = "SELECT id, username, email, password FROM users WHERE email = ?";
   try {
     const emailLowcase = email.toLowerCase();
-  db.query(q, [emailLowcase], async (err, result) => {
-    if (err) return res.status(500).json({ message: "Erro interno do servidor" });
-    if (result.length === 0) return res.status(401).json({ message: "A senha ou email do usuário incorreta" });
-    const user = result[0];
-    const validPassword = await bcrypt.compare(password, user.password);
-    if (!validPassword) return res.status(401).json({ message: "A senha ou email do usuário incorreta" });
-    const { password: _, ...userWithoutPassword } = user;
-    const token = jwt.sign({ id: user.id, username: user.username, email: user.email }, process.env.JWT_SECRET, { expiresIn: '0.060m' });
-    return res.status(200).json({user: userWithoutPassword, token: token});
-  });
+    db.query(q, [emailLowcase], async (err, data) => {
+      if (err) sendError(res, "Erro interno no servidor", 500);
+      if (data.length === 0) return sendError(res, "Email ou senha incorretos", 401);
+      const user = data[0];
+      bcrypt.compare(password, user.password, (err, isMatch) => {
+        if (err) return sendError(res, "Erro interno no servidor", 500);
+        if (!isMatch) return sendError(res, "Email ou senha incorretos", 401);
+        const token = jwt.sign(
+          { id: user.id, email: user.email, username: user.username },
+          process.env.JWT_SECRET,
+          { expiresIn: "24h" }
+        );
+        return sendSuccess(res, "Login realizado com sucesso", {
+          user: { id: user.id, username: user.username, email: user.email },
+          token
+        });
+      });
+    });
   } catch (error) {
-      return res.status(500).json({ message: "Erro interno no servidor" });
+      sendError(res, "Erro interno no servidor", 500);
   }
 };
 
-export const validateToken = (req, res) => {
-  const authHeader = req.headers['authorization'];
-  if (!authHeader) return res.status(401).json({ valid: false, message: 'No token provided.' });
-  const token = authHeader.split(' ')[1];
-  if (!token) return res.status(401).json({ valid: false, message: 'Malformed token.' });
-  try {
-      const decoded = jwt.verify(token.replace('Bearer ', ''), process.env.JWT_SECRET);
-      if (decoded) return res.status(200).json({ valid: true });
-  } catch (err) {
-      return res.status(401).json({ valid: false, message: 'Invalid or expired token.' });
-  }
+export const getCurrentUser = (req, res) => {
+  const userId = req.user.id;
+  const q = "SELECT id, username, email FROM users WHERE id = ?";
+  db.query(q, [userId], (err, data) => {
+      if (err) return sendError(res, "Erro interno no servidor", 500);
+      if (data.length === 0) return sendError(res, "Usuário não encontrado", 404);
+      return sendSuccess(res, "Usuário encontrado", data[0]);
+  });
+};
+
+export const refreshToken = (req, res) => {
+  const userId = req.user.id;
+  const q = "SELECT id, username, email FROM users WHERE id = ?";
+  db.query(q, [userId], (err, data) => {
+      if (err) return sendError(res, "Erro interno no servidor", 500);
+      if (data.length === 0) return sendError(res, "Usuário não encontrado", 404);
+      const user = data[0];
+      const token = jwt.sign(
+          { id: user.id, email: user.email, username: user.username },
+          process.env.JWT_SECRET,
+          { expiresIn: "24h" }
+      );
+      return sendSuccess(res, "Token renovado com sucesso", {
+          user: { id: user.id, username: user.username, email: user.email },
+          token
+      });
+  });
 };

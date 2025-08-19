@@ -1,22 +1,21 @@
 import mysql from "mysql";
+import dotenv from "dotenv";
+import userSchema from "./models/userSchema.js";
 
-import { userSchema } from "../models/userSchema.js";
+dotenv.config();
 
-// CONFIGURAÇÃO DA CONEXÃO COM O BANCO DE DADOS
 export const db = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "Root141314",
-    database: "mygarage"
+    host: process.env.DB_HOST || "localhost",
+    user: process.env.DB_USER || "root",
+    password: process.env.DB_PASSWORD || "Root141314",
+    database: process.env.DB_NAME || "mygarage"
 });
 
-// CARREGAR BANCO DE DADOS
 db.connect(function(err) {
     if (err) {  
         console.log(JSON.stringify(err));
         throw err;
     }
-    // CARREGAR TABELA USUÁRIOS
     db.query(userSchema, function (err, result) {
         if (err) {
             console.log(JSON.stringify(err));

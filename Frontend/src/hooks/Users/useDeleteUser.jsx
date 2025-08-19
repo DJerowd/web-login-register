@@ -15,9 +15,10 @@ const useDeleteUser = () => {
             );
             clearAuthData();
             return true;
-        } catch (err) {
-            toast.error(`Erro ao deletar usuário: ${JSON.stringify(err.response?.data || err.message)}`);
-            setErrors(`Erro ao deletar usuário: ${JSON.stringify(err.response?.data || err.message)}`);
+        } catch (error) {
+            const msg = error.response?.data?.message || error.message;
+            toast.error(`Erro ao deletar usuário: ${msg}`);
+            setErrors(`Erro ao deletar usuário: ${msg}`);
             return false;
         }
     };

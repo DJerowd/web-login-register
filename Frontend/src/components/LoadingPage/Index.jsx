@@ -1,6 +1,6 @@
 import '../../Styles/loading.css';
 
-export default function LoadingPage() {
+export function LoadingPage() {
     return (
         <div className='container'>
             <main className='loader'>
@@ -9,3 +9,5 @@ export default function LoadingPage() {
         </div>
     );
 }
+
+export default LoadingPage;

@@ -3,28 +3,33 @@ import { toast } from 'react-toastify';
 import { getToken } from '../../utils/auth.js';
 import api from '../../services/api.js';
 
-const useUserById = () => {
-    const [ users, setUsers ] = useState([]);
+const useUserById = (userId = null) => {
+    const [ users, setUsers ] = useState(null);
     const [ loading, setLoading ] = useState(false);
-    const [ errors, setErrors ] = useState('');
-    const [ userId, setUserId ] = useState();
+    const [ errors, setErrors ] = useState(null);
     const token = getToken();
 
     useEffect(() => {
         const fetchUsers = async () => {
             setLoading(true);
-            setErrors('');
+            setErrors(null);
             if (userId) {
                 try {
                     const res = await api.get(
                         `/users/` + userId, 
                         { headers: { Authorization: `Bearer ${token}` } }
                     );
-                    setUsers(res.data);
+                    if (res.data.success) {
+                        setUsers(res.data.data);
+                    } else {
+                        toast.error(res.data.message);
+                        setErrors(res.data.message);
+                    }
                     return true;
-                } catch (err) {
-                    toast.error(`${err.response?.data.message || err.message}`);
-                    setErrors(`${err.response?.data.message || err.message}`);
+                } catch (error) {
+                    const msg = error.response?.data?.message || error.message;
+                    toast.error(msg);
+                    setErrors(msg);
                     return false;
                 } finally {
                     setLoading(false);
@@ -35,7 +40,7 @@ const useUserById = () => {
         fetchUsers();
     }, [token, userId]);
 
-    return { users, loading, errors, setUserId };
+    return { users, loading, errors };
 };
 
 export default useUserById;

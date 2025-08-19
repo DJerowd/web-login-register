@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useParams } from "react-router";
 
 import { getLoggedInUser } from '../../utils/auth.js';
@@ -14,18 +13,8 @@ import '../../Styles/profile.css';
 
 export default function Profile() {
     const { id } = useParams();
-    const { users, loading, errors, setUserId } = useUserById();
+    const { users, loading, errors } = useUserById(id);
     const loggedInUser = getLoggedInUser();
-
-    // CARREGA DADOS DO USUÁRIO
-    useEffect(() => {
-        const fetchdata = async () => {
-            if (id) {
-                setUserId(id)
-            };
-        };
-        fetchdata();
-    }, [id, loading, setUserId]);
 
     // ERRO LOGIN INATIVO
     if (!loggedInUser) return <ErrorPage/>;
@@ -71,8 +60,8 @@ export default function Profile() {
                         </div>
 
                         <section>
-                            <h3 id='username'>{`${users.username}`}</h3>
-                            <p id='email'>{`${users.email}`}</p>
+                            <h3 id='username'>{`${users?.username}`}</h3>
+                            <p id='email'>{`${users?.email}`}</p>
                         </section>
 
                     </main>

@@ -1,74 +1,118 @@
 import {db} from "../db.js";
 import bcrypt from 'bcrypt';
+import { sendSuccess, sendError } from "../middlewares/responseMiddleware.js";
 
-// REQUISIÇÃO DE USUÁRIOS.
-export const getUsers = (_, res) => {
-    const q = "SELECT id, username, email FROM users";
-    db.query(q, (err, data) => {
-        if (err) {
-            return res.status(500).json({ message: "Erro interno no servidor" });
-        }
-        if (data.length === 0) return res.status(204).json({ message: "Não há usuários cadastrados" });
-        return res.status(200).json(data);
+export const getUsers = (req, res) => {
+    const { page = 1, limit = 10, username } = req.query;
+    const offset = (parseInt(page) - 1) * parseInt(limit);
+    let filters = "1=1";
+    let values = [];
+    if (username) {
+        filters += " AND username LIKE ?";
+        values.push(`%${username}%`);
+    }
+    const countQuery = `SELECT COUNT(*) as total FROM users WHERE ${filters}`;
+    db.query(countQuery, values, (err, countResult) => {
+        if (err) return sendError(res, "Erro interno no servidor", 500);
+        const total = countResult[0].total;
+        if (total === 0) return sendError(res, "Nenhum usuário encontrado", 404);
+        const totalPages = Math.ceil(total / parseInt(limit));
+        const dataQuery = `SELECT id, username, email FROM users WHERE ${filters} LIMIT ? OFFSET ?`;
+        db.query(dataQuery, [...values, parseInt(limit), offset], (err, data) => {
+            if (err) return sendError(res, "Erro interno no servidor", 500);
+            return sendSuccess(res, "Usuários encontrados", {
+                users: data,
+                page: parseInt(page),
+                limit: parseInt(limit),
+                total,
+                totalPages
+            });
+        });
     });
 };
 
-// REQUISIÇÃO DE USUÁRIOS POR ID
 export const getUsersById = (req, res) => {
-    const q = "SELECT id, username, email FROM users WHERE `id` = ?";
-    db.query(q, [req.params.id], (err, data) => {
-        if (err) {
-            return res.status(500).json({ message: "Erro interno no servidor" });
-        }
-        if (data.length === 0) return res.status(404).json({ message: "Usuário não encontrado" });
-        return res.status(200).json(data[0]);
+    const userId = req.params.id;
+    const q = "SELECT id, username, email FROM users WHERE id = ?";
+    db.query(q, [userId], (err, data) => {
+        if (err) return sendError(res, "Erro interno no servidor", 500);
+        if (data.length === 0) return sendError(res, "Usuário não encontrado", 404);
+        return sendSuccess(res, "Usuário encontrado", data[0]);
     });
 };
 
-// REQUISIÇÃO DE USUÁRIOS POR EMAIL OU USERNAME
 export const getUsersBySearch = (req, res) => {
-    const { search } = req.params;
-    if (!search) { return res.status(400).json({ message: "Parâmetro de busca é obrigatório" }); }
-    const q = "SELECT id, username, email FROM users WHERE LOWER(username) LIKE LOWER(?) OR LOWER(email) LIKE LOWER(?)";
-    const searchPattern = `%${search}%`;
-    db.query(q, [searchPattern, searchPattern], (err, data) => {
-        if (err) {
-            return res.status(500).json({ message: "Erro interno no servidor" });
-        }
-        if (data.length === 0) return res.status(404).json({ message: "Nenhum usuário encontrado" });
-        return res.status(200).json(data);
+    const { page = 1, limit = 10, search } = req.query;
+    const offset = (parseInt(page) - 1) * parseInt(limit);
+    let filters = "1=1";
+    let values = [];
+    if (search) {
+        filters += " AND (LOWER(username) LIKE LOWER(?) OR LOWER(email) LIKE LOWER(?))";
+        values.push(`%${search}%`);
+        values.push(`%${search}%`);
+    }
+    const countQuery = `SELECT COUNT(*) as total FROM users WHERE ${filters}`;
+    db.query(countQuery, values, (err, countResult) => {
+        if (err) return sendError(res, "Erro interno no servidor", 500);
+        const total = countResult[0].total;
+        if (total === 0) return sendError(res, "Nenhum usuário encontrado", 404);
+        const totalPages = Math.ceil(total / parseInt(limit));
+        const dataQuery = `SELECT id, username, email FROM users WHERE ${filters} LIMIT ? OFFSET ?`;
+        db.query(dataQuery, [...values, parseInt(limit), offset], (err, data) => {
+            if (err) return sendError(res, "Erro interno no servidor", 500);
+            return sendSuccess(res, "Usuários encontrados", {
+                users: data,
+                page: parseInt(page),
+                limit: parseInt(limit),
+                total,
+                totalPages
+            });
+        });
     });
 };
 
-// ATUALIZAR USUÁRIO EXISTENTE.
 export const updateUser = async (req, res) => {
+    const userId = req.params.id;
     const { username, email, password } = req.body;
+    if (!username || !email || !password) return sendError(res, "Campos obrigatórios: username, email, password", 400);
     try {
         const salt = await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash(password, salt);
-        const q = "UPDATE users SET `username` = ?, `email` = ?, `password` = ? WHERE `id` = ?";
-        const values = [ username, email, hashedPassword ];
-        db.query(q, [...values, req.params.id], (err, result) => {
-            if (err) {
-                if (err.code === 'ER_DUP_ENTRY') return res.status(400).json({ message: "Usuário já cadastrado" });
-                return res.status(500).json({ message: "Erro interno no servidor" });
+        const checkEmailQuery = "SELECT id FROM users WHERE email = ? AND id != ?";
+        db.query(checkEmailQuery, [email, userId], (err, data) => {
+            if (err) return sendError(res, "Erro interno no servidor", 500);
+            if (data.length > 0) return sendError(res, "Email já cadastrado", 400);
+            if (password) {
+                bcrypt.hash(password, salt, (err, hash) => {
+                    if (err) return sendError(res, "Erro interno no servidor", 500);
+                    const q = "UPDATE users SET username = ?, email = ?, password = ? WHERE id = ?";
+                    const values = [username, email, hash, userId];
+                    db.query(q, values, (err, data) => {
+                        if (err) return sendError(res, "Erro interno no servidor", 500);
+                        if (data.affectedRows === 0) return sendError(res, "Usuário não encontrado", 404);
+                        return sendSuccess(res, "Usuário atualizado com sucesso");
+                    });
+                });
+            } else {
+                const q = "UPDATE users SET username = ?, email = ? WHERE id = ?";
+                const values = [username, email, userId];
+                db.query(q, values, (err, data) => {
+                    if (err) return sendError(res, "Erro interno no servidor", 500);
+                    if (data.affectedRows === 0) return sendError(res, "Usuário não encontrado", 404);
+                    return sendSuccess(res, "Usuário atualizado com sucesso");
+                });
             }
-            if (result.affectedRows === 0) return res.status(404).json({ message: "Usuário não encontrado" });
-            return res.status(200).json({ message: "Usuário atualizado com sucesso" });
         });
     } catch (error) {
-        return res.status(500).json({ message: "Erro interno no servidor" });
+        return sendError(res, "Erro interno no servidor", 500);
     }
 };
 
-// EXCLUIR USUÁRIO EXISTENTE.
 export const deleteUser = (req, res) => {
-    const q = "DELETE FROM users WHERE `id` = (?)";
-    db.query(q, [req.params.id], (err, result) => {
-        if (err) {
-            return res.status(500).json({ message: "Erro interno no servidor" });
-        }
-        if (result.affectedRows === 0) return res.status(404).json({ message: "Usuário não encontrado" });
-        return res.status(200).json({ message: "Usuário deletado com sucesso" });
+    const userId = req.params.id;
+    const q = "DELETE FROM users WHERE id = ?";
+    db.query(q, [userId], (err, data) => {
+        if (err) return sendError(res, "Erro interno no servidor", 500);
+        if (data.affectedRows === 0) return sendError(res, "Usuário não encontrado", 404);
+        return sendSuccess(res, "Usuário deletado com sucesso");
     });
 };

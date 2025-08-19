@@ -9,8 +9,8 @@
     transition: var(--fast-transition);
 
     width: 100vw;
-    padding: 0.4rem 2vw;
     height: var(--header-height);
+    padding: 0.4rem 2vw;
     gap: 1.0rem;
 
     backdrop-filter: blur(20px);

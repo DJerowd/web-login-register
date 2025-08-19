@@ -1,5 +1,7 @@
-import { useEffect} from 'react';
-import { Routes, Route } from "react-router-dom";
+import { useEffect } from 'react';
+import { Routes, Route, Navigate } from "react-router-dom";
+import { useAuth } from './context/AuthContext';
+import PropTypes from 'prop-types';
 
 import ErrorPage from "./components/ErrorPage";
 import Home from "./pages/Home/Index.jsx";
@@ -11,8 +13,16 @@ import ProfileEdit from "./pages/ProfileEdit/Index.jsx";
 import UsersList from "./pages/UsersList/Index.jsx";
 import Settings from "./pages/Settings/Index.jsx";
 
-function MainRoutes(){
+function ProtectedRoute({ children }) {
+  const user = localStorage.getItem('loggedInUser');
+  if (!user) return <Navigate to="/signin" replace />;
+  return children;
+}
+ProtectedRoute.propTypes = {
+  children: PropTypes.node.isRequired
+};
 
+function MainRoutes(){
   useEffect(() => {
     const savedPrimaryColor = localStorage.getItem('primaryColor');
     if (savedPrimaryColor) {
@@ -26,11 +36,11 @@ function MainRoutes(){
       <Route path="/*" element={<ErrorPage />} />
       <Route path="/signin" element={<Signin />} />
       <Route path="/signup" element={<Signup />} />
-      <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="/profile/:id" element={<Profile />} />
-      <Route path="/profile/edit" element={<ProfileEdit />} />
-      <Route path="/users" element={<UsersList />} />
-      <Route path="/settings" element={<Settings />} />
+      <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+      <Route path="/profile/:id" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+      <Route path="/profile/edit" element={<ProtectedRoute><ProfileEdit /></ProtectedRoute>} />
+      <Route path="/users" element={<ProtectedRoute><UsersList /></ProtectedRoute>} />
+      <Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
     </Routes>
   )
 }

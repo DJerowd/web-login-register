@@ -1,11 +1,16 @@
 import express from "express";
-import { registerUser, loginUser, validateToken } from "../controllers/authController.js";
-import { validateUser } from "../middlewares/validateUser.js";
+import { registerUser, loginUser, getCurrentUser, refreshToken } from "../controllers/authController.js";
+import { verifyToken } from "../middlewares/authMiddleware.js";
+import { validateBody, userSchema } from "../middlewares/validationMiddleware.js";
 
 const router = express.Router();
 
-router.post("/", validateUser, registerUser);
+// Rotas que não requerem autenticação
+router.post("/", validateBody(userSchema, true), registerUser);
 router.post("/login", loginUser);
-router.post('/validate', validateToken);
+
+// Rotas que requerem autenticação
+router.get("/me", verifyToken, getCurrentUser);
+router.get("/refresh", verifyToken, refreshToken);
 
 export default router;

@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
-import '../../Styles/components/pagination.css';
+import '../../Styles/components/pagination.css';  
 
-export function Pagination({ itens, currentPage, setCurrentPage, itemsPerPage }) {
-    const totalPages = Math.ceil(itens.length / itemsPerPage);
+export default function Pagination({ currentPage, totalPages, onPageChange }) {
     const maxVisiblePages = 3;
 
     const getPageNumbers = () => {
@@ -19,21 +18,23 @@ export function Pagination({ itens, currentPage, setCurrentPage, itemsPerPage })
 
     return (
         <div className="pagination">
-            <button onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))} disabled={currentPage === 1} >
+            <button onClick={() => onPageChange(prev => Math.max(1, prev - 1))} disabled={currentPage === 1} >
                 ❮
             </button>
 
             {visiblePages[0] > 1 && (
                 <>
-                    <button onClick={() => setCurrentPage(1)}>1</button>
-                    {visiblePages[0] > 2 && <span className="ellipsis">...</span>}
+                    <button onClick={() => onPageChange(1)}>1</button>
+                    {visiblePages[0] > 2 && <span className="ellipsis">
+                      ...
+                    </span>}
                 </>
             )}
             
             {visiblePages.map(pageNum => (
                 <button
                     key={pageNum}
-                    onClick={() => setCurrentPage(pageNum)}
+                    onClick={() => onPageChange(pageNum)}
                     className={currentPage === pageNum ? 'active' : ''}
                 >
                     {pageNum}
@@ -43,11 +44,13 @@ export function Pagination({ itens, currentPage, setCurrentPage, itemsPerPage })
             {visiblePages[visiblePages.length - 1] < totalPages && (
                 <>
                     {visiblePages[visiblePages.length - 1] < totalPages - 1 && <span className="ellipsis">...</span>}
-                    <button onClick={() => setCurrentPage(totalPages)}>{totalPages}</button>
+                    <button onClick={() => onPageChange(totalPages)}>
+                      {totalPages}
+                    </button>
                 </>
             )}
             
-            <button onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))} disabled={currentPage >= totalPages} >
+            <button onClick={() => onPageChange(prev => Math.min(totalPages, prev + 1))} disabled={currentPage >= totalPages} >
                 ❯
             </button>
         </div>
@@ -55,9 +58,8 @@ export function Pagination({ itens, currentPage, setCurrentPage, itemsPerPage })
 }
 
 Pagination.propTypes = {
-    itens: PropTypes.array.isRequired,
     currentPage: PropTypes.number.isRequired,
-    setCurrentPage: PropTypes.func.isRequired,
-    itemsPerPage: PropTypes.number.isRequired
+    totalPages: PropTypes.number.isRequired,
+    onPageChange: PropTypes.func.isRequired
 };
     

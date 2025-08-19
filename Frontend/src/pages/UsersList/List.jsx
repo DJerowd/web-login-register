@@ -1,27 +1,17 @@
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import React from 'react';
 
-export default function List({ users, currentPage, itemsPerPage }) {
+const List = React.memo(function List({ users, currentPage, itemsPerPage }) {
     const navigate = useNavigate();
-
-    // DIRECIONA PARA A PAGINA DE DETALHES DO USUÁRIO SELECIONADO.
-    const handleUserDetails = (id) => {
-        navigate(`/profile/${id}`);
-    };
-    
-    // OBTÉM OS USUÁRIOS PARA A PÁGINA ATUAL
-    const currentUsers = users.slice(
-        (currentPage - 1) * itemsPerPage,
-        currentPage * itemsPerPage
-    );
 
     return (
         <table className='users-table'>
             <th>
                 <td>USUÁRIOS</td>
             </th>
-            {currentUsers.map((user, index) => (
-            <tr key={user.id} title={`Ver perfil de ${user.username}`} onClick={() => handleUserDetails(user.id)}>
+            {users.map((user, index) => (
+            <tr key={user.id} title={`Ver perfil de ${user.username}`} onClick={() => navigate(`/profile/${user.id}`)}>
                 <td> 
                     <span id='user-index'>{(currentPage - 1) * itemsPerPage + index + 1} </span> 
                 </td>
@@ -29,7 +19,7 @@ export default function List({ users, currentPage, itemsPerPage }) {
                     <div className='avatar-container-list'>
                         <img
                             className='avatar-image'
-                            src='/assets/avatar.jpg'
+                            // src='/assets/avatar.jpg'
                             alt='AV'
                             onError={(e) => {e.target.onerror = null; e.target.src = `https://ui-avatars.com/api/?name=${user.username}&rounded=true&background=transparent`; }}
                         />
@@ -43,10 +33,12 @@ export default function List({ users, currentPage, itemsPerPage }) {
             ))}
         </table>
     );
-};
+});
 
 List.propTypes = {
     users: PropTypes.array.isRequired,
     currentPage: PropTypes.number.isRequired,
     itemsPerPage: PropTypes.number.isRequired
 };
+
+export default List;
